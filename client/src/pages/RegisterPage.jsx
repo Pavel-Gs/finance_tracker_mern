@@ -1,7 +1,7 @@
 // IMPORT ROUTER COMPONENTS
 import { Link } from 'react-router-dom'
 // IMPORT CUSTOM JSX COMPONENTS
-import { LogoComponent } from '../components/Logo.jsx'
+import { LogoComponent } from '../components/LogoComponent.jsx'
 import { FormRowComponent } from '../components/FormRowComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledRegisterAndLoginPage } from '../styled_components/StyledRegisterAndLoginPage.js'
