@@ -54,7 +54,7 @@ export const StyledSmallSidebarComponent = styled.aside`
 		display: flex;
 		align-items: center;
 		color: var(--text-secondary-color);
-		padding: 1rem 0;
+		padding: 0.25rem 0;
 		text-transform: capitalize;
 		transition: var(--transition);
 	}

@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 export const HomeLayout = () => {
 	return (
 		<>
-			{/* render all children elements for the route */}
+			{/* render all children elements for the route using outlet*/}
 			<Outlet />
 		</>
 	)

@@ -1,5 +1,5 @@
 export const StatsExpensesPage = () => {
 	return (
-		<div>StatsPage</div>
+		<div>StatsExpensesPage</div>
 	)
 }

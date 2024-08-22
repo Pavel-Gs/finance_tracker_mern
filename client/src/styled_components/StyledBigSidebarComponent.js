@@ -38,7 +38,7 @@ export const StyledBigSidebarComponent = styled.aside`
 			display: flex;
 			align-items: center;
 			color: var(--text-secondary-color);
-			padding: 1rem 0;
+			padding: 0.5rem 0;
 			padding-left: 2.5rem;
 			text-transform: capitalize;
 			transition: padding-left 0.3s ease-in-out;
