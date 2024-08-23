@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client'
 // IMPORT ROUTER FUNCTIONS AND COMPONENTS
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-// IMPORT CUSTOM JSX COMPONENTS
+// IMPORT JSX COMPONENTS
 import { AdminPage } from './pages/AdminPage.jsx'
 import { DashboardLayout } from './pages/DashboardLayout.jsx'
 import { ErrorPage } from './pages/ErrorPage.jsx'
@@ -17,8 +17,14 @@ import { AllExpensesPage } from './pages/expenses/AllExpensesPage.jsx'
 import { AllIncomePage } from './pages/income/AllIncomePage.jsx'
 import { StatsExpensesPage } from './pages/expenses/StatsExpensesPage.jsx'
 import { StatsIncomePage } from './pages/income/StatsIncomePage.jsx'
+// IMPORT JSX FUNCTIONS
+import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
+
+
+// MANAGE DARK THEME
+checkDefaultThemeFunction()
 
 
 // SET BROWSER ROUTING

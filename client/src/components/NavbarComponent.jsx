@@ -2,14 +2,17 @@
 import { useDashboardContext } from '../pages/DashboardLayout.jsx'
 // IMPORT REACT ICONS
 import { FaAlignLeft } from 'react-icons/fa'
-// IMPORT CUSTOM JSX COMPONENTS
+// IMPORT JSX COMPONENTS
 import { LogoComponent } from './LogoComponent.jsx'
+import { LogoutComponent } from './LogoutComponent.jsx'
+import { ThemeToggleComponent } from './ThemeToggleComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledNavbarComponent } from '../styled_components/StyledNavbarComponent.js'
 
 
 // NAVBAR JSX COMPONENT
 export const NavbarComponent = () => {
+	
 	// use global context data
 	const {toggleSidebar} = useDashboardContext()
 
@@ -26,7 +29,8 @@ export const NavbarComponent = () => {
 					</h4>
 				</div>
 				<div className="btn-container">
-					toggle/logout
+					<ThemeToggleComponent />
+					<LogoutComponent />
 				</div>
 			</div>
 		</StyledNavbarComponent>
