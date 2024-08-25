@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
-import routerExpress from './routes/expensesRoutes.js'
+import {routerExpress} from './routes/expensesRoutes.js'
 
 
 // INVOKE DOTENV

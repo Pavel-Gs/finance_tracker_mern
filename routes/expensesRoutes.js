@@ -14,4 +14,4 @@ routerExpress.get('/:id', getSingleExpenseController)
 routerExpress.patch('/:id', patchExpenseController)
 routerExpress.delete('/:id', deleteExpenseController)
 
-export default routerExpress
+export {routerExpress}
