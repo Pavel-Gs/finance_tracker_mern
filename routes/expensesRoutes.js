@@ -1,13 +1,17 @@
 // IMPORT ROUTER FUNCTION
 import {Router} from 'express'
-// IMPORT CONTROLLERS
-import { getAllExpensesController, postNewExpenseController, getSingleExpenseController, patchExpenseController, deleteExpenseController } from '../controllers/expensesControllers.js'
+// IMPORT EXPENSES CONTROLLERS
+import { getAllExpensesController } from '../controllers/expenses/getAllExpensesController.js'
+import { postNewExpenseController } from '../controllers/expenses/postNewExpenseController.js'
+import { getSingleExpenseController } from '../controllers/expenses/getSingleExpenseController.js'
+import { patchExpenseController } from '../controllers/expenses/pathExpenseController.js'
+import { deleteExpenseController } from '../controllers/expenses/deleteExpenseController.js'
 
 
 // INVOKE THE ROUTER
 const routerExpress = Router()
 
-// SET ROUTES
+// SET EXPENSES ROUTES
 routerExpress.get('/', getAllExpensesController)
 routerExpress.post('/', postNewExpenseController)
 routerExpress.get('/:id', getSingleExpenseController)
