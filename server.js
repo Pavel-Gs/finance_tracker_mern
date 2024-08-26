@@ -1,3 +1,5 @@
+// IMPORT EXPRESS ERRORS PACKAGE
+import 'express-async-errors' // may have to place it at the very top of the code
 // IMPORT OBJECT DATA MODELING TOOLS
 import mongoose from 'mongoose'
 // IMPORT FRAMEWORKS FOR NODEJS
