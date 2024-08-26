@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "development") {
 	app.use(morgan('dev')) // provides additional logs in the terminal
 }
 // setup routes
-app.use('/api/v1/jobs', routerExpress)
+app.use('/api/v1/expenses', routerExpress)
 
 
 // ERROR MIDDLEWARE
