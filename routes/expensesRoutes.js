@@ -4,18 +4,18 @@ import {Router} from 'express'
 import { getAllExpensesController } from '../controllers/expenses/getAllExpensesController.js'
 import { postNewExpenseController } from '../controllers/expenses/postNewExpenseController.js'
 import { getSingleExpenseController } from '../controllers/expenses/getSingleExpenseController.js'
-import { patchExpenseController } from '../controllers/expenses/pathExpenseController.js'
+import { patchExpenseController } from '../controllers/expenses/patchExpenseController.js'
 import { deleteExpenseController } from '../controllers/expenses/deleteExpenseController.js'
 
 
 // INVOKE THE ROUTER
-const routerExpress = Router()
+const routerExpressExpenses = Router()
 
 // SET EXPENSES ROUTES
-routerExpress.get('/', getAllExpensesController)
-routerExpress.post('/', postNewExpenseController)
-routerExpress.get('/:id', getSingleExpenseController)
-routerExpress.patch('/:id', patchExpenseController)
-routerExpress.delete('/:id', deleteExpenseController)
+routerExpressExpenses.get('/', getAllExpensesController)
+routerExpressExpenses.post('/', postNewExpenseController)
+routerExpressExpenses.get('/:id', getSingleExpenseController)
+routerExpressExpenses.patch('/:id', patchExpenseController)
+routerExpressExpenses.delete('/:id', deleteExpenseController)
 
-export {routerExpress}
+export {routerExpressExpenses}

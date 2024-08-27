@@ -1,9 +1,11 @@
 // IMPORT MODELS
 import { ExpensesModel } from '../../models/ExpensesModel.js'
+// IMPORT STATUS CODES
+import { StatusCodes } from 'http-status-codes'
 
 
 // GET ALL EXPENSES CONTROLLER
 export const getAllExpensesController = async (req, res) => {
 	const allExpenses = await ExpensesModel.find({})
-	res.status(200).json({ allExpenses })
+	res.status(StatusCodes.OK).json({ allExpenses })
 }

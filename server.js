@@ -8,7 +8,10 @@ import express from 'express'
 import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
-import { routerExpress } from './routes/expensesRoutes.js'
+import { routerExpressExpenses } from './routes/expensesRoutes.js'
+import { routerExpressIncome } from './routes/incomeRoutes.js'
+// IMPORT MIDDLEWARE
+import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js'
 
 
 // INVOKE DOTENV
@@ -35,8 +38,9 @@ app.use(express.json())
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan('dev')) // provides additional logs in the terminal
 }
-// setup routes
-app.use('/api/v1/expenses', routerExpress)
+// setup api routes
+app.use('/api/v1/expenses', routerExpressExpenses)
+app.use('/api/v1/income', routerExpressIncome)
 
 
 // ERROR MIDDLEWARE
@@ -44,8 +48,5 @@ app.use('/api/v1/expenses', routerExpress)
 app.use('*', (req, res) => {
 	res.status(404).json({ message: "not found" })
 })
-// error (should be the last one)
-app.use((err, req, res, next) => {
-	console.log(err)
-	res.status(500).json({ message: "something went wrong" })
-})
+// error (may have to place it at the very bottom of the code)
+app.use(errorHandlerMiddleware)
