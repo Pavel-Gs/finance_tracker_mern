@@ -41,6 +41,10 @@ if (process.env.NODE_ENV === "development") {
 // setup api routes
 app.use('/api/v1/expenses', routerExpressExpenses)
 app.use('/api/v1/income', routerExpressIncome)
+// test routes
+app.get('/', (req, res) => {
+	res.send("test")
+})
 
 
 // ERROR MIDDLEWARE
