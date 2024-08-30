@@ -1,25 +1,31 @@
 // IMPORT OBJECT DATA MODELING TOOLS
 import mongoose from 'mongoose'
 // IMPORT CONSTANTS
-import { EXPENSES_CATEGORIES } from '../utils/constants.js'
+import { EXPENSES_TYPES } from '../utils/constantsExpenses.js'
+import { EXPENSES_CATEGORIES } from '../utils/constantsExpenses.js'
 
 
 // CREATE DATABASE SCHEMA FOR EXPENSES
 const ExpensesSchema = new mongoose.Schema({
-	amount: Number,
-	category: {
+	amountExpense: Number,
+	typeExpense: {
+		type: String,
+		enum: Object.values(EXPENSES_TYPES),
+		default: EXPENSES_TYPES.MONTHLY
+	},
+	categoryExpense: {
 		type: String,
 		enum: Object.values(EXPENSES_CATEGORIES),
-		default: EXPENSES_CATEGORIES.OTHER
+		default: EXPENSES_CATEGORIES.RENT
 	},
-	comments: {
+	commentsExpense: {
 		type: String,
 		default: "N/A"
 	},
-	location: {
+	locationExpense: {
 		type: String,
 		default: "Kelowna"
-	},
+	}
 }, { timestamps: true })
 
 export const ExpensesModel = mongoose.model('ExpensesModel', ExpensesSchema)
