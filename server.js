@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import express from 'express'
 // IMPORT MODULES
 import morgan from 'morgan'
+// IMPORT DOTENV (GLOBAL AVAILABILITY)
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
 import { routerExpressAuth } from './routes/authRouter.js'
@@ -15,7 +16,7 @@ import { routerExpressIncome } from './routes/incomeRoutes.js'
 import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js'
 
 
-// INVOKE DOTENV
+// INVOKE DOTENV (GLOBAL AVAILABILITY)
 dotenv.config() // may have to place it at the very top of the code
 
 

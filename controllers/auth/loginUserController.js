@@ -5,6 +5,7 @@ import { UnauthenticatedError } from '../../errors/customErrors.js'
 // IMPORT UTILS FUNCTIONS
 import { comparePassword } from '../../utils/passwordUtils.js'
 import { createJWT } from '../../utils/tokenUtils.js'
+import { StatusCodes } from 'http-status-codes'
 
 
 // LOGIN EXISTING USER CONTROLLER
@@ -19,7 +20,15 @@ export const loginUserController = async (req, res) => {
 	if (!isPasswordCorrect) throw new UnauthenticatedError("Invalid credentials")
 
 	// setup jwt token
-	const token = createJWT({userId: existingUser._id, userRole: existingUser.role})
+	const token = createJWT({ userId: existingUser._id, userRole: existingUser.role })
 
-	res.json({ token})
+	// create http-only cookie
+	const oneDay = 1000 * 60 * 60 * 24 /* one day in milliseconds */
+	res.cookie('cookieToken', token, {
+		httpOnly: true,
+		expires: new Date(Date.now() + oneDay),
+		secure: process.env.NODE_ENV === 'production'
+	})
+
+	res.status(StatusCodes.OK).json({ message: "User logged in" })
 }
