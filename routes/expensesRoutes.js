@@ -1,5 +1,5 @@
 // IMPORT ROUTER FUNCTION
-import {Router} from 'express'
+import { Router } from 'express'
 // IMPORT EXPENSES CONTROLLERS
 import { getAllExpensesController } from '../controllers/expenses/getAllExpensesController.js'
 import { postNewExpenseController } from '../controllers/expenses/postNewExpenseController.js'
@@ -21,4 +21,4 @@ routerExpressExpenses.get('/:id', validateIdParam, getSingleExpenseController)
 routerExpressExpenses.patch('/:id', validateIdParam, validateExpenseInput, patchExpenseController)
 routerExpressExpenses.delete('/:id', validateIdParam, deleteExpenseController)
 
-export {routerExpressExpenses}
+export { routerExpressExpenses }

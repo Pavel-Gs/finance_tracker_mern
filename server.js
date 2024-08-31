@@ -8,6 +8,7 @@ import express from 'express'
 import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
+import { routerExpressAuth } from './routes/authRouter.js'
 import { routerExpressExpenses } from './routes/expensesRoutes.js'
 import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
@@ -39,6 +40,7 @@ if (process.env.NODE_ENV === "development") {
 	app.use(morgan('dev')) // provides additional logs in the terminal
 }
 // setup api routes
+app.use('/api/v1/auth', routerExpressAuth)
 app.use('/api/v1/expenses', routerExpressExpenses)
 app.use('/api/v1/income', routerExpressIncome)
 // test routes

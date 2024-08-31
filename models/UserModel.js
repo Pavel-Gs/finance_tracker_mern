@@ -7,9 +7,9 @@ const UserSchema = new mongoose.Schema(
 	{
 		firstName: String,
 		lastName: String,
-		email: String,
-		password: String,
-		location: {
+		emailUser: String,
+		passwordUser: String,
+		locationUser: {
 			type: String,
 			default: "My city"
 		},

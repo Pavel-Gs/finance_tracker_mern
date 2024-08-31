@@ -1,5 +1,5 @@
 // IMPORT ROUTER FUNCTION
-import {Router} from 'express'
+import { Router } from 'express'
 // IMPORT INCOME CONTROLLERS
 import { getAllIncomeController } from '../controllers/income/getAllIncomeController.js'
 import { postNewIncomeController } from '../controllers/income/postNewIncomeController.js'
@@ -21,4 +21,4 @@ routerExpressIncome.get('/:id', validateIdParam, getSingleIncomeController)
 routerExpressIncome.patch('/:id', validateIdParam, validateIncomeInput, patchIncomeController)
 routerExpressIncome.delete('/:id', validateIdParam, deleteIncomeController)
 
-export {routerExpressIncome}
+export { routerExpressIncome }

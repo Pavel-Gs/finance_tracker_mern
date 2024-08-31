@@ -1,7 +1,7 @@
-// IMPORT MODELS
-import { ExpensesModel } from '../../models/ExpensesModel.js'
 // IMPORT STATUS CODES
 import { StatusCodes } from 'http-status-codes'
+// IMPORT MODELS
+import { ExpensesModel } from '../../models/ExpensesModel.js'
 
 
 // PATCH EXPENSE CONTROLLER

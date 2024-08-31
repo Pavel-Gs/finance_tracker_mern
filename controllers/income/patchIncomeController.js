@@ -1,7 +1,7 @@
-// IMPORT MODELS
-import { IncomeModel } from '../../models/IncomeModel.js'
 // IMPORT STATUS CODES
 import { StatusCodes } from 'http-status-codes'
+// IMPORT MODELS
+import { IncomeModel } from '../../models/IncomeModel.js'
 
 
 // PATCH INCOME CONTROLLER
