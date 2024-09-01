@@ -13,7 +13,7 @@ import { StyledNavbarComponent } from '../styled_components/StyledNavbarComponen
 // NAVBAR JSX COMPONENT
 export const NavbarComponent = () => {
 	
-	// use global context data
+	/* use global context data */
 	const {toggleSidebar} = useDashboardContext()
 
 	return (

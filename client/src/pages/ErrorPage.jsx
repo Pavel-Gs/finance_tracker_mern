@@ -9,7 +9,7 @@ import notFoundImg from '../assets/images/notFoundImg.svg'
 // ERROR PAGE JSX COMPONENT
 export const ErrorPage = () => {
 
-	// return for 404 error
+	/* the return for 404 error */
 	const errorInfo = useRouteError()
 	if (errorInfo.status === 404) {
 		return (
@@ -30,7 +30,7 @@ export const ErrorPage = () => {
 		)
 	}
 
-	// return for all other errors
+	/* the return for all other errors */
 	return (
 		<StyledErrorPage>
 			<div>

@@ -10,7 +10,7 @@ import { StyledBigSidebarComponent } from '../styled_components/StyledBigSidebar
 // BIG SIDEBAR JSX COMPONENT
 export const BigSidebarComponent = () => {
 	
-	// use global context data
+	/* use global context data */
 	const { showSidebar } = useDashboardContext()
 
 	return (

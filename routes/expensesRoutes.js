@@ -8,7 +8,7 @@ import { patchExpenseController } from '../controllers/expenses/patchExpenseCont
 import { deleteExpenseController } from '../controllers/expenses/deleteExpenseController.js'
 // IMPORT VALIDATION MIDDLEWARE
 import { validateExpenseInput } from '../middleware/validateExpensesMiddleware.js'
-import { validateIdParam } from '../middleware/validationMiddleware.js'
+import { validIdExpenseParam } from '../middleware/validationMiddleware.js'
 
 
 // INVOKE THE ROUTER
@@ -17,8 +17,8 @@ const routerExpressExpenses = Router()
 // SET EXPENSES ROUTES
 routerExpressExpenses.get('/', getAllExpensesController)
 routerExpressExpenses.post('/', validateExpenseInput, postNewExpenseController)
-routerExpressExpenses.get('/:id', validateIdParam, getSingleExpenseController)
-routerExpressExpenses.patch('/:id', validateIdParam, validateExpenseInput, patchExpenseController)
-routerExpressExpenses.delete('/:id', validateIdParam, deleteExpenseController)
+routerExpressExpenses.get('/:id', validIdExpenseParam, getSingleExpenseController)
+routerExpressExpenses.patch('/:id', validIdExpenseParam, validateExpenseInput, patchExpenseController)
+routerExpressExpenses.delete('/:id', validIdExpenseParam, deleteExpenseController)
 
 export { routerExpressExpenses }

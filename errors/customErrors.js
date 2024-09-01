@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 
 
 // CUSTOM ERROR CLASSES
-// 404
+/* 404 */
 export class NotFoundError extends Error {
 	constructor(message) {
 		super(message)
@@ -12,7 +12,7 @@ export class NotFoundError extends Error {
 	}
 }
 
-// 400
+/* 400 */
 export class BadRequestError extends Error {
 	constructor(message) {
 		super(message)
@@ -21,7 +21,7 @@ export class BadRequestError extends Error {
 	}
 }
 
-// 401
+/* 401 */
 export class UnauthenticatedError extends Error {
 	constructor(message) {
 		super(message)
@@ -30,7 +30,7 @@ export class UnauthenticatedError extends Error {
 	}
 }
 
-// 403
+/* 403 */
 export class UnauthorizedError extends Error {
 	constructor(message) {
 		super(message)

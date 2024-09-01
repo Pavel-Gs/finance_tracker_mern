@@ -11,7 +11,7 @@ import { StyledLogoutComponent } from '../styled_components/StyledLogoutComponen
 // LOGOUT JSX COMPONENT
 export const LogoutComponent = () => {
 	
-	// use global context data
+	/* use global context data */
 	const { user, logoutUser } = useDashboardContext()
 	const [showLogout, setShowLogout] = useState(false)
 

@@ -26,6 +26,14 @@ const ExpensesSchema = new mongoose.Schema(
 		locationExpense: {
 			type: String,
 			default: "Kelowna"
+		},
+		createdBy: {
+			type: mongoose.Types.ObjectId,
+			ref: 'UserModel'
+		},
+		organizationName: {
+			type: String,
+			default: "N/A"
 		}
 	},
 	{ timestamps: true })

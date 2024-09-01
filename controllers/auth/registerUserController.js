@@ -9,15 +9,16 @@ import { hashPassword } from '../../utils/passwordUtils.js'
 // REGISTER NEW USER CONTROLLER
 export const registerUserController = async (req, res) => {
 
-	// check whether this is the first account
+	/* check whether this is the first account */
 	const isFirstAccount = await UserModel.countDocuments() === 0
-	req.body.role = isFirstAccount ? 'Admin' : 'User'
+	req.body.role = isFirstAccount ? 'Admin' : 'User' /* assign Admin role to the first account */
+	req.body.organization = isFirstAccount ? 'Organization1' : 'N/A' /* assign the first user to Organization1 */
 
-	// use hashed password
+	/* use hashed password */
 	const encryptUserPassword = await hashPassword(req.body.passwordUser)
 	req.body.passwordUser = encryptUserPassword
 
-	// create new user
+	/* create new user */
 	const newUser = await UserModel.create(req.body)
 	
 	res.status(StatusCodes.CREATED).json({ message: "New user created" })

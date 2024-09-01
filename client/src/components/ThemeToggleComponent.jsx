@@ -9,7 +9,7 @@ import { StyledThemeToggleComponent } from '../styled_components/StyledThemeTogg
 // THEME TOGGLE JSX COMPONENT
 export const ThemeToggleComponent = () => {
 	
-	// use global context data
+	/* use global context data */
 	const { isDarkTheme, toggleDarkTheme } = useDashboardContext()
 
 	return (

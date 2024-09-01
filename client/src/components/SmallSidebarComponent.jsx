@@ -12,7 +12,7 @@ import { StyledSmallSidebarComponent } from '../styled_components/StyledSmallSid
 // SMALL SIDEBAR JSX COMPONENT
 export const SmallSidebarComponent = () => {
 	
-	// use global context data
+	/* use global context data */
 	const { showSidebar, toggleSidebar } = useDashboardContext()
 
 	return (

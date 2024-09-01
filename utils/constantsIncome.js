@@ -9,11 +9,11 @@ export const INCOME_TYPES = {
 export const INCOME_CATEGORIES = {
 	/* jobs */
 	JOBS_LENA: "Jobs (Lena)",
-	JOBS_PAVEL: "JOBS (Pavel)",
+	JOBS_PAVEL: "Jobs (Pavel)",
 	/* banks */
 	RBC: "RBC",
 	SIMPLII_LENA: "Simplii (Lena)",
-	SIMPLII_PAVEL: "Simplii (Pavel",
+	SIMPLII_PAVEL: "Simplii (Pavel)",
 	/* returns */
 	CRA: "CRA / EFT",
 	COSTCO: "Costco",

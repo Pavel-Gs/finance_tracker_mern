@@ -26,16 +26,29 @@ export const withValidationErrors = (validateValues) => {
 }
 
 
-// VALIDATE ID PARAMS MIDDLEWARE
-export const validateIdParam = withValidationErrors(
+// VALIDATE ID PARAMS FOR EXPENSES MIDDLEWARE
+export const validIdExpenseParam = withValidationErrors(
 	[
 		param('id')
 			.custom(async (i) => {
 				const isValidMongoId = mongoose.Types.ObjectId.isValid(i)
 				if (!isValidMongoId) throw new BadRequestError("Invalid MongoDB id")
 				const singleExpense = await ExpensesModel.findById(i)
+				if (!singleExpense) throw new NotFoundError(`No entry with id ${i}`)
+			})
+	]
+)
+
+
+// VALIDATE ID PARAMS FOR INCOME MIDDLEWARE
+export const validIdIncomeParam = withValidationErrors(
+	[
+		param('id')
+			.custom(async (i) => {
+				const isValidMongoId = mongoose.Types.ObjectId.isValid(i)
+				if (!isValidMongoId) throw new BadRequestError("Invalid MongoDB id")
 				const singleIncome = await IncomeModel.findById(i)
-				if (!singleExpense || !singleIncome) throw new NotFoundError(`No entry with id ${i}`)
+				if (!singleIncome) throw new NotFoundError(`No entry with id ${i}`)
 			})
 	]
 )

@@ -22,7 +22,7 @@ export const useDashboardContext = () => useContext(DashboardContext)
 // DASHBOARD LAYOUT JSX COMPONENT
 export const DashboardLayout = () => {
 	
-	// dark theme logic
+	/* dark theme logic */
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultThemeFunction())
 	const toggleDarkTheme = () => {
 		const newDarkTheme = !isDarkTheme
@@ -31,19 +31,19 @@ export const DashboardLayout = () => {
 		localStorage.setItem('darkThemeLocalStorage', newDarkTheme)
 	}
 	
-	// sidebar logic
+	/* sidebar logic */
 	const [showSidebar, setShowSidebar] = useState(false)
 	const toggleSidebar = () => {
 		setShowSidebar(!showSidebar)
 	}
 
-	// logout user logic
+	/* logout user logic */
 	const user = { name: 'john' }
 	const logoutUser = async () => {
 		console.log("logout user")
 	}
 
-	// wrap the return with the global context
+	/* wrap the return with the global context */
 	return (
 		<DashboardContext.Provider value={{user, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser}}>
 			<StyledDashboardLayout>

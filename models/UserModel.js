@@ -9,7 +9,6 @@ const UserSchema = new mongoose.Schema(
 		lastName: String,
 		emailUser: String,
 		passwordUser: String,
-		organization: String,
 		locationUser: {
 			type: String,
 			default: "My city"
@@ -18,6 +17,10 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			enum: ["User", "Admin"],
 			default: "User"
+		},
+		organization: {
+			type: String,
+			default: "N/A"
 		}
 	}
 )

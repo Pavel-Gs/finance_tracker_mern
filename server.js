@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 import express from 'express'
 // IMPORT MODULES
 import morgan from 'morgan'
-// IMPORT DOTENV (GLOBAL AVAILABILITY)
+import cookieParser from 'cookie-parser'
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
 import { routerExpressAuth } from './routes/authRouter.js'
@@ -14,16 +14,17 @@ import { routerExpressExpenses } from './routes/expensesRoutes.js'
 import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
 import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js'
+import { authUserMiddleware } from './middleware/authUserMiddleware.js'
 
 
-// INVOKE DOTENV (GLOBAL AVAILABILITY)
-dotenv.config() // may have to place it at the very top of the code
+// INVOKE DOTENV
+dotenv.config() /* may have to place it at the very top of the code */
 
 
 // SETUP SERVER
 const app = express()
 const port = process.env.PORT || 5100
-// connect to the database
+/* connect to the database */
 try {
 	await mongoose.connect(process.env.MONGO_URL)
 	app.listen(port, () => {
@@ -36,24 +37,25 @@ try {
 
 
 // SETUP MIDDLEWARE
+app.use(cookieParser())
 app.use(express.json())
 if (process.env.NODE_ENV === "development") {
-	app.use(morgan('dev')) // provides additional logs in the terminal
+	app.use(morgan('dev')) /* provides additional logs in the terminal */
 }
-// setup api routes
+/* setup api routes */
 app.use('/api/v1/auth', routerExpressAuth)
-app.use('/api/v1/expenses', routerExpressExpenses)
-app.use('/api/v1/income', routerExpressIncome)
-// test routes
+app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
+app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
+/* test routes */
 app.get('/', (req, res) => {
 	res.send("test")
 })
 
 
 // ERROR MIDDLEWARE
-// not found
+/* not found */
 app.use('*', (req, res) => {
 	res.status(404).json({ message: "not found" })
 })
-// error (may have to place it at the very bottom of the code)
+/* error handler (may have to place it at the very bottom of the code) */
 app.use(errorHandlerMiddleware)

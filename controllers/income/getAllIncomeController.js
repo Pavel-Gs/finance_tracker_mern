@@ -6,6 +6,12 @@ import { IncomeModel } from '../../models/IncomeModel.js'
 
 // GET ALL INCOME CONTROLLER
 export const getAllIncomeController = async (req, res) => {
-	const allIncome = await IncomeModel.find({})
+
+	/* find out, whether the user is a member of an organization */
+	const queryOrg = req.authenticatedUser.userOrg === "N/A"
+		? { createdBy: req.authenticatedUser.userId } /* show all expenses based on user's ID, if the user is not a member of an organization */
+		: { organizationName: req.authenticatedUser.userOrg } /* show all expenses based on user's organization name, if the user belongs to an organization */
+
+	const allIncome = await IncomeModel.find(queryOrg)
 	res.status(StatusCodes.OK).json({ allIncome })
 }

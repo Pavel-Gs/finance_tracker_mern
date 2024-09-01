@@ -26,6 +26,14 @@ const IncomeSchema = new mongoose.Schema(
 		locationIncome: {
 			type: String,
 			default: "Kelowna"
+		},
+		createdBy: {
+			type: mongoose.Types.ObjectId,
+			ref: 'UserModel'
+		},
+		organizationName: {
+			type: String,
+			default: "N/A"
 		}
 	},
 	{ timestamps: true })

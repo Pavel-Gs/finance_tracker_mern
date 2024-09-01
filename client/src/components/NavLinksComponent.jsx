@@ -9,7 +9,7 @@ import { linksList } from '../utils/linksList.jsx'
 // NAV LINKS JSX COMPONENT
 export const NavLinksComponent = ({ isBigSidebarProp }) => {
 	
-	// use global context data
+	/* use global context data */
 	const { toggleSidebar, user } = useDashboardContext()
 
 	return (

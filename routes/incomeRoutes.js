@@ -8,7 +8,7 @@ import { patchIncomeController } from '../controllers/income/patchIncomeControll
 import { deleteIncomeController } from '../controllers/income/deleteIncomeController.js'
 // IMPORT VALIDATION MIDDLEWARE
 import { validateIncomeInput } from '../middleware/validateIncomeMiddleware.js'
-import { validateIdParam } from '../middleware/validationMiddleware.js'
+import { validIdIncomeParam } from '../middleware/validationMiddleware.js'
 
 
 // INVOKE THE ROUTER
@@ -17,8 +17,8 @@ const routerExpressIncome = Router()
 // SET EXPENSES ROUTES
 routerExpressIncome.get('/', getAllIncomeController)
 routerExpressIncome.post('/', validateIncomeInput, postNewIncomeController)
-routerExpressIncome.get('/:id', validateIdParam, getSingleIncomeController)
-routerExpressIncome.patch('/:id', validateIdParam, validateIncomeInput, patchIncomeController)
-routerExpressIncome.delete('/:id', validateIdParam, deleteIncomeController)
+routerExpressIncome.get('/:id', validIdIncomeParam, getSingleIncomeController)
+routerExpressIncome.patch('/:id', validIdIncomeParam, validateIncomeInput, patchIncomeController)
+routerExpressIncome.delete('/:id', validIdIncomeParam, deleteIncomeController)
 
 export { routerExpressIncome }
