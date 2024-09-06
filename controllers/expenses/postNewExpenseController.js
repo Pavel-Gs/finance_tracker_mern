@@ -13,9 +13,6 @@ export const postNewExpenseController = async (req, res) => {
 	/* set the organizationName to the authenticated user's organization */
 	req.body.organizationName = req.authenticatedUser.userOrg || "N/A" /* default to N/A; this is also set in the ExpensesModel.js and in the UserModel.js */
 
-	/* create new expense */
 	const newExpense = await ExpensesModel.create(req.body)
-
-	/* send the response with the created expense */
 	res.status(StatusCodes.CREATED).json({ newExpense })
 }

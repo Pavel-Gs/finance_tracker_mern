@@ -20,7 +20,7 @@ export const loginUserController = async (req, res) => {
 	if (!isPasswordCorrect) throw new UnauthenticatedError("Invalid credentials")
 
 	/* setup jwt token */
-	const token = createJWT({ userId: existingUser._id, userRole: existingUser.role, userOrg: existingUser.organization }) /* record this info in the token */
+	const token = createJWT({ userId: existingUser._id, userRole: existingUser.role, userOrg: existingUser.organization }) /* record this info in the token; destructured in authUserMiddleware.js */
 
 	/* create http-only cookie */
 	const oneDay = 1000 * 60 * 60 * 24 /* one day in milliseconds */

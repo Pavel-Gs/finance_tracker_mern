@@ -14,6 +14,7 @@ export const getAllExpensesController = async (req, res) => {
 
 	/* show results, based on the membership (or the lack of it) */
 	const allExpenses = await ExpensesModel.find(queryOrg)
+		.populate('createdBy', 'firstName lastName') /* populate createdBy object with the creator's first and last names */
 
 	res.status(StatusCodes.OK).json({ allExpenses })
 }
