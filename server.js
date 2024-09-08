@@ -9,7 +9,8 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import * as dotenv from 'dotenv'
 // IMPORT ROUTES
-import { routerExpressAuth } from './routes/authRouter.js'
+import { routerExpressAuth } from './routes/authRoutes.js'
+import { routerExpressUser } from './routes/userRoutes.js'
 import { routerExpressExpenses } from './routes/expensesRoutes.js'
 import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
@@ -44,6 +45,7 @@ if (process.env.NODE_ENV === "development") {
 }
 /* setup api routes */
 app.use('/api/v1/auth', routerExpressAuth)
+app.use('/api/v1/users', authUserMiddleware, routerExpressUser)
 app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
 app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 /* test routes */

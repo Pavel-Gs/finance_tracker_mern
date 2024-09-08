@@ -5,7 +5,7 @@ import { verifyJWT } from '../utils/tokenUtils.js'
 
 
 // AUTHENTICATE USER MIDDLEWARE
-export const authUserMiddleware = async (req, res, next) => {
+export const authUserMiddleware = (req, res, next) => {
 	const { cookieToken } = req.cookies
 	if (!cookieToken) throw new UnauthenticatedError("Authentication invalid")
 	try {
