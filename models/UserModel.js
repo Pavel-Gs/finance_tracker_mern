@@ -25,4 +25,12 @@ const UserSchema = new mongoose.Schema(
 	}
 )
 
+/* "toJSON" method will be used in "currentUserControllers", "getCurrentUserController" */
+UserSchema.methods.toJSON = function () {
+	/* using "this" will point out to an existing instance (a "user" instance) */
+	let obj = this.toObject() /* transform current user to an object */
+	delete obj.passwordUser /* prevent sending user's password when requesting current user */
+	return obj
+}
+
 export const UserModel = mongoose.model('UserModel', UserSchema)
