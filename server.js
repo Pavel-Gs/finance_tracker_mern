@@ -52,6 +52,9 @@ app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 app.get('/', (req, res) => {
 	res.send("test")
 })
+app.get('/api/v1/test', (req, res) => {
+	res.json({message: "Test route"})
+})
 
 
 // ERROR MIDDLEWARE

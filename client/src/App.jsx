@@ -90,6 +90,11 @@ const browserRoutes = createBrowserRouter(
 	]
 )
 
+// TEST ROUTE (FOR PROXY)
+fetch('/api/v1/test')
+	.then((res) => res.json())
+	.then((data) => console.log(data))
+
 
 // RENDER COMPONENTS
 createRoot(document.getElementById('root')).render(

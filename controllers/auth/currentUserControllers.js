@@ -20,7 +20,7 @@ export const updateUserController = async (req, res) => {
 	const obj = {...req.body}
 	delete obj.passwordUser
 	
-	/* pass in "obj" (without the password), instead of "req.body" */
+	/* pass in "obj" (without the password), instead of "req.body" (also, see authUserMiddleware) */
 	const updatedUser = await UserModel.findByIdAndUpdate(req.authenticatedUser.userId, obj)
 	res.status(StatusCodes.OK).json({ message: "User info has been updated" })
 }
