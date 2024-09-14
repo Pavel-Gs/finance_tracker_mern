@@ -2,6 +2,9 @@
 import { createRoot } from 'react-dom/client'
 // IMPORT ROUTER FUNCTIONS AND COMPONENTS
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// IMPORT TOASTIFY COMPONENTS
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 // IMPORT JSX COMPONENTS
 import { AdminPage } from './pages/AdminPage.jsx'
 import { DashboardLayout } from './pages/DashboardLayout.jsx'
@@ -19,6 +22,9 @@ import { StatsExpensesPage } from './pages/expenses/StatsExpensesPage.jsx'
 import { StatsIncomePage } from './pages/income/StatsIncomePage.jsx'
 // IMPORT JSX FUNCTIONS
 import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx'
+// IMPORT ACTIONS
+import { actionRegister } from './pages/RegisterPage.jsx'
+import { actionLogin } from './pages/LoginPage.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -41,11 +47,13 @@ const browserRoutes = createBrowserRouter(
 				},
 				{
 					path: 'register',
-					element: <RegisterPage />
+					element: <RegisterPage />,
+					action: actionRegister
 				},
 				{
 					path: 'login',
-					element: <LoginPage />
+					element: <LoginPage />,
+					action: actionLogin
 				},
 				{
 					path: 'dashboard',
@@ -93,5 +101,11 @@ const browserRoutes = createBrowserRouter(
 
 // RENDER COMPONENTS
 createRoot(document.getElementById('root')).render(
-	<RouterProvider router={browserRoutes} />
+	<>
+	{/* use browser routing */}
+		<RouterProvider router={browserRoutes} />
+
+	{/* use react-toastify */}
+		<ToastContainer position='top-center' />
+	</>
 )
