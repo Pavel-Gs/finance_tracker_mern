@@ -4,16 +4,16 @@ import { createContext, useContext, useState } from 'react'
 import { Outlet, redirect, useNavigate, useLoaderData } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
-// IMPORT JSX COMPONENTS
-import { SmallSidebarComponent } from '../components/SmallSidebarComponent'
-import { BigSidebarComponent } from '../components/BigSidebarComponent'
-// IMPORT JSX FUNCTIONS
-import { checkDefaultThemeFunction } from '../utils/checkDefaultThemeFunction.jsx'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
 import { customFetch } from '../utils/customFetch.js'
+// IMPORT JSX COMPONENTS
+import { SmallSidebarComponent } from '../components/SmallSidebarComponent.jsx'
+import { BigSidebarComponent } from '../components/BigSidebarComponent.jsx'
+import { NavbarComponent } from '../components/NavbarComponent.jsx'
+// IMPORT JSX FUNCTIONS
+import { checkDefaultThemeFunction } from '../utils/checkDefaultThemeFunction.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayout.js'
-import { NavbarComponent } from '../components/NavbarComponent.jsx'
 
 
 // CREATE A LOADER (FOR PREFETCHING THE DATA; USED IN APP.JSX, "DASHBOARD" PATH)
