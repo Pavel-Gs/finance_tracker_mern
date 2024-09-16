@@ -10,16 +10,16 @@ import { StyledLogoutComponent } from '../styled_components/StyledLogoutComponen
 
 // LOGOUT JSX COMPONENT
 export const LogoutComponent = () => {
-	
+
 	/* use global context data */
-	const { user, logoutUser } = useDashboardContext()
+	const { currentUser, logoutUser } = useDashboardContext()
 	const [showLogout, setShowLogout] = useState(false)
 
 	return (
 		<StyledLogoutComponent>
 			<button className='btn logout-btn' type='button' onClick={() => setShowLogout(!showLogout)}>
 				<FaUserCircle />
-				{user?.name}
+				{currentUser?.firstName}
 				<FaCaretDown />
 			</button>
 			<div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>

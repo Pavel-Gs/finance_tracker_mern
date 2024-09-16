@@ -14,6 +14,7 @@ import { validIdIncomeParam } from '../middleware/validationMiddleware.js'
 // INVOKE THE ROUTER
 const routerExpressIncome = Router()
 
+
 // SET EXPENSES ROUTES
 routerExpressIncome.get('/', getAllIncomeController)
 routerExpressIncome.post('/', validateIncomeInput, postNewIncomeController)

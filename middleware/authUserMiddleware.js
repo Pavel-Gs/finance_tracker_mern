@@ -17,6 +17,7 @@ export const authUserMiddleware = (req, res, next) => {
 	}
 }
 
+
 // VERIFY ADMIN MIDDLEWARE
 export const authorizePermissionsMiddleware = (...i) => {
 	return (req, res, next) => {

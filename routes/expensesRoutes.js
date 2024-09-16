@@ -14,6 +14,7 @@ import { validIdExpenseParam } from '../middleware/validationMiddleware.js'
 // INVOKE THE ROUTER
 const routerExpressExpenses = Router()
 
+
 // SET EXPENSES ROUTES
 routerExpressExpenses.get('/', getAllExpensesController)
 routerExpressExpenses.post('/', validateExpenseInput, postNewExpenseController)

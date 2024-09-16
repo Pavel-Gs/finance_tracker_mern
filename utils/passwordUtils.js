@@ -9,6 +9,7 @@ export const hashPassword = async (passwordUser) => {
 	return encryptedPassword
 }
 
+
 // COMPARE PASSWORDS FUNCTION
 export const comparePassword = async (passwordUser, encryptedPassword) => {
 	const isMatch = await bcrypt.compare(passwordUser, encryptedPassword)

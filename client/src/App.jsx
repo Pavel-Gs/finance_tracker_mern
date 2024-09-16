@@ -22,9 +22,10 @@ import { StatsExpensesPage } from './pages/expenses/StatsExpensesPage.jsx'
 import { StatsIncomePage } from './pages/income/StatsIncomePage.jsx'
 // IMPORT JSX FUNCTIONS
 import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx'
-// IMPORT ACTIONS
+// IMPORT ACTIONS AND LOADERS
 import { actionRegister } from './pages/RegisterPage.jsx'
 import { actionLogin } from './pages/LoginPage.jsx'
+import { loaderDashboard } from './pages/DashboardLayout.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -58,6 +59,7 @@ const browserRoutes = createBrowserRouter(
 				{
 					path: 'dashboard',
 					element: <DashboardLayout />,
+					loader: loaderDashboard,
 					children: [
 						{
 							index: true,
@@ -102,10 +104,10 @@ const browserRoutes = createBrowserRouter(
 // RENDER COMPONENTS
 createRoot(document.getElementById('root')).render(
 	<>
-	{/* use browser routing */}
+		{/* use browser routing */}
 		<RouterProvider router={browserRoutes} />
 
-	{/* use react-toastify */}
+		{/* use react-toastify */}
 		<ToastContainer position='top-center' />
 	</>
 )

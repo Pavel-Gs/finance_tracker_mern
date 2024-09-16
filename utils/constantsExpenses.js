@@ -11,6 +11,7 @@ export const EXPENSES_TYPES = {
 	OTHER_EXPENSES: "Other expenses"
 }
 
+
 // EXPENSES CATEGORIES
 export const EXPENSES_CATEGORIES = {
 	/* alcohol & nicotine */
@@ -52,6 +53,7 @@ export const EXPENSES_CATEGORIES = {
 	/* other expenses */
 	OTHER_EXPENSES: "Other expenses"
 }
+
 
 // SORT EXPENSES BY TYPE
 export const SORT_EXPENSES_BY = {

@@ -5,6 +5,7 @@ export const INCOME_TYPES = {
 	RETURNS: "Returns"
 }
 
+
 // INCOME CATEGORIES
 export const INCOME_CATEGORIES = {
 	/* jobs */

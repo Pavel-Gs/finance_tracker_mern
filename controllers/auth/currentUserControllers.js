@@ -13,6 +13,7 @@ export const getCurrentUserController = async (req, res) => {
 	res.status(StatusCodes.OK).json({ currentUser: userWithoutPassword })
 }
 
+
 // UPDATE USER CONTROLLER
 export const updateUserController = async (req, res) => {
 
@@ -24,6 +25,7 @@ export const updateUserController = async (req, res) => {
 	const updatedUser = await UserModel.findByIdAndUpdate(req.authenticatedUser.userId, obj)
 	res.status(StatusCodes.OK).json({ message: "User info has been updated" })
 }
+
 
 // GET APPLICATION STATUS (FOR ADMIN) CONTROLLER
 export const getApplicationStatsController = async (req, res) => {

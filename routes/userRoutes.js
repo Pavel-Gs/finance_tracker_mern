@@ -10,6 +10,7 @@ import { authorizePermissionsMiddleware } from '../middleware/authUserMiddleware
 // INVOKE THE ROUTER
 const routerExpressUser = Router()
 
+
 // SET AUTH ROUTES
 routerExpressUser.get('/current-user', getCurrentUserController)
 routerExpressUser.get('/admin/app-stats', authorizePermissionsMiddleware('Admin'), getApplicationStatsController)

@@ -12,6 +12,7 @@ export class NotFoundError extends Error {
 	}
 }
 
+
 /* 400 */
 export class BadRequestError extends Error {
 	constructor(message) {
@@ -21,6 +22,7 @@ export class BadRequestError extends Error {
 	}
 }
 
+
 /* 401 */
 export class UnauthenticatedError extends Error {
 	constructor(message) {
@@ -29,6 +31,7 @@ export class UnauthenticatedError extends Error {
 		this.statusCode = StatusCodes.UNAUTHORIZED
 	}
 }
+
 
 /* 403 */
 export class UnauthorizedError extends Error {

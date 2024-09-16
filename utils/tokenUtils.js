@@ -10,6 +10,7 @@ export const createJWT = (payload) => {
 	return createToken
 }
 
+
 // VERIFY TOKEN FUNCTION
 export const verifyJWT = (cookieToken) => {
 	const decodedToken = jwt.verify(cookieToken, process.env.JWT_SECRET)

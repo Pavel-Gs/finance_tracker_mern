@@ -12,6 +12,7 @@ import { validateRegisterInput } from '../middleware/validateRegisterMiddleware.
 // INVOKE THE ROUTER
 const routerExpressAuth = Router()
 
+
 // SET AUTH ROUTES
 routerExpressAuth.post('/login', validateLoginInput, loginUserController)
 routerExpressAuth.post('/register', validateRegisterInput, registerUserController)
