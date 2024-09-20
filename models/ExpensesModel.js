@@ -12,12 +12,12 @@ const ExpensesSchema = new mongoose.Schema(
 		typeExpense: {
 			type: String,
 			enum: Object.values(EXPENSES_TYPES),
-			default: EXPENSES_TYPES.MONTHLY
+			/* default: EXPENSES_TYPES.MONTHLY */
 		},
 		categoryExpense: {
 			type: String,
 			enum: Object.values(EXPENSES_CATEGORIES),
-			default: EXPENSES_CATEGORIES.RENT
+			/* default: EXPENSES_CATEGORIES.RENT */
 		},
 		commentsExpense: {
 			type: String,
