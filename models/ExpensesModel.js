@@ -27,6 +27,10 @@ const ExpensesSchema = new mongoose.Schema(
 			type: String,
 			default: "Kelowna"
 		},
+		dateExpense: {
+			type: Date,
+			default: Date.now()
+		},
 		createdBy: {
 			type: mongoose.Types.ObjectId,
 			ref: 'UserModel'

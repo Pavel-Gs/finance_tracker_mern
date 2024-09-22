@@ -12,10 +12,8 @@ export const validateExpenseInput = withValidationErrors(
 		body('amountExpense')
 			.notEmpty()
 			.withMessage("The amount is required")
-			.isNumeric()
-			.withMessage("The amount must be a number")
-			.custom((i) => i > 0 && i < 1000000)
-			.withMessage("The amount must be greater than 0 and less than 1,000,000"),
+			.isFloat({ min: 0.01, max: 999999.99 })  // Allow decimal numbers within the range
+			.withMessage("The amount must be a decimal greater than 0 and less than 1,000,000"),
 		body('typeExpense')
 			.isIn(Object.values(EXPENSES_TYPES))
 			.withMessage("Invalid type"),

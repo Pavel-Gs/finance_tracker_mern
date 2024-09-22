@@ -25,7 +25,11 @@ import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx
 // IMPORT ACTIONS AND LOADERS
 import { actionRegister } from './pages/RegisterPage.jsx'
 import { actionLogin } from './pages/LoginPage.jsx'
+import { actionAddExpense } from './pages/expenses/AddExpensePage.jsx'
+import { actionAddIncome } from './pages/income/AddIncomePage.jsx'
 import { loaderDashboard } from './pages/DashboardLayout.jsx'
+import { loaderAllExpenses } from './pages/expenses/AllExpensesPage.jsx'
+import { loaderAllIncome } from './pages/income/AllIncomePage.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -63,11 +67,13 @@ const browserRoutes = createBrowserRouter(
 					children: [
 						{
 							index: true,
-							element: <AddExpensePage />
+							element: <AddExpensePage />,
+							action: actionAddExpense
 						},
 						{
 							path: 'all-expenses',
-							element: <AllExpensesPage />
+							element: <AllExpensesPage />,
+							loader: loaderAllExpenses
 						},
 						{
 							path: 'stats-expenses',
@@ -75,11 +81,13 @@ const browserRoutes = createBrowserRouter(
 						},
 						{
 							path: 'add-income',
-							element: <AddIncomePage />
+							element: <AddIncomePage />,
+							action: actionAddIncome
 						},
 						{
 							path: 'all-income',
-							element: <AllIncomePage />
+							element: <AllIncomePage />,
+							loader: loaderAllIncome
 						},
 						{
 							path: 'stats-income',

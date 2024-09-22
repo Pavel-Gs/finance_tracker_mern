@@ -27,6 +27,10 @@ const IncomeSchema = new mongoose.Schema(
 			type: String,
 			default: "Kelowna"
 		},
+		dateIncome: {
+			type: Date,
+			default: Date.now()
+		},
 		createdBy: {
 			type: mongoose.Types.ObjectId,
 			ref: 'UserModel'

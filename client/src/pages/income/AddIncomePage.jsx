@@ -15,6 +15,28 @@ import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
 
+// ADD INCOME ACTION FUNCTION
+/* used in App.jsx "add-income" route action */
+export const actionAddIncome = async ({ request }) => {
+
+	/* "formData()" function is coming from JavaScript API */
+	const inputData = await request.formData()
+	const incomeData = Object.fromEntries(inputData)
+
+	/* fetch the data from income form inputs */
+	try {
+		await customFetch.post('/income', incomeData)
+		toast.success("Income added") /* display a toast */
+		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
+
+	/* catch the error if fetch fails */
+	} catch (error) {
+		toast.error(error?.response?.data?.message) /* display a toast */
+		return error /* it must return something */
+	}
+}
+
+
 // ADD EXPENSE PAGE JSX COMPONENT
 export const AddIncomePage = () => {
 
@@ -34,6 +56,12 @@ export const AddIncomePage = () => {
 		setCategoryList(TYPE_TO_CATEGORIES[selectedValue] || []) /* set corresponding categories for the selected type */
 	}
 
+	/* date picker logic */
+	const [dateIncome, setDateIncome] = useState(new Date().toISOString().substring(0, 10)) /* state for the date's picker, defaults to today's date */
+	const handleDateSelectionChange = (e) => {
+		setDateIncome(e.target.value)
+	}
+
 	return (
 		<StyledDashboardFormPage>
 
@@ -46,8 +74,9 @@ export const AddIncomePage = () => {
 					<FormRowComponent typeProp='number' nameProp='amountIncome' labelTextProp="Amount" />
 					<FormRowSelectComponent nameProp='typeIncome' labelTextProp="Type" listProp={Object.values(INCOME_TYPES)} onChangeProp={handleTypeSelectionChange} />
 					<FormRowSelectComponent nameProp='categoryIncome' labelTextProp="Category" listProp={categoryList.map(i => INCOME_CATEGORIES[i])} disabledProp={selectedType === ""} />
-					<FormRowComponent typeProp='text' nameProp='commentIncome' labelTextProp="Comments" />
+					<FormRowComponent typeProp='text' nameProp='commentsIncome' labelTextProp="Comments" defaultValueProp={"N/A"} />
 					<FormRowComponent typeProp='text' nameProp='locationIncome' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
+					<FormRowComponent typeProp='date' nameProp='dateIncome' labelTextProp="Date" defaultValueProp={dateIncome} onChangeProp={handleDateSelectionChange} />
 					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
 						{isSubmitting ? "Submitting..." : "Submit"}
 					</button>

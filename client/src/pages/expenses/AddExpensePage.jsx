@@ -15,6 +15,28 @@ import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
 
+// ADD EXPENSE ACTION FUNCTION
+/* used in App.jsx dashboard's "index" route action (AddExpensePage is an index page for the dashboard) */
+export const actionAddExpense = async ({ request }) => {
+
+	/* "formData()" function is coming from JavaScript API */
+	const inputData = await request.formData()
+	const expenseData = Object.fromEntries(inputData)
+
+	/* fetch the data from expense form inputs */
+	try {
+		await customFetch.post('/expenses', expenseData)
+		toast.success("Expense added") /* display a toast */
+		return redirect('all-expenses') /* it must return something; redirects a user to all-expenses page after submission; note: "all-expenses", not "/all-expenses" */
+
+		/* catch the error if fetch fails */
+	} catch (error) {
+		toast.error(error?.response?.data?.message) /* display a toast */
+		return error /* it must return something */
+	}
+}
+
+
 // ADD EXPENSE PAGE JSX COMPONENT
 export const AddExpensePage = () => {
 
@@ -34,6 +56,12 @@ export const AddExpensePage = () => {
 		setCategoryList(TYPE_TO_CATEGORIES[selectedValue] || []) /* set corresponding categories for the selected type */
 	}
 
+	/* date picker logic */
+	const [dateExpense, setDateExpense] = useState(new Date().toISOString().substring(0, 10)) /* state for the date's picker, defaults to today's date */
+	const handleDateSelectionChange = (e) => {
+		setDateExpense(e.target.value)
+	}
+
 	return (
 		<StyledDashboardFormPage>
 
@@ -46,8 +74,9 @@ export const AddExpensePage = () => {
 					<FormRowComponent typeProp='number' nameProp='amountExpense' labelTextProp="Amount" />
 					<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={Object.values(EXPENSES_TYPES)} onChangeProp={handleTypeSelectionChange} />
 					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={categoryList.map(i => EXPENSES_CATEGORIES[i])} disabledProp={selectedType === ""} />
-					<FormRowComponent typeProp='text' nameProp='commentExpense' labelTextProp="Comments" />
+					<FormRowComponent typeProp='text' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={"N/A"} />
 					<FormRowComponent typeProp='text' nameProp='locationExpense' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
+					<FormRowComponent typeProp='date' nameProp='dateExpense' labelTextProp="Date" defaultValueProp={dateExpense} onChangeProp={handleDateSelectionChange} />
 					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
 						{isSubmitting ? "Submitting..." : "Submit"}
 					</button>

@@ -53,7 +53,7 @@ export const DashboardLayout = () => {
 		setShowSidebar(!showSidebar)
 	}
 
-	/* "useLoaderData" hook using the return from the loader (refer to "loaderDashboard" function and App.jsx, "dashboard" path) */
+	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
 	const { currentUser } = useLoaderData() /* destructure the user from the loader data */
 
 	/* invoke useNavigate hook */
