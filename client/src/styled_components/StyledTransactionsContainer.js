@@ -15,9 +15,9 @@ export const StyledTransactionsContainer = styled.section`
 	.transactions {
 		display: grid;
 		grid-template-columns: 1fr;
-		row-gap: 2rem;
+		row-gap: 1rem;
 	}
-	@media (min-width: 1120px) {
+	@media (min-width: 2560px) {
 		.transactions {
 			grid-template-columns: 1fr 1fr;
 			gap: 2rem;
