@@ -29,7 +29,7 @@ export const AllIncomeContainerComponent = () => {
 			<div className='transactions'>
 				{allIncome.map((i) => {
 					return (
-						<SingleIncomeComponent key={i._id} {...allIncome} />
+						<SingleIncomeComponent key={i._id} {...i} />
 					)
 				})}
 			</div>

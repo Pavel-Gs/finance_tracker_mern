@@ -29,11 +29,12 @@ day.extend(advancedFormat)
 
 
 // SINGLE EXPENSE JSX COMPONENT
-/* props are coming fromAllExpensesContainerComponent */
+/* props are coming from AllExpensesContainerComponent */
 export const SingleExpenseComponent = ({ amountExpense, typeExpense, categoryExpense, commentsExpense, locationExpense, dateExpense, createdBy, createdAt }) => {
 
 	/* customize date format */
-	const customDate = day(dateExpense).format('MMM Do, YYYY') /* as an alternative, could use "createdAt", instead of "dateExpense" */
+	/* as an alternative, could use "createdAt", instead of "dateExpense" */
+	const customDate = day(dateExpense).add(1, 'day').format('MMM Do, YYYY') /* adding one day to dateExpense, to compensate for the offset (dateExpense does not have the time stamp in MongoDB) */
 
 	/* assign an icon to a corresponding expense type */
 	let expenseTypeIcon = "-"

@@ -12,6 +12,9 @@ export const getAllIncomeController = async (req, res) => {
 		? { createdBy: req.authenticatedUser.userId } /* show all expenses based on user's ID, if the user is not a member of an organization */
 		: { organizationName: req.authenticatedUser.userOrg } /* show all expenses based on user's organization name, if the user belongs to an organization */
 
+	/* show results, based on the membership (or the lack of it) */
 	const allIncome = await IncomeModel.find(queryOrg)
+		.populate('createdBy', 'firstName lastName') /* populate createdBy object with the creator's first and last names */
+		
 	res.status(StatusCodes.OK).json({ allIncome })
 }

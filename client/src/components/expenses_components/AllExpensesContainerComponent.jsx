@@ -10,8 +10,8 @@ import { StyledTransactionsContainer } from '../../styled_components/StyledTrans
 export const AllExpensesContainerComponent = () => {
 
 	/* use global context data */
-	const {data} = useAllExpensesContext()
-	const {allExpenses} = data /* destructure expenses from the data */
+	const { data } = useAllExpensesContext()
+	const { allExpenses } = data /* destructure expenses from the data */
 
 	/* if no expenses found */
 	if (allExpenses.length === 0) {
@@ -30,7 +30,7 @@ export const AllExpensesContainerComponent = () => {
 				{allExpenses.map((i) => {
 					return (
 						<SingleExpenseComponent key={i._id} {...i} />
-						
+
 					)
 				})}
 			</div>

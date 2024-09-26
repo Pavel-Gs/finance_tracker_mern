@@ -20,7 +20,7 @@ export const StyledTransactionsContainer = styled.section`
 	@media (min-width: 2560px) {
 		.transactions {
 			grid-template-columns: 1fr 1fr;
-			gap: 2rem;
+			gap: 1rem;
 		}
 	}
 `

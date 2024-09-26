@@ -39,7 +39,7 @@ export const AllExpensesPage = () => {
 
 	/* wrap the return with the global context */
 	return (
-		<AllExpensesContext.Provider value={{data}}>
+		<AllExpensesContext.Provider value={{ data }}>
 			<SearchExpensesContainerComponent />
 			<AllExpensesContainerComponent />
 		</AllExpensesContext.Provider>
