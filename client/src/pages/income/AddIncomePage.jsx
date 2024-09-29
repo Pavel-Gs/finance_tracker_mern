@@ -57,7 +57,9 @@ export const AddIncomePage = () => {
 	}
 
 	/* date picker logic */
-	const [dateIncome, setDateIncome] = useState(new Date().toISOString().substring(0, 10)) /* state for the date's picker, defaults to today's date */
+	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
+	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
+	const [dateIncome, setDateIncome] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
 		setDateIncome(e.target.value)
 	}

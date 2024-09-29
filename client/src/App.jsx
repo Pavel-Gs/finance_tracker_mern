@@ -68,7 +68,8 @@ const browserRoutes = createBrowserRouter(
 						{
 							index: true,
 							element: <AddExpensePage />,
-							action: actionAddExpense
+							action: actionAddExpense,
+							loader: loaderAllExpenses /* using the same loader as for allExpenses, but with the returned filtered data for today's expenses only */
 						},
 						{
 							path: 'all-expenses',

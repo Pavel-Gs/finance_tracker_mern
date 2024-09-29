@@ -20,7 +20,7 @@ import { StyledSingleTransactionComponent } from '../../styled_components/Styled
 
 
 // EXTEND DAYJS FORMAT
-day.extend(advancedFormat)
+day.extend(advancedFormat) // used with alternative 1 or 2
 
 
 // SINGLE INCOME JSX COMPONENT
@@ -28,8 +28,9 @@ day.extend(advancedFormat)
 export const SingleIncomeComponent = ({ amountIncome, typeIncome, categoryIncome, commentsIncome, locationIncome, dateIncome, createdBy, createdAt }) => {
 
 	/* customize date format */
-	/* as an alternative, could use "createdAt", instead of "dateIncome" */
-	const customDate = day(dateIncome).add(1, 'day').format('MMM Do, YYYY') /* adding one day to dateIncome, to compensate for the offset (dateIncome does not have the time stamp in MongoDB) */
+	//const customDate = day(createdAt).format('MMM Do, YYYY') /* alternative 1: using the date of creation; no need to offset by a day */
+	//const customDate = day(dateExpense).add(1, 'day').format('MMM Do, YYYY') /* alternative 2: using the user's picked date; adding one day to dateExpense, to compensate for the offset (dateExpense does not have the time stamp in MongoDB) */
+	const customDate = dateIncome.split('T')[0] /* alternative 3: using the exact user's picked date as a string, but without any kind of external formatting; no need to offset by a day */
 
 	/* assign an icon to a corresponding income type */
 	let incomeTypeIcon = "+"

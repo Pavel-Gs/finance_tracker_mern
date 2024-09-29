@@ -1,7 +1,7 @@
 // IMPORT HOOKS
-import { useState } from 'react'
+import { useState, createContext, useContext } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Form, redirect, useNavigation, useOutletContext } from 'react-router-dom'
+import { Form, redirect, useNavigation, useOutletContext, useLoaderData } from 'react-router-dom'
 // IMPORT CONSTANTS
 import { EXPENSES_TYPES, EXPENSES_CATEGORIES, TYPE_TO_CATEGORIES } from '../../../../utils/constantsExpenses.js'
 // IMPORT TOASTIFY FUNCTION
@@ -11,6 +11,7 @@ import { customFetch } from '../../utils/customFetch.js'
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../../components/FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.jsx'
+import { TodayExpensesContainerComponent } from '../../components/expenses_components/TodayExpensesContainerComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
@@ -37,8 +38,17 @@ export const actionAddExpense = async ({ request }) => {
 }
 
 
+// SET GLOBAL CONTEXT
+const TodayExpensesContext = createContext()
+// SET CUSTOM HOOK
+export const useTodayExpensesContext = () => useContext(TodayExpensesContext)
+
+
 // ADD EXPENSE PAGE JSX COMPONENT
 export const AddExpensePage = () => {
+
+	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderTodayExpenses" function (also, refer to App.jsx, "dashboard" index path (add expense)) */
+	const { data, todayExpenses } = useLoaderData() /* using the whole object, without destructuring */
 
 	/* get the user from the outlet context */
 	const { currentUser } = useOutletContext()
@@ -57,32 +67,39 @@ export const AddExpensePage = () => {
 	}
 
 	/* date picker logic */
-	const [dateExpense, setDateExpense] = useState(new Date().toISOString().substring(0, 10)) /* state for the date's picker, defaults to today's date */
+	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
+	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
+	const [dateExpense, setDateExpense] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
 		setDateExpense(e.target.value)
 	}
 
+	/* wrap the return with the global context */
 	return (
-		<StyledDashboardFormPage>
+		<TodayExpensesContext.Provider value={{ data }}>
+			<StyledDashboardFormPage>
 
-			{/* this <Form> component is coming from react-router-dom */}
-			<Form className='form' method='post'>
-				<h4 className='form-title'>
-					Add Expense
-				</h4>
-				<div className="form-center">
-					<FormRowComponent typeProp='number' nameProp='amountExpense' labelTextProp="Amount" />
-					<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={Object.values(EXPENSES_TYPES)} onChangeProp={handleTypeSelectionChange} />
-					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={categoryList.map(i => EXPENSES_CATEGORIES[i])} disabledProp={selectedType === ""} />
-					<FormRowComponent typeProp='text' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={"N/A"} />
-					<FormRowComponent typeProp='text' nameProp='locationExpense' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
-					<FormRowComponent typeProp='date' nameProp='dateExpense' labelTextProp="Date" defaultValueProp={dateExpense} onChangeProp={handleDateSelectionChange} />
-					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
-						{isSubmitting ? "Submitting..." : "Submit"}
-					</button>
-				</div>
-			</Form>
+				{/* this <Form> component is coming from react-router-dom */}
+				<Form className='form' method='post'>
+					<h4 className='form-title'>
+						Add Expense
+					</h4>
+					<div className="form-center">
+						<FormRowComponent typeProp='number' nameProp='amountExpense' labelTextProp="Amount" />
+						<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={Object.values(EXPENSES_TYPES)} onChangeProp={handleTypeSelectionChange} />
+						<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={categoryList.map(i => EXPENSES_CATEGORIES[i])} disabledProp={selectedType === ""} />
+						<FormRowComponent typeProp='text' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={"N/A"} />
+						<FormRowComponent typeProp='text' nameProp='locationExpense' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
+						<FormRowComponent typeProp='date' nameProp='dateExpense' labelTextProp="Date" defaultValueProp={dateExpense} onChangeProp={handleDateSelectionChange} />
+						<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
+							{isSubmitting ? "Submitting..." : "Submit"}
+						</button>
+					</div>
+				</Form>
 
-		</StyledDashboardFormPage>
+				<TodayExpensesContainerComponent />
+
+			</StyledDashboardFormPage>
+		</TodayExpensesContext.Provider>
 	)
 }
