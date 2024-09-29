@@ -25,8 +25,6 @@ export const loaderAllIncome = async () => {
 
 // SET GLOBAL CONTEXT
 const AllIncomeContext = createContext()
-
-
 // SET CUSTOM HOOK
 export const useAllIncomeContext = () => useContext(AllIncomeContext)
 

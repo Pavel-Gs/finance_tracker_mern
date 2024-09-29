@@ -37,7 +37,7 @@ export const actionAddIncome = async ({ request }) => {
 }
 
 
-// ADD EXPENSE PAGE JSX COMPONENT
+// ADD INCOME PAGE JSX COMPONENT
 export const AddIncomePage = () => {
 
 	/* get the user from the outlet context */

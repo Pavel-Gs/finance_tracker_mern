@@ -23,11 +23,11 @@ export const loaderAllExpenses = async () => {
 		const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
 		const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
 		const todayExpenses = allExpenses.filter(i => {
-			const filteredExpenses = new Date(i.createdAt).toLocaleDateString('en-CA')
+			const filteredExpenses = new Date(i.createdAt).toLocaleDateString('en-CA') /* attention: using createdAt (could use dateExpense as an alternative) */
 			return filteredExpenses === formattedDate
 		})
 
-		/* return both all expenses and filtered expenses */
+		/* return both all expenses (for AllExpensesPage.jsx) and filtered expenses (used in TodayExpensesContainerComponent.jsx and AddExpensePage.jsx) */
 		return { data, todayExpenses } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

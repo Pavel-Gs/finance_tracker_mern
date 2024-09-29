@@ -29,8 +29,6 @@ export const loaderDashboard = async () => {
 
 // SET GLOBAL CONTEXT
 const DashboardContext = createContext()
-
-
 // SET CUSTOM HOOK
 export const useDashboardContext = () => useContext(DashboardContext)
 

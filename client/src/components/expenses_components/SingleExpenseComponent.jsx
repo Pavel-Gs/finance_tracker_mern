@@ -25,7 +25,7 @@ import { StyledSingleTransactionComponent } from '../../styled_components/Styled
 
 
 // EXTEND DAYJS FORMAT
-day.extend(advancedFormat) // used with alternative 1 or 2
+day.extend(advancedFormat) // used with the alternative 1 or 2
 
 
 // SINGLE EXPENSE JSX COMPONENT
