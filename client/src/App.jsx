@@ -29,8 +29,10 @@ import { actionRegister } from './pages/RegisterPage.jsx'
 import { actionLogin } from './pages/LoginPage.jsx'
 import { actionAddExpense } from './pages/expenses/AddExpensePage.jsx'
 import { actionEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
+import { actionDeleteExpense } from './pages/expenses/DeleteExpensePage.jsx'
 import { actionAddIncome } from './pages/income/AddIncomePage.jsx'
 import { actionEditIncome } from '../src/pages/income/EditIncomePage.jsx'
+import { actionDeleteIncome } from './pages/income/DeleteIncomePage.jsx'
 import { loaderDashboard } from './pages/DashboardLayout.jsx'
 import { loaderAllExpenses } from './pages/expenses/AllExpensesPage.jsx'
 import { loaderEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
@@ -84,6 +86,10 @@ const browserRoutes = createBrowserRouter(
 							loader: loaderEditExpense
 						},
 						{
+							path: 'delete-expense/:id',
+							action: actionDeleteExpense
+						},
+						{
 							path: 'all-expenses',
 							element: <AllExpensesPage />,
 							loader: loaderAllExpenses
@@ -103,6 +109,10 @@ const browserRoutes = createBrowserRouter(
 							element: <EditIncomePage />,
 							action: actionEditIncome,
 							loader: loaderEditIncome
+						},
+						{
+							path: 'delete-income/:id',
+							action: actionDeleteIncome
 						},
 						{
 							path: 'all-income',

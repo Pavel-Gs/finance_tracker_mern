@@ -12,7 +12,7 @@ export const StyledSingleTransactionComponent = styled.article`
 	box-shadow: var(--shadow-2);
 
 	.main-icon {
-		background: var(--text-secondary-color);
+		/* background: var(--text-secondary-color);
 		color: var(--white);
 		width: 40px;
 		height: 100%;
@@ -22,7 +22,20 @@ export const StyledSingleTransactionComponent = styled.article`
 		font-size: 1.5rem;
 		font-weight: 700;
 		text-transform: uppercase;
-		margin-right: 1rem;
+		margin-right: 1rem; */
+	}
+	.main-icon {
+		.edit-btn {
+			color: var(--white);
+			height: 100%;
+			display: grid;
+			place-items: center;
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
+			font-size: 1.5rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			margin-right: 1rem;
+		}
 	}
 	.transaction-content {
 		display: grid;
@@ -34,7 +47,7 @@ export const StyledSingleTransactionComponent = styled.article`
 	.actions {
 		display: flex;
 		align-items: center;
-		.edit-btn {
+		/* .edit-btn {
 			height: 35px;
 			font-size: 0.85rem;
 			display: flex;
@@ -42,7 +55,7 @@ export const StyledSingleTransactionComponent = styled.article`
 			margin-right: 0.5rem;
 			margin-left: 0.25rem;
 			border-radius: 0 0 0 0;
-		}
+		} */
 		.delete-btn {
 			height: 35px;
 			font-size: 0.85rem;

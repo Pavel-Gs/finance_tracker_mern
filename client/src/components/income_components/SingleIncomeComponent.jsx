@@ -4,6 +4,7 @@ import { Link, Form } from 'react-router-dom'
 import day from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 // IMPORT REACT ICONS
+import { FaPlus } from "react-icons/fa"
 import { BsBriefcaseFill } from "react-icons/bs"
 import { BsBank2 } from "react-icons/bs"
 import { MdAssignmentReturn } from "react-icons/md"
@@ -33,7 +34,7 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 	const customDate = dateIncome.split('T')[0] /* alternative 3: using the exact user's picked date as a string, but without any kind of external formatting; no need to offset by a day */
 
 	/* assign an icon to a corresponding income type */
-	let incomeTypeIcon = "+"
+	let incomeTypeIcon = <FaPlus />
 	if (typeIncome === 'Jobs') { incomeTypeIcon = <BsBriefcaseFill /> }
 	if (typeIncome === 'Banks') { incomeTypeIcon = <BsBank2 /> }
 	if (typeIncome === 'Returns') { incomeTypeIcon = <MdAssignmentReturn /> }
@@ -41,7 +42,9 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 	return (
 		<StyledSingleTransactionComponent>
 			<div className='main-icon'>
-				{incomeTypeIcon}
+				<Link className='btn edit-btn' to={`../edit-income/${_id}`}>
+					{incomeTypeIcon}
+				</Link>
 			</div>
 			<div className='transaction-content'>
 				<p>{amountIncome}</p>
@@ -53,14 +56,20 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 				<IncomeInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				<Link className='btn edit-btn' to={`../edit-income/${_id}`}>
+				{/* <Link className='btn edit-btn' to={`../edit-income/${_id}`}>
 					<FaCog />
-				</Link>
-				<Form>
+				</Link> */}
+
+				{/* this <Form> component is coming from react-router-dom */}
+				<Form method='post' action={`../delete-income/${_id}`} onSubmit={(e) => {
+					const confirmDelete = window.confirm("Delete?") /* display confirmation dialog */
+					if (!confirmDelete) { e.preventDefault() } /* prevent form submission if the user cancels the deletion */
+				}}>
 					<button className='btn delete-btn' type='submit'>
 						<FaTrashAlt />
 					</button>
 				</Form>
+
 			</footer>
 		</StyledSingleTransactionComponent>
 	)
