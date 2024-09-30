@@ -1,7 +1,7 @@
 // IMPORT HOOKS
 import { useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Form, redirect, useNavigation, useOutletContext } from 'react-router-dom'
+import { Form, redirect, useNavigation, useOutletContext, useLoaderData } from 'react-router-dom'
 // IMPORT CONSTANTS
 import { INCOME_TYPES, INCOME_CATEGORIES, TYPE_TO_CATEGORIES } from '../../../../utils/constantsIncome.js'
 // IMPORT TOASTIFY FUNCTION
@@ -11,6 +11,7 @@ import { customFetch } from '../../utils/customFetch.js'
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../../components/FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.jsx'
+import { TodayIncomeContainerComponent } from '../../components/income_components/TodayIncomeContainerComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
@@ -40,6 +41,9 @@ export const actionAddIncome = async ({ request }) => {
 // ADD INCOME PAGE JSX COMPONENT
 export const AddIncomePage = () => {
 
+	/* use the data from the loader; "useLoaderData" hook is using the filtered return from the "loaderAllIncome" function (also, refer to App.jsx, "dashboard" index path (add income)) */
+	const { todayIncome } = useLoaderData() /* filtered income (passed into TodayIncomeContainerComponent.jsx) */
+
 	/* get the user from the outlet context */
 	const { currentUser } = useOutletContext()
 
@@ -59,9 +63,9 @@ export const AddIncomePage = () => {
 	/* date picker logic */
 	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
 	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
-	const [dateIncome, setDateIncome] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
+	const [selectedDate, setSelectedDate] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
-		setDateIncome(e.target.value)
+		setSelectedDate(e.target.value)
 	}
 
 	return (
@@ -78,12 +82,15 @@ export const AddIncomePage = () => {
 					<FormRowSelectComponent nameProp='categoryIncome' labelTextProp="Category" listProp={categoryList.map(i => INCOME_CATEGORIES[i])} disabledProp={selectedType === ""} />
 					<FormRowComponent typeProp='text' nameProp='commentsIncome' labelTextProp="Comments" defaultValueProp={"N/A"} />
 					<FormRowComponent typeProp='text' nameProp='locationIncome' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
-					<FormRowComponent typeProp='date' nameProp='dateIncome' labelTextProp="Date" defaultValueProp={dateIncome} onChangeProp={handleDateSelectionChange} />
+					<FormRowComponent typeProp='date' nameProp='dateIncome' labelTextProp="Date" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
 					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
 						{isSubmitting ? "Submitting..." : "Submit"}
 					</button>
 				</div>
 			</Form>
+
+			{/* passing filtered today's income as a prop */}
+			<TodayIncomeContainerComponent todayIncomeProp = {todayIncome} />
 
 		</StyledDashboardFormPage>
 	)

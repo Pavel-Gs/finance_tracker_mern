@@ -30,7 +30,7 @@ day.extend(advancedFormat) // used with the alternative 1 or 2
 
 // SINGLE EXPENSE JSX COMPONENT
 /* props are coming from AllExpensesContainerComponent */
-export const SingleExpenseComponent = ({ amountExpense, typeExpense, categoryExpense, commentsExpense, locationExpense, dateExpense, createdBy, createdAt }) => {
+export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, categoryExpense, commentsExpense, locationExpense, dateExpense, createdBy, createdAt }) => {
 
 	/* customize date format */
 	//const customDate = day(createdAt).format('MMM Do, YYYY') /* alternative 1: using the date of creation; no need to offset by a day */
@@ -63,7 +63,7 @@ export const SingleExpenseComponent = ({ amountExpense, typeExpense, categoryExp
 				<ExpenseInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				<Link className='btn edit-btn'>
+				<Link className='btn edit-btn' to={`../edit-expense/${_id}`}>
 					<FaCog />
 				</Link>
 				<Form>

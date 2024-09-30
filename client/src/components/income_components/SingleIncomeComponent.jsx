@@ -25,7 +25,7 @@ day.extend(advancedFormat) // used with the alternative 1 or 2
 
 // SINGLE INCOME JSX COMPONENT
 /* props are coming from AllIncomeContainerComponent */
-export const SingleIncomeComponent = ({ amountIncome, typeIncome, categoryIncome, commentsIncome, locationIncome, dateIncome, createdBy, createdAt }) => {
+export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryIncome, commentsIncome, locationIncome, dateIncome, createdBy, createdAt }) => {
 
 	/* customize date format */
 	//const customDate = day(createdAt).format('MMM Do, YYYY') /* alternative 1: using the date of creation; no need to offset by a day */
@@ -53,7 +53,7 @@ export const SingleIncomeComponent = ({ amountIncome, typeIncome, categoryIncome
 				<IncomeInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				<Link className='btn edit-btn'>
+				<Link className='btn edit-btn' to={`../edit-income/${_id}`}>
 					<FaCog />
 				</Link>
 				<Form>

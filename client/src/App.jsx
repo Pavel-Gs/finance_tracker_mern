@@ -15,7 +15,9 @@ import { LoginPage } from './pages/LoginPage.jsx'
 import { ProfilePage } from './pages/ProfilePage.jsx'
 import { RegisterPage } from './pages/RegisterPage.jsx'
 import { AddExpensePage } from './pages/expenses/AddExpensePage.jsx'
+import { EditExpensePage } from '../src/pages/expenses/EditExpensePage.jsx'
 import { AddIncomePage } from './pages/income/AddIncomePage.jsx'
+import { EditIncomePage } from '../src/pages/income/EditIncomePage.jsx'
 import { AllExpensesPage } from './pages/expenses/AllExpensesPage.jsx'
 import { AllIncomePage } from './pages/income/AllIncomePage.jsx'
 import { StatsExpensesPage } from './pages/expenses/StatsExpensesPage.jsx'
@@ -26,10 +28,14 @@ import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx
 import { actionRegister } from './pages/RegisterPage.jsx'
 import { actionLogin } from './pages/LoginPage.jsx'
 import { actionAddExpense } from './pages/expenses/AddExpensePage.jsx'
+import { actionEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
 import { actionAddIncome } from './pages/income/AddIncomePage.jsx'
+import { actionEditIncome } from '../src/pages/income/EditIncomePage.jsx'
 import { loaderDashboard } from './pages/DashboardLayout.jsx'
 import { loaderAllExpenses } from './pages/expenses/AllExpensesPage.jsx'
+import { loaderEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
 import { loaderAllIncome } from './pages/income/AllIncomePage.jsx'
+import { loaderEditIncome } from '../src/pages/income/EditIncomePage.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -69,7 +75,13 @@ const browserRoutes = createBrowserRouter(
 							index: true,
 							element: <AddExpensePage />,
 							action: actionAddExpense,
-							loader: loaderAllExpenses /* using the same loader as for allExpenses, but with the returned filtered data for today's expenses only */
+							loader: loaderAllExpenses /* CLIENT-side filtering (for larger data sets, write new back-end controller); using the same loader as for allExpenses, but with the returned filtered data for today's expenses (entries) only */
+						},
+						{
+							path: 'edit-expense/:id',
+							element: <EditExpensePage />,
+							action: actionEditExpense,
+							loader: loaderEditExpense
 						},
 						{
 							path: 'all-expenses',
@@ -83,7 +95,14 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'add-income',
 							element: <AddIncomePage />,
-							action: actionAddIncome
+							action: actionAddIncome,
+							loader: loaderAllIncome /* CLIENT-side filtering (for larger data sets, write new back-end controller); using the same loader as for allIncome, but with the returned filtered data for today's income (entries) only */
+						},
+						{
+							path: 'edit-income/:id',
+							element: <EditIncomePage />,
+							action: actionEditIncome,
+							loader: loaderEditIncome
 						},
 						{
 							path: 'all-income',

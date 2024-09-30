@@ -11,12 +11,13 @@ import { AllExpensesContainerComponent } from '../../components/expenses_compone
 import { SearchExpensesContainerComponent } from '../../components/expenses_components/SearchExpensesContainerComponent.jsx'
 
 
-// CREATE A LOADER (FOR PREFETCHING THE DATA; USED IN APP.JSX, "ALL-EXPENSES" AND "ADD-EXPENSE" (DASHBOARD) PATHS)
+// CREATE A LOADER
+/* for prefetching the data; used in App.jsx "all-expenses" and "add-expense" (dashboard) path */
 export const loaderAllExpenses = async () => {
 	try {
 
 		/* get all of the data */
-		const { data } = await customFetch.get('/expenses') /* get all expenses from API */
+		const { data } = await customFetch.get('/expenses') /* get the entire object from API */
 		const { allExpenses } = data /* destructure expenses from the data */
 
 		/* filter today's expenses from allExpenses */
@@ -27,7 +28,7 @@ export const loaderAllExpenses = async () => {
 			return filteredExpenses === formattedDate
 		})
 
-		/* return both all expenses (for AllExpensesPage.jsx) and filtered expenses (used in TodayExpensesContainerComponent.jsx and AddExpensePage.jsx) */
+		/* return both all expenses (for AllExpensesPage.jsx) and filtered expenses (used in the TodayExpensesContainerComponent.jsx in AddExpensePage.jsx) */
 		return { data, todayExpenses } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

@@ -11,11 +11,25 @@ import { AllIncomeContainerComponent } from '../../components/income_components/
 import { SearchIncomeContainerComponent } from '../../components/income_components/SearchIncomeContainerComponent.jsx'
 
 
-// CREATE A LOADER (FOR PREFETCHING THE DATA; USED IN APP.JSX, "ALL-INCOME" PATH)
+// CREATE A LOADER
+/* for prefetching the data; used in App.jsx "all-income" path */
 export const loaderAllIncome = async () => {
 	try {
-		const { data } = await customFetch.get('/income')
-		return { data } /* must return something; this return will be available in the component, where that loader is used */
+
+		/* get all of the data */
+		const { data } = await customFetch.get('/income') /* get the entire object from API */
+		const { allIncome } = data /* destructure income from the data */
+
+		/* filter today's income from allIncome */
+		const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
+		const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
+		const todayIncome = allIncome.filter(i => {
+			const filteredIncome = new Date(i.createdAt).toLocaleDateString('en-CA') /* attention: using createdAt (could use dateIncome as an alternative) */
+			return filteredIncome === formattedDate
+		})
+
+		/* return both all income (for AllIncomePage.jsx) and filtered income (used in the TodayIncomeContainerComponent.jsx in AddIncomePage.jsx) */
+		return { data, todayIncome } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
 		return error

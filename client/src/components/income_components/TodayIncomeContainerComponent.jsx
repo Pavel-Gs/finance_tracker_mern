@@ -1,18 +1,18 @@
 // IMPORT JSX COMPONENTS
-import { SingleExpenseComponent } from './SingleExpenseComponent.jsx'
+import { SingleIncomeComponent } from './SingleIncomeComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledTransactionsContainer } from '../../styled_components/StyledTransactionsContainer.js'
 
 
-// TODAY EXPENSES CONTAINER JSX COMPONENT
-export const TodayExpensesContainerComponent = ({ todayExpensesProp }) => {
+// TODAY INCOME CONTAINER JSX COMPONENT
+export const TodayIncomeContainerComponent = ({ todayIncomeProp }) => {
 
-	/* if no expenses found */
-	if (todayExpensesProp.length === 0) {
+	/* if no income found */
+	if (todayIncomeProp.length === 0) {
 		return (
 			<StyledTransactionsContainer>
 				<h4 className='form-title'>
-					No expenses for today...
+					No income for today...
 				</h4>
 			</StyledTransactionsContainer>
 		)
@@ -24,9 +24,9 @@ export const TodayExpensesContainerComponent = ({ todayExpensesProp }) => {
 				Today's entries
 			</h4>
 			<div className='transactions'>
-				{todayExpensesProp.map((i) => {
+				{todayIncomeProp.map((i) => {
 					return (
-						<SingleExpenseComponent key={i._id} {...i} />
+						<SingleIncomeComponent key={i._id} {...i} />
 					)
 				})}
 			</div>

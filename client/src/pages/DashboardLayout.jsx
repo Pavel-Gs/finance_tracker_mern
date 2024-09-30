@@ -16,7 +16,8 @@ import { checkDefaultThemeFunction } from '../utils/checkDefaultThemeFunction.js
 import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayout.js'
 
 
-// CREATE A LOADER (FOR PREFETCHING THE DATA; USED IN APP.JSX, "DASHBOARD" PATH)
+// CREATE A LOADER
+/* for prefetching the data; used in App.jsx "dashboard" path */
 export const loaderDashboard = async () => {
 	try {
 		const { data } = await customFetch.get('/users/current-user')
