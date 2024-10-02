@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import { customFetch } from '../utils/customFetch.js'
 // IMPORT REACT ICONS
 import { FaSuitcaseRolling, FaCalendarCheck } from 'react-icons/fa'
+// IMPORT JSX COMPONENTS
+import { StatItemComponent } from '../components/StatItemComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledStatsContainer } from '../styled_components/StyledStatsContainer.js'
 
@@ -29,10 +31,11 @@ export const AdminPage = () => {
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderAdmin" function (also, refer to App.jsx, "admin" path) */
 	const {allUsers, allExpenses, allIncome} = useLoaderData()
 	
-
 	return (
 		<StyledStatsContainer>
-			AdminPage
+			<StatItemComponent titleProp='current users' countProp={allUsers} colorProp='#e9b949' bcgProp='#fcefc7' iconProp={<FaSuitcaseRolling />} />
+			<StatItemComponent titleProp='total expenses' countProp={allExpenses} colorProp='#647acb' bcgProp='#e0e8f9' iconProp={<FaCalendarCheck />} />
+			<StatItemComponent titleProp='total income' countProp={allIncome} colorProp='#647acb' bcgProp='#e0e8f9' iconProp={<FaCalendarCheck />} />
 		</StyledStatsContainer>
 	)
 }
