@@ -66,6 +66,7 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 				<ExpenseInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
+				{/* edit functionality is accessible through the main-icon */}
 				{/* <Link className='btn edit-btn' to={`../edit-expense/${_id}`}>
 					<FaCog />
 				</Link> */}

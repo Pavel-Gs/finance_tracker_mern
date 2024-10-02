@@ -38,6 +38,7 @@ import { loaderAllExpenses } from './pages/expenses/AllExpensesPage.jsx'
 import { loaderEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
 import { loaderAllIncome } from './pages/income/AllIncomePage.jsx'
 import { loaderEditIncome } from '../src/pages/income/EditIncomePage.jsx'
+import { loaderAdmin } from './pages/AdminPage.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -129,7 +130,8 @@ const browserRoutes = createBrowserRouter(
 						},
 						{
 							path: 'admin',
-							element: <AdminPage />
+							element: <AdminPage />,
+							loader: loaderAdmin
 						}
 					]
 				}
