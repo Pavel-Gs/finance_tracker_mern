@@ -21,7 +21,7 @@ export const authUserMiddleware = (req, res, next) => {
 // VERIFY ADMIN MIDDLEWARE
 export const authorizePermissionsMiddleware = (...i) => {
 	return (req, res, next) => {
-		/* current user's roles are passed through "i" via userRoutes.js "set auth routes" */
+		/* current user's roles are passed through "i" in userRoutes.js */
 		if (!i.includes(req.authenticatedUser.userRole)) {
 			throw new UnauthorizedError("Unauthorized to access this route")
 		}
