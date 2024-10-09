@@ -11,6 +11,7 @@ import * as dotenv from 'dotenv'
 // IMPORT ROUTES
 import { routerExpressAuth } from './routes/authRoutes.js'
 import { routerExpressUser } from './routes/userRoutes.js'
+import { routerExpressAdmin } from './routes/adminRoutes.js'
 import { routerExpressExpenses } from './routes/expensesRoutes.js'
 import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
@@ -46,6 +47,7 @@ if (process.env.NODE_ENV === "development") {
 /* setup api routes */
 app.use('/api/v1/auth', routerExpressAuth)
 app.use('/api/v1/users', authUserMiddleware, routerExpressUser)
+app.use('/api/v1/admin', authUserMiddleware, routerExpressAdmin)
 app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
 app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 /* test routes */
