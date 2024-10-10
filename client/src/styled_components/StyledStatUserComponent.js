@@ -3,12 +3,12 @@ import styled from 'styled-components'
 
 
 // CSS FOR THE STAT ITEM COMPONENT
-export const StyledStatItemComponent = styled.article`
+export const StyledStatUserComponent = styled.article`
 	padding: 0;
 	background: var(--background-secondary-color);
 	border-bottom: 5px solid ${(props) => props.$color}; /* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
 	border-radius: var(--border-radius);
-
+	
 	header {
 		display: flex;
 		align-items: top;

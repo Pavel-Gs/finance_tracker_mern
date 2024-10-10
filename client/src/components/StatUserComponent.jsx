@@ -1,27 +1,27 @@
 // IMPORT STYLED COMPONENTS
-import { StyledStatItemComponent } from '../styled_components/StyledStatItemComponent.js'
+import { StyledStatUserComponent } from '../styled_components/StyledStatUserComponent.js'
 
 
 // STAT ITEM JSX COMPONENT
 /* props are coming from AdminPage.jsx; also used in the corresponding styled component */
-export const StatItemComponent = ({ countProp, titleProp, iconProp, colorProp, bcgProp }) => {
+export const StatUserComponent = ({ countProp, titleProp, iconProp, colorProp, bcgProp }) => {
 	return (
 		/* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
-		<StyledStatItemComponent $color={colorProp} $bcg={bcgProp}>
+		<StyledStatUserComponent $color={colorProp} $bcg={bcgProp}>
 			<header>
+				<span className='icon'>
+					{iconProp}
+				</span>
 				<span className='count'>
 					{countProp}
 				</span>
 				<h5 className='title'>
 					{titleProp}
 				</h5>
-				<span className='icon'>
-					{iconProp}
-				</span>
 			</header>
 			{/* <h5 className='title'>
 				{titleProp}
 			</h5> */}
-		</StyledStatItemComponent>
+		</StyledStatUserComponent>
 	)
 }
