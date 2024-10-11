@@ -17,7 +17,6 @@ import { RxDotFilled } from "react-icons/rx"
 import { IoLocationSharp } from "react-icons/io5"
 import { FaCalendarAlt } from 'react-icons/fa'
 import { FaUser } from "react-icons/fa"
-import { FaCog } from "react-icons/fa"
 import { FaTrashAlt } from "react-icons/fa"
 // IMPORT JSX COMPONENTS
 import { ExpenseInfoComponent } from './ExpenseInfoComponent.jsx'
@@ -66,11 +65,7 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 				<ExpenseInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				{/* edit functionality is accessible through the main-icon */}
-				{/* <Link className='btn edit-btn' to={`../edit-expense/${_id}`}>
-					<FaCog />
-				</Link> */}
-
+				
 				{/* this <Form> component is coming from react-router-dom */}
 				<Form method='post' action={`../delete-expense/${_id}`} onSubmit={(e) => {
 					const confirmDelete = window.confirm("Delete?") /* display confirmation dialog */

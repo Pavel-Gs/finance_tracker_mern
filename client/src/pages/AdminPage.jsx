@@ -31,7 +31,6 @@ export const AdminPage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderAdmin" function (also, refer to App.jsx, "admin" path) */
 	const { allUsers, allUsersCount, allExpensesCount, allIncomeCount } = useLoaderData()
-	console.log(allUsers)
 
 	return (
 		<>
@@ -39,9 +38,9 @@ export const AdminPage = () => {
 				Stats count
 			</h4>
 			<StyledStatsContainer>
-				<StatItemComponent titleProp='Registered Users' countProp={allUsersCount} colorProp='#647acb' bcgProp='#e0e8f9' iconProp={<FaUser />} />
-				<StatItemComponent titleProp='Expense Entries' countProp={allExpensesCount} colorProp='#e9b949' bcgProp='#fcefc7' iconProp={<FaMinusCircle />} />
-				<StatItemComponent titleProp='Income Entries' countProp={allIncomeCount} colorProp='#e9b949' bcgProp='#fcefc7' iconProp={<FaPlusCircle />} />
+				<StatItemComponent titleProp='Registered Users' countProp={allUsersCount} iconProp={<FaUser />} colorProp='#647acb' bcgProp='#e0e8f9' />
+				<StatItemComponent titleProp='Expense Entries' countProp={allExpensesCount} iconProp={<FaMinusCircle />} colorProp='#e9b949' bcgProp='#fcefc7' />
+				<StatItemComponent titleProp='Income Entries' countProp={allIncomeCount} iconProp={<FaPlusCircle />} colorProp='#e9b949' bcgProp='#fcefc7' />
 			</StyledStatsContainer>
 
 			<h4 className='form-title' style={{ marginBottom: '1.5rem' }}>
@@ -49,7 +48,7 @@ export const AdminPage = () => {
 			</h4>
 			{allUsers.map(i => {
 				return (
-					<StatUserComponent key={i._id} titleProp={`${i.firstName} ${i.lastName}`} countProp={i.email} colorProp='#647acb' bcgProp='#e0e8f9' iconProp={<FaUser />} />
+					<StatUserComponent key={i._id} iconProp={<FaUser />} nameProp={`${i.firstName} ${i.lastName}`} emailProp={i.emailUser} roleProp={i.role} locationProp={i.locationUser} orgProp={i.organization} colorProp='#647acb' bcgProp='#e0e8f9' />
 				)
 			})}
 		</>

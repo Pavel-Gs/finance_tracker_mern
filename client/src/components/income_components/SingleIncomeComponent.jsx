@@ -56,10 +56,6 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 				<IncomeInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				{/* edit functionality is accessible through the main-icon */}
-				{/* <Link className='btn edit-btn' to={`../edit-income/${_id}`}>
-					<FaCog />
-				</Link> */}
 
 				{/* this <Form> component is coming from react-router-dom */}
 				<Form method='post' action={`../delete-income/${_id}`} onSubmit={(e) => {

@@ -10,31 +10,20 @@ export const StyledSingleTransactionComponent = styled.article`
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: var(--shadow-2);
+	min-height: 2rem;
 
-	/* .main-icon {
-		background: var(--text-secondary-color);
-		color: var(--white);
-		width: 40px;
-		height: 100%;
-		display: grid;
-		place-items: center;
-		border-radius: var(--border-radius) 0 0 var(--border-radius);
-		font-size: 1.5rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		margin-right: 1rem;
-	} */
 	.main-icon {
+		height: 100%;
 		.edit-btn {
 			color: var(--white);
-			height: 100%;
 			display: grid;
+			height: 100%;
 			place-items: center;
 			border-radius: var(--border-radius) 0 0 var(--border-radius);
 			font-size: 1.5rem;
 			font-weight: 700;
 			text-transform: uppercase;
-			margin-right: 1rem;
+			margin-right: 0.5rem;
 		}
 	}
 	.transaction-content {
@@ -44,25 +33,15 @@ export const StyledSingleTransactionComponent = styled.article`
 		grid-gap: 1rem;
 		width: 100%;
 	}
-	.actions {
+
+	.delete-btn {
 		display: flex;
+		justify-content: center;
 		align-items: center;
-		/* .edit-btn {
-			height: 35px;
-			font-size: 0.85rem;
-			display: flex;
-			align-items: center;
-			margin-right: 0.5rem;
-			margin-left: 0.25rem;
-			border-radius: 0 0 0 0;
-		} */
-		.delete-btn {
-			width: 35px;
-			height: 35px;
-			font-size: 0.85rem;
-			display: flex;
-			align-items: center;
-			border-radius: 0 var(--border-radius) var(--border-radius) 0;
-		}
+		padding: 0;
+		width: 35px;
+		height: 36px;
+		font-size: 0.85rem;
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
 	}
 `
