@@ -18,6 +18,8 @@ import { IoLocationSharp } from "react-icons/io5"
 import { FaCalendarAlt } from 'react-icons/fa'
 import { FaUser } from "react-icons/fa"
 import { FaTrashAlt } from "react-icons/fa"
+import { GiPayMoney } from "react-icons/gi"
+import { HiMiniCurrencyDollar } from "react-icons/hi2"
 // IMPORT JSX COMPONENTS
 import { ExpenseInfoComponent } from './ExpenseInfoComponent.jsx'
 // IMPORT STYLED COMPONENTS
@@ -56,9 +58,11 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 				</Link>
 			</div>
 			<div className='transaction-content'>
-				<p>{amountExpense}</p>
-				<p>{typeExpense}</p>
-				<ExpenseInfoComponent text={`(${categoryExpense})`} />
+				{/* <p>{amountExpense}</p> */}
+				{/* <p>{typeExpense}</p> */}
+				<ExpenseInfoComponent icon={<HiMiniCurrencyDollar style={{fontSize: '1.5rem'}} />} text={amountExpense} />
+				<ExpenseInfoComponent icon={<GiPayMoney style={{fontSize: '1.5rem'}} />} text={typeExpense} />
+				<ExpenseInfoComponent text={categoryExpense} />
 				<ExpenseInfoComponent icon={<RxDotFilled />} text={`"${commentsExpense}"`} />
 				<ExpenseInfoComponent icon={<IoLocationSharp />} text={locationExpense} />
 				<ExpenseInfoComponent icon={<FaCalendarAlt />} text={customDate} />

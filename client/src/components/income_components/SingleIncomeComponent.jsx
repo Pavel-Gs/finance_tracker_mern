@@ -12,8 +12,9 @@ import { RxDotFilled } from "react-icons/rx"
 import { IoLocationSharp } from "react-icons/io5"
 import { FaCalendarAlt } from 'react-icons/fa'
 import { FaUser } from "react-icons/fa"
-import { FaCog } from "react-icons/fa"
 import { FaTrashAlt } from "react-icons/fa"
+import { GiReceiveMoney } from "react-icons/gi"
+import { HiMiniCurrencyDollar } from "react-icons/hi2"
 // IMPORT JSX COMPONENTS
 import { IncomeInfoComponent } from './IncomeInfoComponent.jsx'
 // IMPORT STYLED COMPONENTS
@@ -47,9 +48,11 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 				</Link>
 			</div>
 			<div className='transaction-content'>
-				<p>{amountIncome}</p>
-				<p>{typeIncome}</p>
-				<IncomeInfoComponent text={`(${categoryIncome})`} />
+				{/* <p>{amountIncome}</p> */}
+				{/* <p>{typeIncome}</p> */}
+				<IncomeInfoComponent icon={<HiMiniCurrencyDollar style={{fontSize: '1.5rem'}} />} text={amountIncome} />
+				<IncomeInfoComponent icon={<GiReceiveMoney style={{fontSize: '1.5rem'}} />} text={typeIncome} />
+				<IncomeInfoComponent text={categoryIncome} />
 				<IncomeInfoComponent icon={<RxDotFilled />} text={`"${commentsIncome}"`} />
 				<IncomeInfoComponent icon={<IoLocationSharp />} text={locationIncome} />
 				<IncomeInfoComponent icon={<FaCalendarAlt />} text={customDate} />

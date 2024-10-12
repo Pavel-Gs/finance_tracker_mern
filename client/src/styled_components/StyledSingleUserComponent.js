@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 // CSS FOR THE SINGLE EXPENSE COMPONENT
-export const StyledSingleTransactionComponent = styled.article`
+export const StyledSingleUserComponent = styled.article`
 	background: var(--background-secondary-color);
 	border-radius: var(--border-radius);
 	display: flex;
@@ -11,6 +11,7 @@ export const StyledSingleTransactionComponent = styled.article`
 	align-items: center;
 	box-shadow: var(--shadow-2);
 	min-height: 2rem;
+	margin-bottom: 1rem;
 
 	.main-icon {
 		height: 100%;
@@ -24,11 +25,21 @@ export const StyledSingleTransactionComponent = styled.article`
 			font-weight: 700;
 			text-transform: uppercase;
 			margin-right: 0.5rem;
+			background: var(--grey-300);
+			@media (max-width: 1600px) {
+				height: 70px;
+			}
+			@media (max-width: 1080px) {
+				height: 100px;
+			}
+			@media (max-width: 600px) {
+				height: 152px;
+			}
 		}
 	}
 	.transaction-content {
 		display: grid;
-		grid-template-columns: 1fr 1.5fr 1.5fr 2fr 1fr 1.5fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 		align-items: center;
 		grid-gap: 1rem;
 		width: 100%;
@@ -52,6 +63,7 @@ export const StyledSingleTransactionComponent = styled.article`
 		height: 36px;
 		font-size: 0.85rem;
 		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+		background: var(--grey-300);
 		@media (max-width: 1600px) {
 			height: 70px;
 		}
