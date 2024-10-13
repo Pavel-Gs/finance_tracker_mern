@@ -21,7 +21,9 @@ const UserSchema = new mongoose.Schema(
 		organization: {
 			type: String,
 			default: "N/A"
-		}
+		},
+		avatar: String,
+		avatarPublicId: String
 	}
 )
 

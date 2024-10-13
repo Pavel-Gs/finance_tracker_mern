@@ -17,6 +17,10 @@ import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
 import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js'
 import { authUserMiddleware } from './middleware/authUserMiddleware.js'
+// IMPORT FILE AND DIRECTORY PATH MODULES (FOR PUBLIC FOLDER)
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
 
 // INVOKE DOTENV
@@ -36,6 +40,11 @@ try {
 	console.log(error)
 	process.exit(1)
 }
+
+
+// SET FILE AND DIRECTORY FUNCTIONS (MUST BE PLACED ABOVE API ROUTES)
+const __dirname = dirname(fileURLToPath(import.meta.url))
+app.use(express.static(path.resolve(__dirname, './public')))
 
 
 // SETUP MIDDLEWARE

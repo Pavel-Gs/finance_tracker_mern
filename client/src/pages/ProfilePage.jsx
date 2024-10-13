@@ -1,7 +1,51 @@
+// IMPORT ROUTER COMPONENTS
+import { Form, useNavigation, useOutletContext } from 'react-router-dom'
+// IMPORT TOASTIFY FUNCTION
+import { toast } from 'react-toastify'
+// IMPORT CUSTOM INSTANCE ROUTE FUNCTION
+import { customFetch } from '../utils/customFetch.js'
+// IMPORT JSX COMPONENTS
+import { FormRowComponent } from '../components/FormRowComponent.jsx'
+// IMPORT STYLED COMPONENTS
+import { StyledDashboardFormPage } from '../styled_components/StyledDashboardFormPage.js'
+
+
 export const ProfilePage = () => {
+
+	/* get the user from the outlet context */
+	const { currentUser } = useOutletContext()
+	const { firstName, lastName, emailUser, locationUser } = currentUser
+
+	/* use navigation state (for buttons and submissions) */
+	const navigation = useNavigation()
+	const isSubmitting = navigation.state === 'submitting'
+
 	return (
-		<div>
-			ProfilePage
-		</div>
+		<StyledDashboardFormPage>
+
+			{/* this <Form> component is coming from react-router-dom */}
+			<Form method='post' encType='multipart/form-data' className='form'> {/* specify encType here, because we are sending an image (avatar image - a file) to the server as a form data (not as a JSON file) */}
+				<h4 className='form-title'>
+					Profile
+				</h4>
+				<div className='form-center'>
+					<div className='form-row'>
+						<label htmlFor='avatar' className='form-label'>
+							Select an image file (max 0.5 MB)
+						</label>
+						<input type='file' id='avatar' name='avatar' accept='image/*' className='form-input' />
+					</div>
+					<FormRowComponent typeProp='text' nameProp='name' labelTextProp="First Name" defaultValueProp={firstName} />
+					<FormRowComponent typeProp='text' nameProp='lastName' labelTextProp="Last Name" defaultValueProp={lastName} />
+					<FormRowComponent typeProp='email' nameProp='email' defaultValueProp={emailUser} />
+					<FormRowComponent typeProp='text' nameProp='location' defaultValueProp={locationUser} />
+					<button type='submit' className='btn btn-block form-btn' disabled={isSubmitting}>
+						{isSubmitting ? 'Submitting...' : 'Submit'}
+					</button>
+				</div>
+
+			</Form>
+
+		</StyledDashboardFormPage>
 	)
 }

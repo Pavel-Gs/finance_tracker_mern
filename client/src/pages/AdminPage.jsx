@@ -10,7 +10,6 @@ import { FaUser, FaMinusCircle, FaPlusCircle } from 'react-icons/fa'
 import { StatItemComponent } from '../components/StatItemComponent.jsx'
 import { StatUserComponent } from '../components/StatUserComponent.jsx'
 // IMPORT STYLED COMPONENTS
-import { StyledTransactionInfoComponent } from '../styled_components/StyledTransactionInfoComponent.js'
 import { StyledStatsContainer } from '../styled_components/StyledStatsContainer.js'
 
 
