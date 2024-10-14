@@ -36,15 +36,13 @@ export const actionEditIncome = async ({request, params}) => {
 	const inputData = await request.formData()
 	const incomeData = Object.fromEntries(inputData)
 
-	/* fetch the data from income form inputs */
+	/* patch the existing data using income form inputs */
 	try {
 		await customFetch.patch(`/income/${params.id}`, incomeData)
-		toast.success("Income edited") /* display a toast */
+		toast.success("Income edited")
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
-
-	/* catch the error if fetch fails */
 	} catch (error) {
-		toast.error(error?.response?.data?.message) /* display a toast */
+		toast.error(error?.response?.data?.message)
 		return error /* it must return something */
 	}
 }

@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Form, useNavigation, useOutletContext } from 'react-router-dom'
+import { Form, useNavigation, redirect, useOutletContext } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -10,6 +10,29 @@ import { FormRowComponent } from '../components/FormRowComponent.jsx'
 import { StyledDashboardFormPage } from '../styled_components/StyledDashboardFormPage.js'
 
 
+// UPDATE USER ACTION FUNCTION
+export const actionUpdateUser = async({request}) => {
+
+	/* "formData()" function is coming from JavaScript API */
+	const inputData = await request.formData()
+	const file = inputData.get('avatar')
+	if (file && file.size > 512000) {
+		toast.error('File is too big. Max 0.5 MB allowed.')
+		return null
+	}
+
+	/* patch the existing data using profile form inputs */
+	try {
+		await customFetch.patch('/users/update-user', inputData)
+		toast.success('Profile updated')
+	} catch (error) {
+		toast.error(error?.response?.data?.message)
+	}
+	return null
+}
+
+
+// PROFILE PAGE JSX COMPONENT
 export const ProfilePage = () => {
 
 	/* get the user from the outlet context */
@@ -35,10 +58,10 @@ export const ProfilePage = () => {
 						</label>
 						<input type='file' id='avatar' name='avatar' accept='image/*' className='form-input' />
 					</div>
-					<FormRowComponent typeProp='text' nameProp='name' labelTextProp="First Name" defaultValueProp={firstName} />
+					<FormRowComponent typeProp='text' nameProp='firstName' labelTextProp="First Name" defaultValueProp={firstName} />
 					<FormRowComponent typeProp='text' nameProp='lastName' labelTextProp="Last Name" defaultValueProp={lastName} />
-					<FormRowComponent typeProp='email' nameProp='email' defaultValueProp={emailUser} />
-					<FormRowComponent typeProp='text' nameProp='location' defaultValueProp={locationUser} />
+					<FormRowComponent typeProp='email' nameProp='emailUser' defaultValueProp={emailUser} />
+					<FormRowComponent typeProp='text' nameProp='locationUser' defaultValueProp={locationUser} />
 					<button type='submit' className='btn btn-block form-btn' disabled={isSubmitting}>
 						{isSubmitting ? 'Submitting...' : 'Submit'}
 					</button>

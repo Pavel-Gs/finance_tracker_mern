@@ -24,15 +24,13 @@ export const actionAddExpense = async ({ request }) => {
 	const inputData = await request.formData()
 	const expenseData = Object.fromEntries(inputData)
 
-	/* fetch the data from expense form inputs */
+	/* post new data using expense form inputs */
 	try {
 		await customFetch.post('/expenses', expenseData)
-		toast.success("Expense added") /* display a toast */
+		toast.success("Expense added")
 		return redirect('all-expenses') /* it must return something; redirects a user to all-expenses page after submission; note: "all-expenses", not "/all-expenses" */
-
-		/* catch the error if fetch fails */
 	} catch (error) {
-		toast.error(error?.response?.data?.message) /* display a toast */
+		toast.error(error?.response?.data?.message)
 		return error /* it must return something */
 	}
 }

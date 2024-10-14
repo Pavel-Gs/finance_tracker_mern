@@ -33,6 +33,7 @@ import { actionDeleteExpense } from './pages/expenses/DeleteExpensePage.jsx'
 import { actionAddIncome } from './pages/income/AddIncomePage.jsx'
 import { actionEditIncome } from '../src/pages/income/EditIncomePage.jsx'
 import { actionDeleteIncome } from './pages/income/DeleteIncomePage.jsx'
+import { actionUpdateUser } from './pages/ProfilePage.jsx'
 import { loaderDashboard } from './pages/DashboardLayout.jsx'
 import { loaderAllExpenses } from './pages/expenses/AllExpensesPage.jsx'
 import { loaderEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
@@ -126,7 +127,8 @@ const browserRoutes = createBrowserRouter(
 						},
 						{
 							path: 'profile',
-							element: <ProfilePage />
+							element: <ProfilePage />,
+							action: actionUpdateUser
 						},
 						{
 							path: 'admin',

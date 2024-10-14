@@ -24,15 +24,13 @@ export const actionAddIncome = async ({ request }) => {
 	const inputData = await request.formData()
 	const incomeData = Object.fromEntries(inputData)
 
-	/* fetch the data from income form inputs */
+	/* post new data using income form inputs */
 	try {
 		await customFetch.post('/income', incomeData)
-		toast.success("Income added") /* display a toast */
+		toast.success("Income added")
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
-
-	/* catch the error if fetch fails */
 	} catch (error) {
-		toast.error(error?.response?.data?.message) /* display a toast */
+		toast.error(error?.response?.data?.message)
 		return error /* it must return something */
 	}
 }
