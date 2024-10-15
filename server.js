@@ -17,10 +17,12 @@ import { routerExpressIncome } from './routes/incomeRoutes.js'
 // IMPORT MIDDLEWARE
 import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js'
 import { authUserMiddleware } from './middleware/authUserMiddleware.js'
-// IMPORT FILE AND DIRECTORY PATH MODULES (FOR PUBLIC FOLDER)
+// IMPORT FILE AND DIRECTORY PATH MODULES (FOR PUBLIC FOLDER ACCESS)
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import path from 'path'
+// IMPORT CLOUDINARY PACKAGE (FOR IMAGE UPLOAD)
+import cloudinary from 'cloudinary'
 
 
 // INVOKE DOTENV
@@ -45,6 +47,14 @@ try {
 // SET FILE AND DIRECTORY FUNCTIONS (MUST BE PLACED ABOVE API ROUTES)
 const __dirname = dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.resolve(__dirname, './public')))
+
+
+// CONFIGURE CLOUDINARY
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 
 // SETUP MIDDLEWARE

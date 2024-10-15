@@ -18,7 +18,11 @@ export const LogoutComponent = () => {
 	return (
 		<StyledLogoutComponent>
 			<button className='btn logout-btn' type='button' onClick={() => setShowLogout(!showLogout)}>
-				<FaUserCircle />
+				{currentUser?.avatar ? (
+					<img src={currentUser.avatar} alt='avatar' className='img' />
+				) : (
+					<FaUserCircle />
+				)}
 				{currentUser?.firstName}
 				<FaCaretDown />
 			</button>
