@@ -1,11 +1,12 @@
 // IMPORT ROUTER COMPONENTS
-import { Form, useNavigation, redirect, useOutletContext } from 'react-router-dom'
+import { Form, redirect, useOutletContext } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
 import { customFetch } from '../utils/customFetch.js'
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../components/FormRowComponent.jsx'
+import { SubmitButtonComponent } from '../components/SubmitButtonComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../styled_components/StyledDashboardFormPage.js'
 
@@ -39,10 +40,6 @@ export const ProfilePage = () => {
 	const { currentUser } = useOutletContext()
 	const { firstName, lastName, emailUser, locationUser } = currentUser
 
-	/* use navigation state (for buttons and submissions) */
-	const navigation = useNavigation()
-	const isSubmitting = navigation.state === 'submitting'
-
 	return (
 		<StyledDashboardFormPage>
 
@@ -62,9 +59,8 @@ export const ProfilePage = () => {
 					<FormRowComponent typeProp='text' nameProp='lastName' labelTextProp="Last Name" defaultValueProp={lastName} />
 					<FormRowComponent typeProp='email' nameProp='emailUser' defaultValueProp={emailUser} />
 					<FormRowComponent typeProp='text' nameProp='locationUser' defaultValueProp={locationUser} />
-					<button type='submit' className='btn btn-block form-btn' disabled={isSubmitting}>
-						{isSubmitting ? 'Submitting...' : 'Submit'}
-					</button>
+					{/* "formBtnProp" is used in SubmitButtonComponent as a boolean, therefore no need to provide a value: if it's present - the class will apply */}
+					<SubmitButtonComponent formBtnProp />
 				</div>
 
 			</Form>

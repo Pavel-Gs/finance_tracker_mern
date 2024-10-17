@@ -1,7 +1,7 @@
 // IMPORT REACT HOOKS
 import { useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Form, useNavigation, redirect, useLoaderData } from 'react-router-dom'
+import { Form, redirect, useLoaderData } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -11,6 +11,7 @@ import { EXPENSES_TYPES, EXPENSES_CATEGORIES, TYPE_TO_CATEGORIES } from '../../.
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../../components/FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.jsx'
+import { SubmitButtonComponent } from '../../components/SubmitButtonComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
@@ -54,10 +55,6 @@ export const EditExpensePage = () => {
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderEditExpense" function (also, refer to App.jsx, "edit-expense" path) */
 	const { singleExpense } = useLoaderData()
 
-	/* invoke useNavigation */
-	const navigation = useNavigation()
-	const isSubmitting = navigation.state === 'submitting'
-
 	/* logic to render categories according to selected type */
 	const [selectedType, setSelectedType] = useState(singleExpense?.typeExpense || '') /* state to track the type selection (pre-select the type when editing) */
 	const [categoryList, setCategoryList] = useState(TYPE_TO_CATEGORIES[singleExpense?.typeExpense] || []) /* state for category list based on type (pre-load categories based on existing expense type) */
@@ -91,9 +88,8 @@ export const EditExpensePage = () => {
 					<FormRowComponent typeProp='text' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={singleExpense.commentsExpense} />
 					<FormRowComponent typeProp='text' nameProp='locationExpense' labelTextProp="Location" defaultValueProp={singleExpense.locationExpense} />
 					<FormRowComponent typeProp='date' nameProp='dateExpense' labelTextProp="Date" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
-					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
-						{isSubmitting ? "Submitting..." : "Submit"}
-					</button>
+					{/* "formBtnProp" is used in SubmitButtonComponent as a boolean, therefore no need to provide a value: if it's present - the class will apply */}
+					<SubmitButtonComponent formBtnProp />
 				</div>
 			</Form>
 

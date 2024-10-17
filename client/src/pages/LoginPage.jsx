@@ -1,10 +1,11 @@
 // IMPORT ROUTER COMPONENTS
-import { Link, Form, redirect, useNavigation } from 'react-router-dom'
+import { Link, Form, redirect } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT JSX COMPONENTS
 import { LogoComponent } from '../components/LogoComponent.jsx'
 import { FormRowComponent } from '../components/FormRowComponent.jsx'
+import { SubmitButtonComponent } from '../components/SubmitButtonComponent.jsx'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
 import { customFetch } from '../utils/customFetch.js'
 // IMPORT STYLED COMPONENTS
@@ -35,11 +36,6 @@ export const actionLogin = async({request}) => {
 
 // LOGIN PAGE JSX COMPONENT
 export const LoginPage = () => {
-
-	/* use navigation state (for buttons and submissions) */
-	const navigation = useNavigation()
-	const isSubmitting = navigation.state === 'submitting'
-
 	return (
 		<StyledRegisterAndLoginPage>
 
@@ -51,9 +47,7 @@ export const LoginPage = () => {
 				</h4>
 				<FormRowComponent typeProp='email' nameProp="emailUser" defaultValueProp="john@gmail.com" />
 				<FormRowComponent typeProp='password' nameProp="passwordUser" defaultValueProp="secret123" />
-				<button className='btn btn-block' type='submit' disabled={isSubmitting}>
-					{isSubmitting ? "Submitting..." : "Submit"}
-				</button>
+				<SubmitButtonComponent />
 				<button className='btn btn-block' type='button'>
 					Explore the App
 				</button>

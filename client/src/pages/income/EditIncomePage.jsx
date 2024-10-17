@@ -1,7 +1,7 @@
 // IMPORT REACT HOOKS
 import { useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Form, useNavigation, redirect, useLoaderData } from 'react-router-dom'
+import { Form, redirect, useLoaderData } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -11,6 +11,7 @@ import { INCOME_TYPES, INCOME_CATEGORIES, TYPE_TO_CATEGORIES } from '../../../..
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../../components/FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.jsx'
+import { SubmitButtonComponent } from '../../components/SubmitButtonComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
@@ -54,10 +55,6 @@ export const EditIncomePage = () => {
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderEditIncome" function (also, refer to App.jsx, "edit-income" path) */
 	const { singleIncome } = useLoaderData()
 
-	/* invoke useNavigation */
-	const navigation = useNavigation()
-	const isSubmitting = navigation.state === 'submitting'
-
 	/* logic to render categories according to selected type */
 	const [selectedType, setSelectedType] = useState(singleIncome?.typeIncome || '') /* state to track the type selection (pre-select the type when editing) */
 	const [categoryList, setCategoryList] = useState(TYPE_TO_CATEGORIES[singleIncome?.typeIncome] || []) /* state for category list based on type (pre-load categories based on existing expense type) */
@@ -91,9 +88,8 @@ export const EditIncomePage = () => {
 					<FormRowComponent typeProp='text' nameProp='commentsIncome' labelTextProp="Comments" defaultValueProp={singleIncome.commentsIncome} />
 					<FormRowComponent typeProp='text' nameProp='locationIncome' labelTextProp="Location" defaultValueProp={singleIncome.locationIncome} />
 					<FormRowComponent typeProp='date' nameProp='dateIncome' labelTextProp="Date" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
-					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
-						{isSubmitting ? "Submitting..." : "Submit"}
-					</button>
+					{/* "formBtnProp" is used in SubmitButtonComponent as a boolean, therefore no need to provide a value: if it's present - the class will apply */}
+					<SubmitButtonComponent formBtnProp />
 				</div>
 			</Form>
 

@@ -1,7 +1,7 @@
 // IMPORT HOOKS
 import { useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Form, redirect, useNavigation, useOutletContext, useLoaderData } from 'react-router-dom'
+import { Form, redirect, useOutletContext, useLoaderData } from 'react-router-dom'
 // IMPORT CONSTANTS
 import { INCOME_TYPES, INCOME_CATEGORIES, TYPE_TO_CATEGORIES } from '../../../../utils/constantsIncome.js'
 // IMPORT TOASTIFY FUNCTION
@@ -12,6 +12,7 @@ import { customFetch } from '../../utils/customFetch.js'
 import { FormRowComponent } from '../../components/FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../../components/FormRowSelectComponent.jsx'
 import { TodayIncomeContainerComponent } from '../../components/income_components/TodayIncomeContainerComponent.jsx'
+import { SubmitButtonComponent } from '../../components/SubmitButtonComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
@@ -45,10 +46,6 @@ export const AddIncomePage = () => {
 	/* get the user from the outlet context */
 	const { currentUser } = useOutletContext()
 
-	/* invoke useNavigation */
-	const navigation = useNavigation()
-	const isSubmitting = navigation.state === 'submitting'
-
 	/* logic to render categories according to selected type */
 	const [selectedType, setSelectedType] = useState('') /* state to track the type selection */
 	const [categoryList, setCategoryList] = useState([]) /* state for category list based on type */
@@ -81,9 +78,8 @@ export const AddIncomePage = () => {
 					<FormRowComponent typeProp='text' nameProp='commentsIncome' labelTextProp="Comments" defaultValueProp={"N/A"} />
 					<FormRowComponent typeProp='text' nameProp='locationIncome' labelTextProp="Location" defaultValueProp={currentUser.locationUser} />
 					<FormRowComponent typeProp='date' nameProp='dateIncome' labelTextProp="Date" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
-					<button className='btn btn-block form-btn' type='submit' disabled={isSubmitting}>
-						{isSubmitting ? "Submitting..." : "Submit"}
-					</button>
+					{/* "formBtnProp" is used in SubmitButtonComponent as a boolean, therefore no need to provide a value: if it's present - the class will apply */}
+					<SubmitButtonComponent formBtnProp />
 				</div>
 			</Form>
 
