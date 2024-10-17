@@ -27,7 +27,7 @@ export const LandingPage = () => {
 						Register
 					</Link>
 					<Link className='btn' to='/login'>
-						Login / Demo User
+						Login
 					</Link>
 				</div>
 				<img className='img main-img' src={mainImg} alt='finance tracker' />

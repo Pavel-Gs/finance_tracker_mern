@@ -20,16 +20,14 @@ export const actionLogin = async({request}) => {
 	const inputData = await request.formData()
 	const loginData = Object.fromEntries(inputData)
 	
-	/* fetch the data from login form inputs */
+	/* post new data using login form inputs */
 	try {
 		await customFetch.post('/auth/login', loginData)
-		toast.success("Login successful") /* display a toast */
-		return redirect('/dashboard') /* it must return something; redirects a user to the dashboard if login was successful */
-
-	/* catch the error if fetch fails */
+		toast.success("Login successful")
+		return redirect('/dashboard')
 	} catch (error) {
-		toast.error(error?.response?.data?.message) /* display a toast */
-		return error /* it must return something */
+		toast.error(error?.response?.data?.message)
+		return error
 	}
 }
 
@@ -47,10 +45,7 @@ export const LoginPage = () => {
 				</h4>
 				<FormRowComponent typeProp='email' nameProp="emailUser" defaultValueProp="john@gmail.com" />
 				<FormRowComponent typeProp='password' nameProp="passwordUser" defaultValueProp="secret123" />
-				<SubmitButtonComponent />
-				<button className='btn btn-block' type='button'>
-					Explore the App
-				</button>
+				<SubmitButtonComponent />	
 				<p>
 					Not a member yet?
 					<Link className='member-btn' to='/register'>

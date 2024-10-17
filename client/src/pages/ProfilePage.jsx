@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Form, redirect, useOutletContext } from 'react-router-dom'
+import { Form, useOutletContext } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
