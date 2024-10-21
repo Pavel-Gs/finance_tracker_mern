@@ -6,6 +6,7 @@ import { postNewExpenseController } from '../controllers/expenses/postNewExpense
 import { getSingleExpenseController } from '../controllers/expenses/getSingleExpenseController.js'
 import { patchExpenseController } from '../controllers/expenses/patchExpenseController.js'
 import { deleteExpenseController } from '../controllers/expenses/deleteExpenseController.js'
+import { showExpensesStatsController } from '../controllers/expenses/statsExpensesController.js'
 // IMPORT VALIDATION MIDDLEWARE
 import { validateExpenseInput } from '../middleware/validateExpensesMiddleware.js'
 import { validIdExpenseParam } from '../middleware/validationMiddleware.js'
@@ -18,6 +19,9 @@ const routerExpressExpenses = Router()
 // SET EXPENSES ROUTES
 routerExpressExpenses.get('/', getAllExpensesController)
 routerExpressExpenses.post('/', validateExpenseInput, postNewExpenseController)
+
+routerExpressExpenses.get('/stats', showExpensesStatsController) /* stats controller must be placed before :id */
+
 routerExpressExpenses.get('/:id', validIdExpenseParam, getSingleExpenseController)
 routerExpressExpenses.patch('/:id', validIdExpenseParam, validateExpenseInput, patchExpenseController)
 routerExpressExpenses.delete('/:id', validIdExpenseParam, deleteExpenseController)
