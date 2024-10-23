@@ -20,7 +20,7 @@ const routerExpressExpenses = Router()
 routerExpressExpenses.get('/', getAllExpensesController)
 routerExpressExpenses.post('/', validateExpenseInput, postNewExpenseController)
 
-routerExpressExpenses.get('/stats', showExpensesStatsController) /* stats controller must be placed before :id */
+routerExpressExpenses.get('/stats', showExpensesStatsController) /* stats controller must be placed before :id (express reads from top to bottom) */
 
 routerExpressExpenses.get('/:id', validIdExpenseParam, getSingleExpenseController)
 routerExpressExpenses.patch('/:id', validIdExpenseParam, validateExpenseInput, patchExpenseController)
