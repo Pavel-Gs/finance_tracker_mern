@@ -40,6 +40,8 @@ import { loaderEditExpense } from '../src/pages/expenses/EditExpensePage.jsx'
 import { loaderAllIncome } from './pages/income/AllIncomePage.jsx'
 import { loaderEditIncome } from '../src/pages/income/EditIncomePage.jsx'
 import { loaderAdmin } from './pages/AdminPage.jsx'
+import { loaderStatsExpenses } from './pages/expenses/StatsExpensesPage.jsx'
+import { loaderStatsIncome } from './pages/income/StatsIncomePage.jsx'
 // IMPORT GLOBAL CSS
 import './index.css'
 
@@ -98,7 +100,8 @@ const browserRoutes = createBrowserRouter(
 						},
 						{
 							path: 'stats-expenses',
-							element: <StatsExpensesPage />
+							element: <StatsExpensesPage />,
+							loader: loaderStatsExpenses
 						},
 						{
 							path: 'add-income',
@@ -123,7 +126,8 @@ const browserRoutes = createBrowserRouter(
 						},
 						{
 							path: 'stats-income',
-							element: <StatsIncomePage />
+							element: <StatsIncomePage />,
+							loader: loaderStatsIncome
 						},
 						{
 							path: 'profile',

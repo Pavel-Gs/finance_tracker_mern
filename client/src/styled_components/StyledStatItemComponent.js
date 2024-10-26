@@ -6,7 +6,6 @@ import styled from 'styled-components'
 export const StyledStatItemComponent = styled.article`
 	padding: 0;
 	background: var(--background-secondary-color);
-	//border-bottom: 5px solid ${(props) => props.$color}; /* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
 	border-bottom: 5px solid var(--grey-300);
 	border-radius: var(--border-radius);
 
@@ -17,10 +16,8 @@ export const StyledStatItemComponent = styled.article`
 	}
 	.count {
 		display: block;
-		//font-weight: 700;
 		font-size: 50px;
 		margin-left: 0.5rem;
-		//color: ${(props) => props.$color}; /* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
 	}
 	.title {
 		margin: 0;
@@ -33,7 +30,6 @@ export const StyledStatItemComponent = styled.article`
 	.icon {
 		width: 70px;
 		height: 60px;
-		//background: ${(props) => props.$bcg}; /* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
 		background: var(--grey-300);
 		border-radius: 0 var(--border-radius) 0 0;
 		display: flex;
@@ -41,7 +37,6 @@ export const StyledStatItemComponent = styled.article`
 		justify-content: center;
 		svg {
 			font-size: 2rem;
-			//color: ${(props) => props.$color}; /* transient props are prefixed with a $, which ensures that they are not passed down to the DOM */
 			color: var(--white);
 		}
 	}

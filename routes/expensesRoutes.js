@@ -6,7 +6,7 @@ import { postNewExpenseController } from '../controllers/expenses/postNewExpense
 import { getSingleExpenseController } from '../controllers/expenses/getSingleExpenseController.js'
 import { patchExpenseController } from '../controllers/expenses/patchExpenseController.js'
 import { deleteExpenseController } from '../controllers/expenses/deleteExpenseController.js'
-import { showExpensesStatsController } from '../controllers/expenses/statsExpensesController.js'
+import { showExpensesStatsController } from '../controllers/expenses/showExpensesStatsController.js'
 // IMPORT VALIDATION MIDDLEWARE
 import { validateExpenseInput } from '../middleware/validateExpensesMiddleware.js'
 import { validIdExpenseParam } from '../middleware/validationMiddleware.js'
