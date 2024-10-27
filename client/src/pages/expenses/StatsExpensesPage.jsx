@@ -3,8 +3,8 @@ import { useLoaderData } from 'react-router-dom'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
 import { customFetch } from '../../utils/customFetch.js'
 // IMPORT JSX COMPONENTS
-import { ExpensesChartsContainer } from '../../components/charts_expenses_components/expensesChartsContainer.jsx'
-import { ExpensesStatsContainer } from '../../components/charts_expenses_components/expensesStatsContainer.jsx'
+import { ExpensesChartsContainer } from '../../components/charts_expenses_components/ExpensesChartsContainer.jsx'
+import { ExpensesStatsContainer } from '../../components/charts_expenses_components/ExpensesStatsContainer.jsx'
 
 
 // CREATE A LOADER
@@ -25,9 +25,6 @@ export const StatsExpensesPage = () => {
 	const { defaultStats, monthlyExpenses } = useLoaderData()
 	return (
 		<>
-			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
-				Total amount of entries (all times)
-			</h4>
 			<ExpensesStatsContainer defaultStatsProp={defaultStats} />
 			{
 				monthlyExpenses?.length > 1 && <ExpensesChartsContainer monthlyExpensesProp={monthlyExpenses} />

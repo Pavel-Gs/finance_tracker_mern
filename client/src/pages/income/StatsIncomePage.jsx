@@ -27,9 +27,6 @@ export const StatsIncomePage = () => {
 
 	return (
 		<>
-			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
-			Total amount of entries (all times)
-			</h4>
 			<IncomeStatsContainer defaultStatsProp={defaultStats} />
 			{
 				monthlyIncome?.length > 1 && <IncomeChartsContainer monthlyIncomeProp={monthlyIncome} />

@@ -10,7 +10,7 @@ export const BarChartComponent = ({data}) => {
 				<CartesianGrid strokeDasharray='3 3' />
 				<XAxis dataKey='date' />
 				<YAxis allowDecimals={false} />
-				<Tooltip formatter={(value) => [`${value}`, "Amount"]} />
+				<Tooltip formatter={(value) => [`${value.toLocaleString()}`, "Amount"]} />
 				<Bar dataKey='totalAmount' fill='#2cb1bc' barSize={50} />
 			</BarChart>
 		</ResponsiveContainer>

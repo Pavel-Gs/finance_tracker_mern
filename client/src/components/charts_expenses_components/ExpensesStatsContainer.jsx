@@ -15,7 +15,7 @@ import { StyledStatsContainer } from '../../styled_components/StyledStatsContain
 
 
 // EXPENSES STATS CONTAINER JSX COMPONENT
-export const ExpensesStatsContainer = ({defaultStatsProp}) => {
+export const ExpensesStatsContainer = ({ defaultStatsProp }) => {
 
 	// Mapping object for icons
 	const expenseTypeIcons = {
@@ -37,13 +37,21 @@ export const ExpensesStatsContainer = ({defaultStatsProp}) => {
 		iconProp: expenseTypeIcons[key] || expenseTypeIcons.default
 	}))
 
+	// Calculate total count to determine if all counts are zero
+	const totalExpensesCount = Object.values(defaultStatsProp).reduce((acc, count) => acc + count, 0)
+
 	return (
-		<StyledStatsContainer>
-			{statsList.map((i) => {
-				return (
-					<StatItemComponent key={i.titleProp} {...i} />
-				)
-			})}
-		</StyledStatsContainer>
+		<>
+			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
+				{totalExpensesCount === 0 ? "No expense data" : "Total entries count"}
+			</h4>
+			<StyledStatsContainer>
+				{statsList.map((i) => {
+					return (
+						<StatItemComponent key={i.titleProp} {...i} />
+					)
+				})}
+			</StyledStatsContainer>
+		</>
 	)
 }
