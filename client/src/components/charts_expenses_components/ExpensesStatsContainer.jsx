@@ -32,7 +32,7 @@ export const ExpensesStatsContainer = ({defaultStatsProp}) => {
 
 	// Create statsList dynamically from defaultStatsProp
 	const statsList = Object.entries(defaultStatsProp).map(([key, value], index) => ({
-		titleProp: `${key} entries` || "N/A",
+		titleProp: key || "N/A",
 		countProp: value || 0,
 		iconProp: expenseTypeIcons[key] || expenseTypeIcons.default
 	}))

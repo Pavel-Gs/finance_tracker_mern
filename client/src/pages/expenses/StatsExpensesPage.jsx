@@ -21,14 +21,12 @@ export const loaderStatsExpenses = async () => {
 
 // STATS EXPENSES PAGE JSX COMPONENT
 export const StatsExpensesPage = () => {
-
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderStatsExpenses" function (also, refer to App.jsx, "stats-expenses" path) */
 	const { defaultStats, monthlyExpenses } = useLoaderData()
-
 	return (
 		<>
-			<h4 className='form-title' style={{ marginBottom: '1.5rem' }}>
-				Stats count
+			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
+				Total amount of entries (all times)
 			</h4>
 			<ExpensesStatsContainer defaultStatsProp={defaultStats} />
 			{

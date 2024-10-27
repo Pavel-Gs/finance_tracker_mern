@@ -22,7 +22,7 @@ export const IncomeStatsContainer = ({defaultStatsProp}) => {
 
 	// Create statsList dynamically from defaultStatsProp
 	const statsList = Object.entries(defaultStatsProp).map(([key, value], index) => ({
-		titleProp: `${key} entries` || "N/A",
+		titleProp: key || "N/A",
 		countProp: value || 0,
 		iconProp: incomeTypeIcons[key] || incomeTypeIcons.default
 	}))
