@@ -71,8 +71,8 @@ export const TYPE_TO_CATEGORIES = {
 
 // SORT EXPENSES BY TYPE
 export const SORT_EXPENSES_BY = {
-	NEWEST_FIRST: "Newest",
-	OLDEST_FIRST: "Oldest",
-	HIGHEST: "999-1",
-	LOWEST: "1-999"
+	NEWEST_FIRST: "newest",
+	OLDEST_FIRST: "oldest",
+	BIGGEST: "biggest",
+	SMALLEST: "smallest"
 }
