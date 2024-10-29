@@ -5,7 +5,7 @@ export const FormRowComponent = ({ typeProp, nameProp, labelTextProp, defaultVal
 			<label className='form-label' htmlFor={nameProp}>
 				{labelTextProp || nameProp}
 			</label>
-			<input className='form-input' type={typeProp} step='0.01' id={nameProp} name={nameProp} defaultValue={defaultValueProp || ""} onChange={onChangeProp} required />
+			<input className='form-input' type={typeProp} step='0.01' id={nameProp} name={nameProp} defaultValue={defaultValueProp || ""} onChange={onChangeProp} />
 		</div>
 	)
 }

@@ -9,13 +9,19 @@ import { EXPENSES_TYPES, EXPENSES_CATEGORIES, TYPE_TO_CATEGORIES, SORT_EXPENSES_
 // IMPORT JSX COMPONENTS
 import { FormRowComponent } from '../FormRowComponent.jsx'
 import { FormRowSelectComponent } from '../FormRowSelectComponent.jsx'
-import { SubmitButtonComponent } from '../SubmitButtonComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
 
 // SEARCH EXPENSES CONTAINER JSX COMPONENT
 export const SearchExpensesContainerComponent = () => {
+
+	/* use data from the context */
+	const { searchValues } = useAllExpensesContext()
+	const { commentsExpense, typeExpense, categoryExpense, startDate, endDate, sort } = searchValues /* used as default values, so they stay after page refresh */
+
+	/* invoke useSubmit hook */
+	const submit = useSubmit()
 
 	/* logic to render categories according to selected type */
 	const [selectedType, setSelectedType] = useState('') /* state to track the type selection */
@@ -24,6 +30,7 @@ export const SearchExpensesContainerComponent = () => {
 		const selectedValue = e.target.value
 		setSelectedType(selectedValue) /* update selected type; and dropdown select logic (prevents the category selection before the type is selected) */
 		setCategoryList(TYPE_TO_CATEGORIES[selectedValue] || []) /* set corresponding categories for the selected type */
+		submit(e.currentTarget.form) /* submit the form automatically on change, and apply the selected search parameters */
 	}
 
 	/* date picker logic */
@@ -32,6 +39,19 @@ export const SearchExpensesContainerComponent = () => {
 	const [selectedDate, setSelectedDate] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
 		setSelectedDate(e.target.value)
+		submit(e.currentTarget.form) /* submit the form automatically on change, and apply the selected search parameters */
+	}
+
+	/* debounce logic (set timeout to user's input submit) */
+	const debounce = (onChange) => {
+		let timeout
+		return (e) => {
+			const form = e.currentTarget.form
+			clearTimeout(timeout) /* reset timeout after each keystroke */
+			timeout = setTimeout(() => {
+				onChange(form)
+			}, 1000) /* only submit the form after the timeout */
+		}
 	}
 
 	return (
@@ -43,15 +63,12 @@ export const SearchExpensesContainerComponent = () => {
 					Search form
 				</h5>
 				<div className='form-center'>
-					<FormRowComponent typeProp='search' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp="N/A" />
-					<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={["all", ...Object.values(EXPENSES_TYPES)]} defaultValueProp="all" onChangeProp={handleTypeSelectionChange} />
-					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={["all", ...categoryList.map(i => EXPENSES_CATEGORIES[i])]} defaultValueProp="all" disabledProp={selectedType === ""} /> {/* only disable if type is not selected */}
-					<FormRowComponent typeProp='date' nameProp='startDate' labelTextProp="Start date range" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
-					<FormRowComponent typeProp='date' nameProp='endDate' labelTextProp="End date range" defaultValueProp={selectedDate} onChangeProp={handleDateSelectionChange} />
-					<FormRowSelectComponent nameProp='sort' defaultValueProp='newest' listProp={Object.values(SORT_EXPENSES_BY)} />
-					{/* temp */}
-					{/* "formBtnProp" is used in SubmitButtonComponent as a boolean, therefore no need to provide a value: if it's present - the class will apply */}
-					<SubmitButtonComponent formBtnProp />
+					<FormRowComponent typeProp='search' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={commentsExpense} onChangeProp={debounce((form) => {submit(form)})} />
+					<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={["all", ...Object.values(EXPENSES_TYPES)]} defaultValueProp={typeExpense} onChangeProp={handleTypeSelectionChange} />
+					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={["all", ...categoryList.map(i => EXPENSES_CATEGORIES[i])]} defaultValueProp={categoryExpense} disabledProp={selectedType === ""} onChangeProp={(e) => {submit(e.currentTarget.form)}} /> {/* only disable if type is not selected */}
+					<FormRowComponent typeProp='date' nameProp='startDate' labelTextProp="Start date range" defaultValueProp={startDate} onChangeProp={handleDateSelectionChange} />
+					<FormRowComponent typeProp='date' nameProp='endDate' labelTextProp="End date range" defaultValueProp={endDate} onChangeProp={handleDateSelectionChange} />
+					<FormRowSelectComponent nameProp='sort' listProp={Object.values(SORT_EXPENSES_BY)} defaultValueProp={sort} onChangeProp={(e) => {submit(e.currentTarget.form)}} />
 				</div>
 			</Form>
 		</StyledDashboardFormPage>

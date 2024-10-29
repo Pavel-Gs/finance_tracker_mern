@@ -47,11 +47,21 @@ export const getAllIncomeController = async (req, res) => {
 	const limit = Number(req.query.limit) || 20 /* amount of entries to display on a single page */
 	const skip = (page - 1) * limit
 	const incomeEntries = await IncomeModel.countDocuments(queryOrg)
+	const getIncomeSum = await IncomeModel.aggregate([
+		{ $match: queryOrg }, /* filter based on queryOrg criteria */
+		{
+			$group: {
+				_id: null, /* group all matched documents together */
+				totalAmount: { $sum: "$amountIncome" } /* sum of amountIncome field */
+			}
+		}
+	])
+	const currentIncomeSum = getIncomeSum[0]?.totalAmount || 0;
 	const numOfPages = Math.ceil(incomeEntries / limit)
 
 	/* show results, based on the membership (or the lack of it) */
 	const allIncome = await IncomeModel.find(queryOrg).sort(sortKey).skip(skip).limit(limit)
 		.populate('createdBy', 'firstName lastName') /* populate createdBy object with the creator's first and last names */
 
-	res.status(StatusCodes.OK).json({ incomeEntries, numOfPages, currentPage: page, allIncome })
+	res.status(StatusCodes.OK).json({ incomeEntries, currentIncomeSum, numOfPages, currentPage: page, allIncome })
 }

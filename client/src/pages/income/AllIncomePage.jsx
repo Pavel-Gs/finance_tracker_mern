@@ -13,11 +13,17 @@ import { SearchIncomeContainerComponent } from '../../components/income_componen
 
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "all-income" path */
-export const loaderAllIncome = async () => {
+export const loaderAllIncome = async ({request}) => {
+
+	/* construct params from URL */
+	const params = Object.fromEntries([
+		...new URL(request.url).searchParams.entries()
+	])
+
 	try {
 
 		/* get all of the data */
-		const { data } = await customFetch.get('/income') /* get the entire object from API */
+		const { data } = await customFetch.get('/income', {params}) /* get the entire object from API, and search params from URL */
 		const { allIncome } = data /* destructure income from the data */
 
 		/* filter today's income from allIncome */
@@ -29,7 +35,7 @@ export const loaderAllIncome = async () => {
 		})
 
 		/* return both all income (for AllIncomePage.jsx) and filtered income (used in the TodayIncomeContainerComponent.jsx in AddIncomePage.jsx) */
-		return { data, todayIncome } /* must return something; this return will be available in the component, where that loader is used */
+		return { data, todayIncome, searchValues: {...params} } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
 		return error
@@ -47,11 +53,11 @@ export const useAllIncomeContext = () => useContext(AllIncomeContext)
 export const AllIncomePage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderAllIncome" function (also, refer to App.jsx, "all-income" path) */
-	const { data } = useLoaderData() /* using the whole object, without destructuring */
+	const { data, searchValues } = useLoaderData() /* using the whole object, without destructuring, and search params as default values */
 
 	/* wrap the return with the global context */
 	return (
-		<AllIncomeContext.Provider value={{ data }}>
+		<AllIncomeContext.Provider value={{ data, searchValues }}>
 			<SearchIncomeContainerComponent />
 			<AllIncomeContainerComponent />
 		</AllIncomeContext.Provider>

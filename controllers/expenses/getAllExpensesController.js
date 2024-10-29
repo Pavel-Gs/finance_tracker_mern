@@ -47,11 +47,21 @@ export const getAllExpensesController = async (req, res) => {
 	const limit = Number(req.query.limit) || 20 /* amount of entries to display on a single page */
 	const skip = (page - 1) * limit
 	const expensesEntries = await ExpensesModel.countDocuments(queryOrg)
+	const getExpensesSum = await ExpensesModel.aggregate([
+		{ $match: queryOrg }, /* filter based on queryOrg criteria */
+		{
+			$group: {
+				_id: null, /* group all matched documents together */
+				totalAmount: { $sum: "$amountExpense" } /* sum of amountExpense field */
+			}
+		}
+	])
+	const currentExpensesSum = getExpensesSum[0]?.totalAmount || 0;
 	const numOfPages = Math.ceil(expensesEntries / limit)
 
 	/* show results, based on the membership (or the lack of it) */
 	const allExpenses = await ExpensesModel.find(queryOrg).sort(sortKey).skip(skip).limit(limit)
 		.populate('createdBy', 'firstName lastName') /* populate createdBy object with the creator's first and last names */
 
-	res.status(StatusCodes.OK).json({ expensesEntries, numOfPages, currentPage: page, allExpenses })
+	res.status(StatusCodes.OK).json({ expensesEntries, currentExpensesSum, currentPage: page, allExpenses })
 }

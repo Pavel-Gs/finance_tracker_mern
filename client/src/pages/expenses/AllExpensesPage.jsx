@@ -13,11 +13,17 @@ import { SearchExpensesContainerComponent } from '../../components/expenses_comp
 
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "all-expenses" and "add-expense" (dashboard) path */
-export const loaderAllExpenses = async () => {
+export const loaderAllExpenses = async ({ request }) => {
+
+	/* construct params from URL */
+	const params = Object.fromEntries([
+		...new URL(request.url).searchParams.entries()
+	])
+
 	try {
 
 		/* get all of the data */
-		const { data } = await customFetch.get('/expenses') /* get the entire object from API */
+		const { data } = await customFetch.get('/expenses', {params}) /* get the entire object from API, and search params from URL */
 		const { allExpenses } = data /* destructure expenses from the data */
 
 		/* filter today's expenses from allExpenses */
@@ -29,7 +35,7 @@ export const loaderAllExpenses = async () => {
 		})
 
 		/* return both all expenses (for AllExpensesPage.jsx) and filtered expenses (used in the TodayExpensesContainerComponent.jsx in AddExpensePage.jsx) */
-		return { data, todayExpenses } /* must return something; this return will be available in the component, where that loader is used */
+		return { data, todayExpenses, searchValues: {...params} } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
 		return error
@@ -47,11 +53,11 @@ export const useAllExpensesContext = () => useContext(AllExpensesContext)
 export const AllExpensesPage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderAllExpenses" function (also, refer to App.jsx, "all-expenses" path) */
-	const { data } = useLoaderData() /* using the whole object (data), without destructuring */
+	const { data, searchValues } = useLoaderData() /* using the whole object (data), without destructuring, and search params as default values */
 
 	/* wrap the return with the global context */
 	return (
-		<AllExpensesContext.Provider value={{ data }}>
+		<AllExpensesContext.Provider value={{ data, searchValues }}>
 			<SearchExpensesContainerComponent />
 			<AllExpensesContainerComponent />
 		</AllExpensesContext.Provider>

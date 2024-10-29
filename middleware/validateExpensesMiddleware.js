@@ -23,8 +23,8 @@ export const validateExpenseInput = withValidationErrors(
 		body('commentsExpense')
 			.notEmpty()
 			.withMessage("The comment is required (or N/A)")
-			.isLength({ min: 2, max: 100 })
-			.withMessage("The comment's length must be between 2 and 100 characters"),
+			.isLength({ min: 2, max: 30 })
+			.withMessage("The comment's length must be between 2 and 30 characters"),
 		body('locationExpense')
 			.notEmpty()
 			.withMessage("The location is required")
