@@ -11,6 +11,7 @@ import day from 'dayjs'
 // SHOW EXPENSES STATS CONTROLLER
 export const showExpensesStatsController = async (req, res) => {
 
+
 	/* set match condition */
 	let matchCondition = {}
 	if (req.authenticatedUser.userOrg === "N/A") {
@@ -19,7 +20,13 @@ export const showExpensesStatsController = async (req, res) => {
 		matchCondition = { organizationName: req.authenticatedUser.userOrg } /* match by organization name, if a user is a member of an organization */
 	}
 
-	/* count by type */
+
+	/* get current year and month */
+	const currentYear = day().year()
+	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
+
+
+	/* count by type (count total amount of expense entries) */
 	/* mongoose pipeline */
 	let countExpensesTypes = await ExpensesModel.aggregate([
 		/* stage 1: match by condition */
@@ -41,17 +48,15 @@ export const showExpensesStatsController = async (req, res) => {
 		}
 	])
 	/* convert the results to an object */
-	const defaultStats = countExpensesTypes.reduce((acc, { _id: title, count }) => {
+	const countedExpensesTypes = countExpensesTypes.reduce((acc, { _id: title, count }) => {
 		acc[title] = count || 0;
 		return acc;
 	}, {});
 
-	/* get current year */
-	const currentYear = day().year()
 
-	/* group by date */
+	/* group by date - year (count total sum of current annual expenses) */
 	/* mongoose pipeline */
-	let monthlyExpenses = await ExpensesModel.aggregate([
+	let currentAnnualExpenses = await ExpensesModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
 		{
 			$match: {
@@ -85,7 +90,7 @@ export const showExpensesStatsController = async (req, res) => {
 		}
 	])
 	/* return the results as an object */
-	monthlyExpenses = monthlyExpenses.map((i) => {
+	currentAnnualExpenses = currentAnnualExpenses.map((i) => {
 		const { _id: { year, month }, totalAmount } = i
 		const date = day().month(month - 1).year(year).format('MMMM YYYY') /* "month - 1" is to compensate for january indexing as zero */
 		return {
@@ -94,5 +99,30 @@ export const showExpensesStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	res.status(StatusCodes.OK).json({ defaultStats, monthlyExpenses })
+	/* group by date - month (count total sum of the current month's expenses) */
+	/* mongoose pipeline */
+	let currentMonthlyExpenses = await ExpensesModel.aggregate([
+		/* stage 1: match by condition and filter by current year and month */
+		{
+			$match: {
+				...matchCondition,
+				dateExpense: {
+					$gte: new Date(currentYear, currentMonth - 1, 1),
+					$lt: new Date(currentYear, currentMonth, 1)
+				}
+			}
+		},
+		/* stage 2: group by date */
+		{
+			$group: {
+				_id: null,
+				totalAmount: { $sum: "$amountExpense" }
+			}
+		}
+	])
+	/* return the results */
+	currentMonthlyExpenses = currentMonthlyExpenses[0]?.totalAmount || 0
+
+
+	res.status(StatusCodes.OK).json({ countedExpensesTypes, currentAnnualExpenses, currentMonthlyExpenses })
 }

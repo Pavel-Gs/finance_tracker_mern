@@ -20,8 +20,12 @@ import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayou
 /* for prefetching the data; used in App.jsx "dashboard" path */
 export const loaderDashboard = async () => {
 	try {
-		const { data } = await customFetch.get('/users/current-user')
-		return data /* must return something; this return will be available in the component, where that loader is used */
+		const { data } = await customFetch.get('/users/current-user') /* fetch the current user data */
+		const fetchCurrentMonthlyExpenses = await customFetch.get('/expenses/stats') /* fetch the current monthly expenses */
+		const currentMonthlyExpenses = fetchCurrentMonthlyExpenses.data.currentMonthlyExpenses
+		const fetchCurrentMonthlyIncome = await customFetch.get('/income/stats') /* fetch the current monthly income */
+		const currentMonthlyIncome = fetchCurrentMonthlyIncome.data.currentMonthlyIncome
+		return { data, currentMonthlyExpenses, currentMonthlyIncome } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		return redirect('/')
 	}
@@ -53,7 +57,8 @@ export const DashboardLayout = () => {
 	}
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
-	const { currentUser } = useLoaderData() /* destructure the user from the loader data */
+	const { data: currentUserObj, currentMonthlyExpenses, currentMonthlyIncome } = useLoaderData() /* destructure the data from the loader data */
+	const currentUser = currentUserObj.currentUserObj /* get the currentUser from the object, since the loader returns multiple items (in an object) */
 
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
@@ -67,7 +72,7 @@ export const DashboardLayout = () => {
 
 	/* wrap the return with the global context */
 	return (
-		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser }}>
+		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser, currentMonthlyExpenses, currentMonthlyIncome }}>
 			<StyledDashboardLayout>
 				<main className="dashboard">
 					<SmallSidebarComponent />

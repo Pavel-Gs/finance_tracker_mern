@@ -28,7 +28,7 @@ export const actionAddIncome = async ({ request }) => {
 	/* post new data using income form inputs */
 	try {
 		await customFetch.post('/income', incomeData)
-		toast.success("Income added")
+		toast.success("Income added", { position: "bottom-left" })
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

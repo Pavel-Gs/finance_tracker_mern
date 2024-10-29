@@ -14,7 +14,7 @@ export const LogoutComponent = () => {
 	/* use global context data */
 	const { currentUser, logoutUser } = useDashboardContext()
 	const [showLogout, setShowLogout] = useState(false)
-
+	
 	return (
 		<StyledLogoutComponent>
 			<button className='btn logout-btn' type='button' onClick={() => setShowLogout(!showLogout)}>

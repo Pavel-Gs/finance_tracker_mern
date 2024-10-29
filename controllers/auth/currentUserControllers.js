@@ -10,9 +10,9 @@ import {promises as fs} from 'fs'
 
 // GET CURRENT USER CONTROLLER
 export const getCurrentUserController = async (req, res) => {
-	const currentUser = await UserModel.findOne({ _id: req.authenticatedUser.userId })
-	const userWithoutPassword = currentUser.toJSON() /* use "toJSON" method from UserModel */
-	res.status(StatusCodes.OK).json({ currentUser: userWithoutPassword })
+	const currentUserObj = await UserModel.findOne({ _id: req.authenticatedUser.userId })
+	const userWithoutPassword = currentUserObj.toJSON() /* use "toJSON" method from UserModel */
+	res.status(StatusCodes.OK).json({ currentUserObj: userWithoutPassword })
 }
 
 

@@ -23,13 +23,13 @@ export const loaderStatsIncome = async () => {
 export const StatsIncomePage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderStatsIncome" function (also, refer to App.jsx, "stats-income" path) */
-	const { defaultStats, monthlyIncome } = useLoaderData()
+	const { countedIncomeTypes, currentAnnualIncome } = useLoaderData()
 
 	return (
 		<>
-			<IncomeStatsContainer defaultStatsProp={defaultStats} />
+			<IncomeStatsContainer countedIncomeTypesProp={countedIncomeTypes} />
 			{
-				monthlyIncome?.length > 1 && <IncomeChartsContainer monthlyIncomeProp={monthlyIncome} />
+				currentAnnualIncome?.length > 1 && <IncomeChartsContainer currentAnnualIncomeProp={currentAnnualIncome} />
 			}
 		</>
 	)

@@ -28,7 +28,7 @@ export const actionAddExpense = async ({ request }) => {
 	/* post new data using expense form inputs */
 	try {
 		await customFetch.post('/expenses', expenseData)
-		toast.success("Expense added")
+		toast.success("Expense added", { position: "bottom-left" })
 		return redirect('all-expenses') /* it must return something; redirects a user to all-expenses page after submission; note: "all-expenses", not "/all-expenses" */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

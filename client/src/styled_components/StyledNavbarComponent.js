@@ -27,10 +27,38 @@ export const StyledNavbarComponent = styled.nav`
 	.logo-text {
 		display: none;
 	}
+
+	.dashboard-stats-container {
+		display: flex;
+		align-items: center;
+
+		.dashboard-stats-current {
+			display: flex;
+			flex-direction: column;
+			text-align: right;
+			margin-left: 1rem;
+			@media (max-width: 520px) {
+				display: none;
+			}
+		}
+
+		.dashboard-stats {
+			display: flex;
+			flex-direction: column;
+			text-align: right;
+			margin-left: 1rem;
+			@media (max-width: 992px) {
+				display: none;
+			}
+		}
+	}
+	
 	.logo {
 		display: flex;
 		align-items: center;
+		margin-left: 1rem;
 		width: 100px;
+		height: 100%;
 	}
 	.btn-container {
 		display: flex;

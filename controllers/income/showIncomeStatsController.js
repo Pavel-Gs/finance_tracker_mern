@@ -11,6 +11,7 @@ import day from 'dayjs'
 // SHOW EXPENSES STATS CONTROLLER
 export const showIncomeStatsController = async (req, res) => {
 
+
 	/* set match condition */
 	let matchCondition = {}
 	if (req.authenticatedUser.userOrg === "N/A") {
@@ -19,7 +20,13 @@ export const showIncomeStatsController = async (req, res) => {
 		matchCondition = { organizationName: req.authenticatedUser.userOrg } /* match by organization name, if a user is a member of an organization */
 	}
 
-	/* count by type */
+
+	/* get current year and month */
+	const currentYear = day().year()
+	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
+
+
+	/* count by type (count total amount of income entries) */
 	/* mongoose pipeline */
 	let countIncomeTypes = await IncomeModel.aggregate([
 		/* stage 1: match by condition */
@@ -41,18 +48,15 @@ export const showIncomeStatsController = async (req, res) => {
 		}
 	])
 	/* convert the results to an object */
-	const defaultStats = countIncomeTypes.reduce((acc, { _id: title, count }) => {
+	const countedIncomeTypes = countIncomeTypes.reduce((acc, { _id: title, count }) => {
 		acc[title] = count || 0;
 		return acc;
 	}, {});
-	console.log(defaultStats)
 
-	/* get current year */
-	const currentYear = day().year()
-
-	/* group by date */
+	
+	/* group by date - year (count total sum of current annual income) */
 	/* mongoose pipeline */
-	let monthlyIncome = await IncomeModel.aggregate([
+	let currentAnnualIncome = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
 		{
 			$match: {
@@ -86,7 +90,7 @@ export const showIncomeStatsController = async (req, res) => {
 		}
 	])
 	/* return the results as an object */
-	monthlyIncome = monthlyIncome.map((i) => {
+	currentAnnualIncome = currentAnnualIncome.map((i) => {
 		const { _id: { year, month }, totalAmount } = i
 		const date = day().month(month - 1).year(year).format('MMMM YYYY') /* "month - 1" is to compensate for january indexing as zero */
 		return {
@@ -95,5 +99,30 @@ export const showIncomeStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	res.status(StatusCodes.OK).json({ defaultStats, monthlyIncome })
+	/* group by date - month (count total sum of the current month's income) */
+	/* mongoose pipeline */
+	let currentMonthlyIncome = await IncomeModel.aggregate([
+		/* stage 1: match by condition and filter by current year and month */
+		{
+			$match: {
+				...matchCondition,
+				dateIncome: {
+					$gte: new Date(currentYear, currentMonth - 1, 1),
+					$lt: new Date(currentYear, currentMonth, 1)
+				}
+			}
+		},
+		/* stage 2: group by date */
+		{
+			$group: {
+				_id: null,
+				totalAmount: { $sum: "$amountIncome" }
+			}
+		}
+	])
+	/* return the results */
+	currentMonthlyIncome = currentMonthlyIncome[0]?.totalAmount || 0
+
+
+	res.status(StatusCodes.OK).json({ countedIncomeTypes, currentAnnualIncome, currentMonthlyIncome })
 }

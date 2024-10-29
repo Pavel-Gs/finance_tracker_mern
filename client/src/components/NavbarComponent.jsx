@@ -11,10 +11,17 @@ import { StyledNavbarComponent } from '../styled_components/StyledNavbarComponen
 
 
 // NAVBAR JSX COMPONENT
+/* props are coming from DashboardLayout.jsx, from the loader data */
 export const NavbarComponent = () => {
-	
+
 	/* use global context data */
-	const {toggleSidebar} = useDashboardContext()
+	const { toggleSidebar, currentMonthlyExpenses, currentMonthlyIncome } = useDashboardContext()
+
+	// Format with a thousand separator
+	const formattedCurrentMonthlyExpenses = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyExpenses)
+	const formattedCurrentMonthlyIncome = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyIncome)
+	const currentMonthlySavings = currentMonthlyIncome - currentMonthlyExpenses
+	const formattedCurrentMonthlySavings = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlySavings)
 
 	return (
 		<StyledNavbarComponent>
@@ -23,10 +30,27 @@ export const NavbarComponent = () => {
 					<FaAlignLeft />
 				</button>
 				<div>
-					<LogoComponent />
-					<h4 className='logo-text'>
-						dashboard
-					</h4>
+					<div className='dashboard-stats-container'>
+						<LogoComponent />
+						<div className='dashboard-stats-current'>
+							<h6>Current month:</h6>
+							<p>+ {formattedCurrentMonthlyIncome}</p>
+							<p>- {formattedCurrentMonthlyExpenses}</p>
+							<p>= {formattedCurrentMonthlySavings}</p>
+						</div>
+						{/* <div className='dashboard-stats'>
+							<h6>Current year:</h6>
+							<p>+ {formattedCurrentMonthlyIncome}</p>
+							<p>- {formattedCurrentMonthlyExpenses}</p>
+							<p>= {formattedCurrentMonthlySavings}</p>
+						</div> */}
+						{/* <div className='dashboard-stats'>
+							<h6>All time:</h6>
+							<p>+ {formattedCurrentMonthlyIncome}</p>
+							<p>- {formattedCurrentMonthlyExpenses}</p>
+							<p>= {formattedCurrentMonthlySavings}</p>
+						</div> */}
+					</div>
 				</div>
 				<div className="btn-container">
 					<ThemeToggleComponent />

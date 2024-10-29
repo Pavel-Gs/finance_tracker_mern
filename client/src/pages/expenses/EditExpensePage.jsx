@@ -40,7 +40,7 @@ export const actionEditExpense = async ({request, params}) => {
 	/* patch the existing data using expense form inputs */
 	try {
 		await customFetch.patch(`/expenses/${params.id}`, expenseData)
-		toast.success("Expense edited") /* display a toast */
+		toast.success("Expense edited", { position: "bottom-left" }) /* display a toast */
 		return redirect('/dashboard/all-expenses') /* it must return something; redirects a user to all-expenses page after submission */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

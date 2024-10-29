@@ -10,7 +10,7 @@ import { StyledStatsContainer } from '../../styled_components/StyledStatsContain
 
 
 // INCOME STATS CONTAINER JSX COMPONENT
-export const IncomeStatsContainer = ({ defaultStatsProp }) => {
+export const IncomeStatsContainer = ({ countedIncomeTypesProp }) => {
 
 	// Mapping object for icons
 	const incomeTypeIcons = {
@@ -21,22 +21,22 @@ export const IncomeStatsContainer = ({ defaultStatsProp }) => {
 	}
 
 	// Create statsList dynamically from defaultStatsProp
-	const statsList = Object.entries(defaultStatsProp).map(([key, value], index) => ({
+	const typesList = Object.entries(countedIncomeTypesProp).map(([key, value], index) => ({
 		titleProp: key || "N/A",
 		countProp: value || 0,
 		iconProp: incomeTypeIcons[key] || incomeTypeIcons.default
 	}))
 
 	// Calculate total count to determine if all counts are zero
-	const totalIncomeCount = Object.values(defaultStatsProp).reduce((acc, count) => acc + count, 0)
+	const totalIncomeEntriesCount = Object.values(countedIncomeTypesProp).reduce((acc, count) => acc + count, 0)
 
 	return (
 		<>
 			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
-				{totalIncomeCount === 0 ? "No income data" : "Total entries count"}
+				{totalIncomeEntriesCount === 0 ? "No income data" : "Total entries count"}
 			</h4>
 			<StyledStatsContainer>
-				{statsList.map((i) => {
+				{typesList.map((i) => {
 					return (
 						<StatItemComponent key={i.titleProp} {...i} />
 					)

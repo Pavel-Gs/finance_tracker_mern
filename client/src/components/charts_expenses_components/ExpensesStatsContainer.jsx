@@ -15,7 +15,7 @@ import { StyledStatsContainer } from '../../styled_components/StyledStatsContain
 
 
 // EXPENSES STATS CONTAINER JSX COMPONENT
-export const ExpensesStatsContainer = ({ defaultStatsProp }) => {
+export const ExpensesStatsContainer = ({ countedExpensesTypesProp }) => {
 
 	// Mapping object for icons
 	const expenseTypeIcons = {
@@ -31,22 +31,22 @@ export const ExpensesStatsContainer = ({ defaultStatsProp }) => {
 	}
 
 	// Create statsList dynamically from defaultStatsProp
-	const statsList = Object.entries(defaultStatsProp).map(([key, value], index) => ({
+	const typesList = Object.entries(countedExpensesTypesProp).map(([key, value], index) => ({
 		titleProp: key || "N/A",
 		countProp: value || 0,
 		iconProp: expenseTypeIcons[key] || expenseTypeIcons.default
 	}))
 
 	// Calculate total count to determine if all counts are zero
-	const totalExpensesCount = Object.values(defaultStatsProp).reduce((acc, count) => acc + count, 0)
+	const totalExpensesEntriesCount = Object.values(countedExpensesTypesProp).reduce((acc, count) => acc + count, 0)
 
 	return (
 		<>
 			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
-				{totalExpensesCount === 0 ? "No expense data" : "Total entries count"}
+				{totalExpensesEntriesCount === 0 ? "No expense data" : "Total entries count"}
 			</h4>
 			<StyledStatsContainer>
-				{statsList.map((i) => {
+				{typesList.map((i) => {
 					return (
 						<StatItemComponent key={i.titleProp} {...i} />
 					)
