@@ -58,7 +58,7 @@ export const DashboardLayout = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
 	const { data: currentUserObj, currentMonthlyExpenses, currentMonthlyIncome } = useLoaderData() /* destructure the data from the loader data */
-	const currentUser = currentUserObj.currentUserObj /* get the currentUser from the object, since the loader returns multiple items (in an object) */
+	const currentUser = currentUserObj.currentUserObj /* get the currentUser object from another object, since the loader returns multiple items (in an object) */
 
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()

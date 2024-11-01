@@ -2,6 +2,7 @@
 import { useAllExpensesContext } from '../../pages/expenses/AllExpensesPage.jsx'
 // IMPORT JSX COMPONENTS
 import { SingleExpenseComponent } from './SingleExpenseComponent.jsx'
+import { PaginationButtonsExpensesComponent } from './PaginationButtonsExpensesComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledTransactionsContainer } from '../../styled_components/StyledTransactionsContainer.js'
 
@@ -11,7 +12,8 @@ export const AllExpensesContainerComponent = () => {
 
 	/* use global context data */
 	const { data } = useAllExpensesContext()
-	const { allExpenses } = data /* destructure expenses from the data */
+	const { allExpenses, currentExpensesSum, expensesEntries, numOfPages } = data /* destructure expenses from the data */
+	const formattedCurrentExpensesSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentExpensesSum)
 
 	/* if no expenses found */
 	if (allExpenses.length === 0) {
@@ -26,14 +28,17 @@ export const AllExpensesContainerComponent = () => {
 
 	return (
 		<StyledTransactionsContainer>
+			<h5 style={{ textTransform: 'none' }}>
+				Entries found: {expensesEntries}, {formattedCurrentExpensesSum}
+			</h5>
 			<div className='transactions'>
 				{allExpenses.map((i) => {
 					return (
 						<SingleExpenseComponent key={i._id} {...i} />
-
 					)
 				})}
 			</div>
+			{numOfPages > 1 && <PaginationButtonsExpensesComponent />}
 		</StyledTransactionsContainer>
 	)
 }

@@ -30,6 +30,10 @@ export const SearchExpensesContainerComponent = () => {
 		const selectedValue = e.target.value
 		setSelectedType(selectedValue) /* update selected type; and dropdown select logic (prevents the category selection before the type is selected) */
 		setCategoryList(TYPE_TO_CATEGORIES[selectedValue] || []) /* set corresponding categories for the selected type */
+		// Reset category to "all" if type is set to "all"
+		if (selectedValue === "all") {
+			e.currentTarget.form.categoryExpense.value = "all";
+		}
 		submit(e.currentTarget.form) /* submit the form automatically on change, and apply the selected search parameters */
 	}
 

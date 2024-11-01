@@ -63,5 +63,5 @@ export const getAllExpensesController = async (req, res) => {
 	const allExpenses = await ExpensesModel.find(queryOrg).sort(sortKey).skip(skip).limit(limit)
 		.populate('createdBy', 'firstName lastName') /* populate createdBy object with the creator's first and last names */
 
-	res.status(StatusCodes.OK).json({ expensesEntries, currentExpensesSum, currentPage: page, allExpenses })
+	res.status(StatusCodes.OK).json({ expensesEntries, currentExpensesSum, numOfPages, currentPage: page, allExpenses })
 }

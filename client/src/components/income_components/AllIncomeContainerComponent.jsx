@@ -2,6 +2,7 @@
 import { useAllIncomeContext } from '../../pages/income/AllIncomePage.jsx'
 // IMPORT JSX COMPONENTS
 import { SingleIncomeComponent } from './SingleIncomeComponent.jsx'
+import { PaginationButtonsIncomeComponent } from './PaginationButtonsIncomeComponent.jsx'
 // IMPORT STYLED COMPONENTS
 import { StyledTransactionsContainer } from '../../styled_components/StyledTransactionsContainer.js'
 
@@ -11,7 +12,8 @@ export const AllIncomeContainerComponent = () => {
 
 	/* use global context data */
 	const { data } = useAllIncomeContext()
-	const { allIncome } = data /* destructure income from the data */
+	const { allIncome, currentIncomeSum, incomeEntries, numOfPages } = data /* destructure income from the data */
+	const formattedCurrentIncomeSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentIncomeSum)
 
 	/* if no income found */
 	if (allIncome.length === 0) {
@@ -26,6 +28,9 @@ export const AllIncomeContainerComponent = () => {
 
 	return (
 		<StyledTransactionsContainer>
+			<h5 style={{ textTransform: 'none' }}>
+				Entries found: {incomeEntries}, {formattedCurrentIncomeSum}
+			</h5>
 			<div className='transactions'>
 				{allIncome.map((i) => {
 					return (
@@ -33,6 +38,7 @@ export const AllIncomeContainerComponent = () => {
 					)
 				})}
 			</div>
+			{numOfPages > 1 && <PaginationButtonsIncomeComponent />}
 		</StyledTransactionsContainer>
 	)
 }
