@@ -8,7 +8,7 @@ import { IncomeModel } from '../../models/IncomeModel.js'
 import day from 'dayjs'
 
 
-// SHOW EXPENSES STATS CONTROLLER
+// SHOW INCOME STATS CONTROLLER
 export const showIncomeStatsController = async (req, res) => {
 
 
@@ -51,9 +51,9 @@ export const showIncomeStatsController = async (req, res) => {
 	const countedIncomeTypes = countIncomeTypes.reduce((acc, { _id: title, count }) => {
 		acc[title] = count || 0;
 		return acc;
-	}, {});
+	}, {})
 
-	
+
 	/* group by date - year (count total sum of current annual income) */
 	/* mongoose pipeline */
 	let currentAnnualIncome = await IncomeModel.aggregate([
@@ -61,9 +61,8 @@ export const showIncomeStatsController = async (req, res) => {
 		{
 			$match: {
 				...matchCondition,
-				dateIncome: {
-					$gte: new Date(currentYear, 0, 1),
-					$lt: new Date(currentYear + 1, 0, 1)
+				$expr: {
+					$eq: [{ $year: "$dateIncome" }, currentYear]
 				}
 			}
 		},
@@ -106,9 +105,11 @@ export const showIncomeStatsController = async (req, res) => {
 		{
 			$match: {
 				...matchCondition,
-				dateIncome: {
-					$gte: new Date(currentYear, currentMonth - 1, 1),
-					$lt: new Date(currentYear, currentMonth, 1)
+				$expr: {
+					$and: [
+						{ $eq: [{ $year: "$dateIncome" }, currentYear] },
+						{ $eq: [{ $month: "$dateIncome" }, currentMonth] }
+					]
 				}
 			}
 		},

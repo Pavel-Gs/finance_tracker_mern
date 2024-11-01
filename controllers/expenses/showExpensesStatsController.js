@@ -61,9 +61,8 @@ export const showExpensesStatsController = async (req, res) => {
 		{
 			$match: {
 				...matchCondition,
-				dateExpense: {
-					$gte: new Date(currentYear, 0, 1),
-					$lt: new Date(currentYear + 1, 0, 1)
+				$expr: {
+					$eq: [{ $year: "$dateExpense" }, currentYear]
 				}
 			}
 		},
@@ -106,9 +105,11 @@ export const showExpensesStatsController = async (req, res) => {
 		{
 			$match: {
 				...matchCondition,
-				dateExpense: {
-					$gte: new Date(currentYear, currentMonth - 1, 1),
-					$lt: new Date(currentYear, currentMonth, 1)
+				$expr: {
+					$and: [
+						{ $eq: [{ $year: "$dateExpense" }, currentYear] },
+						{ $eq: [{ $month: "$dateExpense" }, currentMonth] }
+					]
 				}
 			}
 		},

@@ -12,7 +12,7 @@ export const validateIncomeInput = withValidationErrors(
 		body('amountIncome')
 			.notEmpty()
 			.withMessage("The amount is required")
-			.isFloat({ min: 0.01, max: 999999.99 })  // Allow decimal numbers within the range
+			.isFloat({ min: 0.01, max: 999999.99 })  /* allow decimal numbers within the range */
 			.withMessage("The amount must be a decimal greater than 0 and less than 1,000,000"),
 		body('typeIncome')
 			.isIn(Object.values(INCOME_TYPES))
@@ -20,7 +20,7 @@ export const validateIncomeInput = withValidationErrors(
 		body('categoryIncome')
 			.isIn(Object.values(INCOME_CATEGORIES))
 			.withMessage("Invalid category"),
-		body('commentsIncome')
+		body('commentsIncome') /* there is no validation at all for commentsIncome in the search form (SearchIncomeContainerComponent) */
 			.notEmpty()
 			.withMessage("The comment is required (or N/A)")
 			.isLength({ min: 2, max: 100 })

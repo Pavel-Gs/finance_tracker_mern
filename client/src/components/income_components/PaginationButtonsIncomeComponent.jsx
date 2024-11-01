@@ -1,43 +1,97 @@
 // IMPORT ROUTER COMPONENTS
-import { Link, useLocation, useNavigation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 // IMPORT CUSTOM HOOK
 import { useAllIncomeContext } from '../../pages/income/AllIncomePage.jsx'
 // IMPORT REACT ICONS
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
 // IMPORT STYLED COMPONENTS
-import {StyledPaginationButtonsComponent} from '../../styled_components/StyledPaginationButtonsComponent.js'
+import { StyledPaginationButtonsComponent } from '../../styled_components/StyledPaginationButtonsComponent.js'
 
 
 // PAGINATION BUTTONS INCOME JSX COMPONENT
 export const PaginationButtonsIncomeComponent = () => {
 
 	/* get the data from the global context */
-	const { data: {numOfPages, currentPage} } = useAllIncomeContext()
+	const { data: { numOfPages, currentPage } } = useAllIncomeContext()
 
 	/* construct page buttons */
-	const pages = Array.from (
+	const pages = Array.from(
 		{
 			length: numOfPages,
 		},
-		(_, index) => {return index + 1} /* "_" means we are going to access the undefined; "+1" because arrays are zero-indexed */
+		(_, index) => { return index + 1 } /* "_" means we are going to access the undefined; "+1" because arrays are zero-indexed */
 	)
+
+	/* handle page change logic */
+	const { search, pathname } = useLocation()
+	const navigate = useNavigate()
+	const handlePageChange = (i) => {
+		const searchParams = new URLSearchParams(search)
+		searchParams.set('page', i)
+		navigate(`${pathname}?${searchParams.toString()}`)
+	}
+
+	/* limit pagination buttons display */
+	const addPageButton = ({ i, activeClass }) => {
+		return (
+			<button key={i} className={`btn page-btn ${activeClass && 'active'}`} onClick={() => handlePageChange(i)}>
+				{i}
+			</button>
+		)
+	}
+	const renderPageButtons = () => {
+		const pageButtons = []
+		/* first page button */
+		pageButtons.push(addPageButton({ i: 1, activeClass: currentPage === 1 }))
+		/* display dots */
+		if (currentPage > 3) {
+			pageButtons.push(<span className='page-btn dots' key='dots-1'>...</span>)
+		}
+		/* one page before */
+		if (currentPage !== 1 && currentPage !== 2) {
+			pageButtons.push(addPageButton({ i: currentPage - 1, activeClass: false }))
+		}
+		/* current page button */
+		if (currentPage !== 1 && currentPage !== numOfPages) {
+			pageButtons.push(addPageButton({ i: currentPage, activeClass: true }))
+		}
+		/* one page after */
+		if (currentPage !== numOfPages && currentPage !== numOfPages - 1) {
+			pageButtons.push(addPageButton({ i: currentPage + 1, activeClass: false }))
+		}
+		/* display dots */
+		if (currentPage < numOfPages - 2) {
+			pageButtons.push(<span className='page-btn dots' key='dots+1'>...</span>)
+		}
+		/* last page button */
+		pageButtons.push(addPageButton({ i: numOfPages, activeClass: currentPage === numOfPages }))
+		return pageButtons
+	}
 
 	return (
 		<StyledPaginationButtonsComponent>
-			<button className='btn prev-btn'>
+
+			{/* prev button */}
+			<button className='btn prev-btn' onClick={() => {
+				let prevPage = currentPage - 1
+				if (prevPage < 1) prevPage = numOfPages
+				handlePageChange(prevPage)
+			}}>
 				<HiChevronDoubleLeft />
 				prev
 			</button>
+
+			{/* page buttons */}
 			<div className='btn-container'>
-				{pages.map((i) => {
-					return (
-						<button key={i} className={`btn page-btn ${i === currentPage && 'active'}`}>
-							{i}
-						</button>
-					)
-				})}
+				{renderPageButtons()}
 			</div>
-			<button className='btn next-btn'>
+
+			{/* next button */}
+			<button className='btn next-btn' onClick={() => {
+				let nextPage = currentPage + 1
+				if (nextPage > numOfPages) nextPage = 1
+				handlePageChange(nextPage)
+			}}>
 				<HiChevronDoubleRight />
 				next
 			</button>

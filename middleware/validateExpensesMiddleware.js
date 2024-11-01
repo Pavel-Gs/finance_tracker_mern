@@ -12,7 +12,7 @@ export const validateExpenseInput = withValidationErrors(
 		body('amountExpense')
 			.notEmpty()
 			.withMessage("The amount is required")
-			.isFloat({ min: 0.01, max: 999999.99 })  // Allow decimal numbers within the range
+			.isFloat({ min: 0.01, max: 999999.99 })  /* allow decimal numbers within the range */
 			.withMessage("The amount must be a decimal greater than 0 and less than 1,000,000"),
 		body('typeExpense')
 			.isIn(Object.values(EXPENSES_TYPES))
@@ -20,7 +20,7 @@ export const validateExpenseInput = withValidationErrors(
 		body('categoryExpense')
 			.isIn(Object.values(EXPENSES_CATEGORIES))
 			.withMessage("Invalid category"),
-		body('commentsExpense')
+		body('commentsExpense') /* there is no validation at all for commentsExpense in the search form (SearchExpensesContainerComponent) */
 			.notEmpty()
 			.withMessage("The comment is required (or N/A)")
 			.isLength({ min: 2, max: 30 })
