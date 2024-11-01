@@ -30,19 +30,32 @@ export const SearchExpensesContainerComponent = () => {
 		const selectedValue = e.target.value
 		setSelectedType(selectedValue) /* update selected type; and dropdown select logic (prevents the category selection before the type is selected) */
 		setCategoryList(TYPE_TO_CATEGORIES[selectedValue] || []) /* set corresponding categories for the selected type */
-		// Reset category to "all" if type is set to "all"
-		if (selectedValue === "all") {
-			e.currentTarget.form.categoryExpense.value = "all";
-		}
+		/* reset category to "all" when selecting another type */
+		e.currentTarget.form.categoryExpense.value = "all"
 		submit(e.currentTarget.form) /* submit the form automatically on change, and apply the selected search parameters */
 	}
 
 	/* date picker logic */
-	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
-	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
+	const getCurrentDate = new Date(Date.now()) /* get the current date, in the current time zone */
+	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') /* YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC */
 	const [selectedDate, setSelectedDate] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
+	const [error, setError] = useState('') /* state to track validation error */
 	const handleDateSelectionChange = (e) => {
-		setSelectedDate(e.target.value)
+		const { name, value } = e.target
+		if (name === 'startDate') {
+			if (new Date(value) > new Date(endDate)) {
+				setError('Start date cannot be after end date')
+				return
+			}
+			setSelectedDate(value)
+		} else if (name === 'endDate') {
+			if (new Date(value) < new Date(startDate)) {
+				setError('End date cannot be before start date')
+				return
+			}
+			setSelectedDate(value)
+		}
+		setError('') /* clear error if validation passes */
 		submit(e.currentTarget.form) /* submit the form automatically on change, and apply the selected search parameters */
 	}
 
@@ -74,6 +87,7 @@ export const SearchExpensesContainerComponent = () => {
 					<FormRowComponent typeProp='date' nameProp='endDate' labelTextProp="End date range" defaultValueProp={endDate} onChangeProp={handleDateSelectionChange} />
 					<FormRowSelectComponent nameProp='sort' listProp={Object.values(SORT_EXPENSES_BY)} defaultValueProp={sort} onChangeProp={(e) => {submit(e.currentTarget.form)}} />
 				</div>
+				{error && <p className='error'>{error}</p>} {/* display error message if any */}
 			</Form>
 		</StyledDashboardFormPage>
 	)

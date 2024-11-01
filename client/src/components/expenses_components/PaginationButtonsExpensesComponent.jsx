@@ -8,6 +8,7 @@ import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
 import { StyledPaginationButtonsComponent } from '../../styled_components/StyledPaginationButtonsComponent.js'
 
 
+// PAGINATION BUTTONS EXPENSES JSX COMPONENT
 export const PaginationButtonsExpensesComponent = () => {
 
 	/* get the data from the global context */

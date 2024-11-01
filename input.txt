@@ -1,0 +1,243 @@
+amountExpense,6.00,typeExpense,Grocery,categoryExpense,Bad Food,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jan-24
+amountExpense,32.96,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jan-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-Jan-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Jan-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Jan-24
+amountExpense,262.00,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Jan-24
+amountExpense,82.76,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jan-24
+amountExpense,224.00,typeExpense,Bills/Payment,categoryExpense,Cellphone,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Jan-24
+amountExpense,135.43,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Jan-24
+amountExpense,21.00,typeExpense,Accessories,categoryExpense,Other,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Jan-24
+amountExpense,35.67,typeExpense,Accessories,categoryExpense,Other,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,10-Jan-24
+amountExpense,64.24,typeExpense,Medical,categoryExpense,Dental (PG),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Jan-24
+amountExpense,36.00,typeExpense,Accessories,categoryExpense,Superstore,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Jan-24
+amountExpense,56.50,typeExpense,Grocery,categoryExpense,Superstore,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Jan-24
+amountExpense,5.59,typeExpense,Entertainment,categoryExpense,Software/Games/Subscription,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-Jan-24
+amountExpense,52.77,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-Jan-24
+amountExpense,32.12,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Jan-24
+amountExpense,8.96,typeExpense,Education,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Jan-24
+amountExpense,114.20,typeExpense,Medical,categoryExpense,Dental (PG),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Jan-24
+amountExpense,13.95,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Jan-24
+amountExpense,10.65,typeExpense,Accessories,categoryExpense,Other,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,19-Jan-24
+amountExpense,11.29,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,19-Jan-24
+amountExpense,332.77,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Jan-24
+amountExpense,33.13,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Jan-24
+amountExpense,82.72,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Jan-24
+amountExpense,26.67,typeExpense,Entertainment,categoryExpense,Software/Games/Subscription,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Jan-24
+amountExpense,26.90,typeExpense,Medical,categoryExpense,Dental (EG),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Jan-24
+amountExpense,36.38,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Jan-24
+amountExpense,92.25,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,30-Jan-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Feb-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Feb-24
+amountExpense,58.45,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Feb-24
+amountExpense,95.00,typeExpense,Grocery,categoryExpense,Cake 2 donkeys (for Ferguson),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Feb-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Feb-24
+amountExpense,38.34,typeExpense,Grocery,categoryExpense,Superstore,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Feb-24
+amountExpense,139.20,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Feb-24
+amountExpense,37.71,typeExpense,Accessories,categoryExpense,Amazon,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Feb-24
+amountExpense,19.03,typeExpense,Education,categoryExpense,Udemy,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Feb-24
+amountExpense,28.21,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Feb-24
+amountExpense,246.97,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Feb-24
+amountExpense,129.21,typeExpense,Transport,categoryExpense,Ford Service,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Feb-24
+amountExpense,28.68,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Feb-24
+amountExpense,5.59,typeExpense,Entertainment,categoryExpense,Software/Games/Subscription,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-Feb-24
+amountExpense,8.96,typeExpense,Education,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Feb-24
+amountExpense,29.01,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Feb-24
+amountExpense,17.38,typeExpense,Grocery,categoryExpense,SaveOn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Feb-24
+amountExpense,271.92,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Feb-24
+amountExpense,14.55,typeExpense,Education,categoryExpense,Udemy,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Feb-24
+amountExpense,15.53,typeExpense,Subscription,categoryExpense,OpenAI,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Feb-24
+amountExpense,180.51,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Mar-24
+amountExpense,69.99,typeExpense,Accessories,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Mar-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Mar-24
+amountExpense,43.70,typeExpense,Accessories,categoryExpense,Amazon,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-Mar-24
+amountExpense,2.23,typeExpense,Subscription,categoryExpense,Disney,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-Mar-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Mar-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Mar-24
+amountExpense,172.62,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Mar-24
+amountExpense,33.13,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Mar-24
+amountExpense,190.15,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Mar-24
+amountExpense,9.99,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-Mar-24
+amountExpense,15.99,typeExpense,Transport,categoryExpense,Car wash,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Mar-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Mar-24
+amountExpense,35.00,typeExpense,Transport,categoryExpense,Road Test,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,16-Mar-24
+amountExpense,33.51,typeExpense,Grocery,categoryExpense,Food,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Mar-24
+amountExpense,199.27,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Mar-24
+amountExpense,44.45,typeExpense,Accessories,categoryExpense,Amazon,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,25-Mar-24
+amountExpense,14.56,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Mar-24
+amountExpense,44.73,typeExpense,Medical,categoryExpense,Vitamins,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Mar-24
+amountExpense,32.11,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Mar-24
+amountExpense,143.43,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Mar-24
+amountExpense,17.88,typeExpense,Transport,categoryExpense,Tire change,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Mar-24
+amountExpense,58.65,typeExpense,Subscription,categoryExpense,LinkedIn,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,29-Mar-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Apr-24
+amountExpense,5.59,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-Apr-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Apr-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Apr-24
+amountExpense,162.12,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Apr-24
+amountExpense,289.68,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Apr-24
+amountExpense,64.64,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Apr-24
+amountExpense,134.40,typeExpense,Bills/Payment,categoryExpense,INTUIT Turbotax,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Apr-24
+amountExpense,1776.00,typeExpense,Transport,categoryExpense,ICBC,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Apr-24
+amountExpense,24.55,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Apr-24
+amountExpense,2.24,typeExpense,Transport,categoryExpense,Evo,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Apr-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Apr-24
+amountExpense,37.80,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Apr-24
+amountExpense,247.67,typeExpense,Bills/Payment,categoryExpense,Apollo Insurance,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,16-Apr-24
+amountExpense,329.78,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Apr-24
+amountExpense,15.74,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Apr-24
+amountExpense,99.99,typeExpense,Subscription,categoryExpense,Bitdefender,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Apr-24
+amountExpense,50.00,typeExpense,Bills/Payment,categoryExpense,Bitdefender,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Apr-24
+amountExpense,11.20,typeExpense,Grocery,categoryExpense,Dollarstore,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Apr-24
+amountExpense,90.46,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,24-Apr-24
+amountExpense,150.85,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Apr-24
+amountExpense,35.00,typeExpense,Transport,categoryExpense,Road Test,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-May-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-May-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-May-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-May-24
+amountExpense,171.20,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-May-24
+amountExpense,33.13,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-May-24
+amountExpense,9.98,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-May-24
+amountExpense,154.66,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-May-24
+amountExpense,2211.45,typeExpense,Education,categoryExpense,UAB ITINCUBATOR,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-May-24
+amountExpense,18.17,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-May-24
+amountExpense,71.82,typeExpense,Accessories,categoryExpense,Haircut,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-May-24
+amountExpense,187.33,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-May-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-May-24
+amountExpense,11.19,typeExpense,Subscription,categoryExpense,Amazon Prime,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-May-24
+amountExpense,13.15,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-May-24
+amountExpense,253.41,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-May-24
+amountExpense,300.00,typeExpense,Bills/Payment,categoryExpense,Craftsman Collision,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-May-24
+amountExpense,3.64,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,25-May-24
+amountExpense,5.38,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-May-24
+amountExpense,13.76,typeExpense,Grocery,categoryExpense,Save-on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-May-24
+amountExpense,20.52,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,30-May-24
+amountExpense,26.80,typeExpense,Grocery,categoryExpense,Save-on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,31-May-24
+amountExpense,55.98,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,31-May-24
+amountExpense,37.78,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,31-May-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jun-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jun-24
+amountExpense,189.26,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Jun-24
+amountExpense,69.42,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Jun-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Jun-24
+amountExpense,131.73,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,03-Jun-24
+amountExpense,21.83,typeExpense,Grocery,categoryExpense,Save-on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Jun-24
+amountExpense,12.33,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Jun-24
+amountExpense,5.59,typeExpense,Subscription,categoryExpense,Prime movie rent (Dark Tower),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Jun-24
+amountExpense,12.59,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Jun-24
+amountExpense,13.98,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,06-Jun-24
+amountExpense,70.00,typeExpense,Junk,categoryExpense,Amazon (nicorette),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jun-24
+amountExpense,56.00,typeExpense,Accessories,categoryExpense,Amazon (household stuff),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jun-24
+amountExpense,33.13,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Jun-24
+amountExpense,31.82,typeExpense,Grocery,categoryExpense,Wallmart,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Jun-24
+amountExpense,11.64,typeExpense,Accessories,categoryExpense,Micro sd card,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Jun-24
+amountExpense,22.79,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-Jun-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-Jun-24
+amountExpense,298.87,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,16-Jun-24
+amountExpense,16.79,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Jun-24
+amountExpense,139.77,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Jun-24
+amountExpense,33.13,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Jun-24
+amountExpense,8.12,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-Jun-24
+amountExpense,47.00,typeExpense,Junk,categoryExpense,Nicorette + Pur Gum,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Jun-24
+amountExpense,17.00,typeExpense,Accessories,categoryExpense,Amazon (toothbrush),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Jun-24
+amountExpense,5.98,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Jun-24
+amountExpense,64.29,typeExpense,Accessories,categoryExpense,Shopper,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Jun-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jul-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Jul-24
+amountExpense,274.95,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Jul-24
+amountExpense,86.54,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jul-24
+amountExpense,58.00,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jul-24
+amountExpense,7.99,typeExpense,Accessories,categoryExpense,Pantili,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jul-24
+amountExpense,34.01,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Jul-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Jul-24
+amountExpense,135.01,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Jul-24
+amountExpense,35.00,typeExpense,Transport,categoryExpense,Driving test,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Jul-24
+amountExpense,39.09,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Jul-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Jul-24
+amountExpense,77.76,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Jul-24
+amountExpense,70.23,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Jul-24
+amountExpense,63.19,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Jul-24
+amountExpense,17.02,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Jul-24
+amountExpense,12.31,typeExpense,Subscription,categoryExpense,Spotify,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-Jul-24
+amountExpense,6.89,typeExpense,Subscription,categoryExpense,Netflix,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,24-Jul-24
+amountExpense,75.51,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Jul-24
+amountExpense,305.34,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Jul-24
+amountExpense,34.01,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Jul-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Aug-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Aug-24
+amountExpense,121.93,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Aug-24
+amountExpense,91.33,typeExpense,Junk,categoryExpense,Nicorette,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Aug-24
+amountExpense,28.45,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Aug-24
+amountExpense,5.60,typeExpense,Accessories,categoryExpense,Yarn x2,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Aug-24
+amountExpense,126.00,typeExpense,Grocery,categoryExpense,Costco renewal,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,05-Aug-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Aug-24
+amountExpense,34.01,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,10-Aug-24
+amountExpense,243.46,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Aug-24
+amountExpense,14.40,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Aug-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Aug-24
+amountExpense,146.06,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,16-Aug-24
+amountExpense,47.71,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,16-Aug-24
+amountExpense,740.00,typeExpense,Bills/Payment,categoryExpense,Survey equipment insurance,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Aug-24
+amountExpense,100.00,typeExpense,Bills/Payment,categoryExpense,Speakout,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,22-Aug-24
+amountExpense,28.97,typeExpense,Junk,categoryExpense,Cig/Vape,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-Aug-24
+amountExpense,15.79,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,24-Aug-24
+amountExpense,222.47,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,25-Aug-24
+amountExpense,50.00,typeExpense,Accessories,categoryExpense,Nicotine and gum,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Aug-24
+amountExpense,51.00,typeExpense,Accessories,categoryExpense,Accessories,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,28-Aug-24
+amountExpense,33.92,typeExpense,Accessories,categoryExpense,Shoppers Drug,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,30-Aug-24
+amountExpense,28.30,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,30-Aug-24
+amountExpense,13.99,typeExpense,Grocery,categoryExpense,Save on pizza,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,31-Aug-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Sep-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Sep-24
+amountExpense,251.74,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Sep-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Sep-24
+amountExpense,13.44,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,08-Sep-24
+amountExpense,139.99,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Sep-24
+amountExpense,182.85,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,10-Sep-24
+amountExpense,235.31,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Sep-24
+amountExpense,2.23,typeExpense,Subscription,categoryExpense,Disney plus,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Sep-24
+amountExpense,138.29,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,13-Sep-24
+amountExpense,17.96,typeExpense,Grocery,categoryExpense,Save on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-Sep-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-Sep-24
+amountExpense,16.90,typeExpense,Medical,categoryExpense,Dental (EG),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Sep-24
+amountExpense,200.85,typeExpense,Bills/Payment,categoryExpense,Tickets: KLW-TRT,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Sep-24
+amountExpense,66.56,typeExpense,Medical,categoryExpense,Dental (EG),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,23-Sep-24
+amountExpense,50.00,typeExpense,Bills/Payment,categoryExpense,Super Visa Insurance,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,24-Sep-24
+amountExpense,10.00,typeExpense,Subscription,categoryExpense,Steam,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Sep-24
+amountExpense,14.79,typeExpense,Grocery,categoryExpense,Save-on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Sep-24
+amountExpense,64.20,typeExpense,Accessories,categoryExpense,Amazon,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,29-Sep-24
+amountExpense,247.18,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,01-Oct-24
+amountExpense,7.83,typeExpense,Subscription,categoryExpense,Paramount,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Oct-24
+amountExpense,2135.00,typeExpense,Bills/Payment,categoryExpense,Rent,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Oct-24
+amountExpense,597.83,typeExpense,Bills/Payment,categoryExpense,Loan,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,02-Oct-24
+amountExpense,35.00,typeExpense,Transport,categoryExpense,Driving test,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,04-Oct-24
+amountExpense,52.26,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Oct-24
+amountExpense,195.54,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,09-Oct-24
+amountExpense,21.65,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Oct-24
+amountExpense,128.07,typeExpense,Bills/Payment,categoryExpense,WYSE,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,11-Oct-24
+amountExpense,4.50,typeExpense,Accessories,categoryExpense,UPS printing,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Oct-24
+amountExpense,27.95,typeExpense,Accessories,categoryExpense,Shoppers Drug,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Oct-24
+amountExpense,28.40,typeExpense,Accessories,categoryExpense,Canada Post prepaied xpress,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,12-Oct-24
+amountExpense,8.96,typeExpense,Subscription,categoryExpense,Microsoft,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,14-Oct-24
+amountExpense,8.10,typeExpense,Grocery,categoryExpense,Save-On,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Oct-24
+amountExpense,22.06,typeExpense,Accessories,categoryExpense,Shoppers Drug,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,15-Oct-24
+amountExpense,138.12,typeExpense,INCOME,categoryExpense,Geodesy (Trackimo),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Oct-24
+amountExpense,371.72,typeExpense,Bills/Payment,categoryExpense,CRA (taxes),commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,17-Oct-24
+amountExpense,50.50,typeExpense,Bills/Payment,categoryExpense,Toronto ROM,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,24.70,typeExpense,Bills/Payment,categoryExpense,Toronto: Pearson-Union UP express,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,8.98,typeExpense,Bills/Payment,categoryExpense,Toronto: Longos market,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,6.70,typeExpense,Bills/Payment,categoryExpense,Toronto: Presto 2-rides,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,63.00,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,5.92,typeExpense,Junk,categoryExpense,OKANAGAN WASH ZONE COR,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,18-Oct-24
+amountExpense,324.98,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,19-Oct-24
+amountExpense,3.98,typeExpense,Junk,categoryExpense,Candy,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Oct-24
+amountExpense,10.07,typeExpense,Junk,categoryExpense,CHV43038 TOWN CENTRE C,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,20-Oct-24
+amountExpense,95.00,typeExpense,Medical,categoryExpense,"Vitamins (iron, primrose)",commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Oct-24
+amountExpense,13.00,typeExpense,Grocery,categoryExpense,PUR gum,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Oct-24
+amountExpense,34.01,typeExpense,Junk,categoryExpense,LS SWITCH2VAPES,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,21-Oct-24
+amountExpense,37.66,typeExpense,Grocery,categoryExpense,Costco,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Oct-24
+amountExpense,63.71,typeExpense,Transport,categoryExpense,Gas,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,26-Oct-24
+amountExpense,63.00,typeExpense,Grocery,categoryExpense,Candies\cough drops,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Oct-24
+amountExpense,36.34,typeExpense,Junk,categoryExpense,Cyder,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,27-Oct-24
+amountExpense,22.57,typeExpense,Grocery,categoryExpense,Save-on,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,30-Oct-24
+amountExpense,29.55,typeExpense,Bills/Payment,categoryExpense,Internet,commentsExpense,N/A,locationExpense,Kelowna,organizationName,Organization1,dateExpense,07-Nov-24
