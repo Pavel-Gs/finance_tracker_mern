@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Link, Form } from 'react-router-dom'
+import { Link, Form, useLocation } from 'react-router-dom'
 // IMPORT DAYJS FUNCTIONS (FOR DATE FORMATTING)
 import day from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -39,6 +39,10 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 	//const customDate = day(dateExpense).add(1, 'day').format('MMM Do, YYYY') /* alternative 2: using the user's picked date; adding one day to dateExpense, to compensate for the offset (dateExpense does not have the time stamp in MongoDB) */
 	const customDate = dateExpense.split('T')[0] /* alternative 3: using the exact user's picked date as a string, but without any kind of external formatting; no need to offset by a day */
 
+	/* use useLocation hook to get the current route */
+	const location = useLocation()
+	const isDashboardIndex = location.pathname === '/dashboard'
+
 	/* assign an icon to a corresponding expense type */
 	let expenseTypeIcon = <FaMinus />
 	if (typeExpense === 'Alcohol & nicotine') { expenseTypeIcon = <FaWineBottle /> }
@@ -53,13 +57,11 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 	return (
 		<StyledSingleTransactionComponent>
 			<div className='main-icon'>
-				<Link className='btn edit-btn' to={`../edit-expense/${_id}`}>
+				<Link className='btn edit-btn' to={`${isDashboardIndex ? 'edit-expense' : '../edit-expense'}/${_id}`}> {/* use different path according to the current route, since SingleExpenseComponent being used in different locations */}
 					{expenseTypeIcon}
 				</Link>
 			</div>
 			<div className='transaction-content'>
-				{/* <p>{amountExpense}</p> */}
-				{/* <p>{typeExpense}</p> */}
 				<ExpenseInfoComponent icon={<HiMiniCurrencyDollar style={{fontSize: '1.5rem'}} />} text={amountExpense} />
 				<ExpenseInfoComponent icon={<GiPayMoney style={{fontSize: '1.5rem'}} />} text={typeExpense} />
 				<ExpenseInfoComponent text={categoryExpense} />
@@ -69,9 +71,7 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 				<ExpenseInfoComponent icon={<FaUser />} text={createdBy.firstName} />
 			</div>
 			<footer className='actions'>
-				
-				{/* this <Form> component is coming from react-router-dom */}
-				<Form method='post' action={`../delete-expense/${_id}`} onSubmit={(e) => {
+				<Form method='post' action={`${isDashboardIndex ? 'delete-expense' : '../delete-expense'}/${_id}`} onSubmit={(e) => { {/* use different path according to the current route, since SingleExpenseComponent being used in different locations */}
 					const confirmDelete = window.confirm("Delete?") /* display confirmation dialog */
 					if (!confirmDelete) { e.preventDefault() } /* prevent form submission if the user cancels the deletion */
 				}}>
@@ -79,7 +79,6 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 						<FaTrashAlt />
 					</button>
 				</Form>
-
 			</footer>
 		</StyledSingleTransactionComponent>
 	)

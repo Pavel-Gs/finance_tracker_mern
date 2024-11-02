@@ -48,8 +48,6 @@ export const SingleIncomeComponent = ({ _id, amountIncome, typeIncome, categoryI
 				</Link>
 			</div>
 			<div className='transaction-content'>
-				{/* <p>{amountIncome}</p> */}
-				{/* <p>{typeIncome}</p> */}
 				<IncomeInfoComponent icon={<HiMiniCurrencyDollar style={{fontSize: '1.5rem'}} />} text={amountIncome} />
 				<IncomeInfoComponent icon={<GiReceiveMoney style={{fontSize: '1.5rem'}} />} text={typeIncome} />
 				<IncomeInfoComponent text={categoryIncome} />
