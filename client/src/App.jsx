@@ -154,6 +154,6 @@ createRoot(document.getElementById('root')).render(
 		<RouterProvider router={browserRoutes} />
 
 		{/* use react-toastify */}
-		<ToastContainer position='top-center' />
+		<ToastContainer position='bottom-left' />
 	</>
 )

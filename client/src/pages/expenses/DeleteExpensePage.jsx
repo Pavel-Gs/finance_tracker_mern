@@ -11,7 +11,7 @@ import { customFetch } from '../../utils/customFetch.js'
 export const actionDeleteExpense = async ({ params }) => {
 	try {
 		await customFetch.delete(`/expenses/${params.id}`)
-		toast.success("Expense deleted", { position: "bottom-left" })
+		toast.success("Expense deleted") /* the default position is set in App.jsx */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
 	}

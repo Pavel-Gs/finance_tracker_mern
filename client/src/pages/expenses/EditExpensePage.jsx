@@ -31,8 +31,8 @@ export const loaderEditExpense = async ({ params }) => {
 
 // EDIT EXPENSE ACTION FUNCTION
 /* used in App.jsx "edit-expense/:id" route action */
-export const actionEditExpense = async ({request, params}) => {
-	
+export const actionEditExpense = async ({ request, params }) => {
+
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
 	const expenseData = Object.fromEntries(inputData)
@@ -40,7 +40,7 @@ export const actionEditExpense = async ({request, params}) => {
 	/* patch the existing data using expense form inputs */
 	try {
 		await customFetch.patch(`/expenses/${params.id}`, expenseData)
-		toast.success("Expense edited", { position: "bottom-left" }) /* display a toast */
+		toast.success("Expense edited") /* the default position is set in App.jsx */
 		return redirect('/dashboard/all-expenses') /* it must return something; redirects a user to all-expenses page after submission */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

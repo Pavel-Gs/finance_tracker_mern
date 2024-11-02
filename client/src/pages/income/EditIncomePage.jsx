@@ -40,7 +40,7 @@ export const actionEditIncome = async ({request, params}) => {
 	/* patch the existing data using income form inputs */
 	try {
 		await customFetch.patch(`/income/${params.id}`, incomeData)
-		toast.success("Income edited", { position: "bottom-left" })
+		toast.success("Income edited") /* the default position is set in App.jsx */
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
