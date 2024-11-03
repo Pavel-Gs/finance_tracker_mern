@@ -20,6 +20,7 @@ import { FaUser } from "react-icons/fa"
 import { FaTrashAlt } from "react-icons/fa"
 import { GiPayMoney } from "react-icons/gi"
 import { HiMiniCurrencyDollar } from "react-icons/hi2"
+import { IoSchoolSharp } from "react-icons/io5"
 // IMPORT JSX COMPONENTS
 import { ExpenseInfoComponent } from './ExpenseInfoComponent.jsx'
 // IMPORT STYLED COMPONENTS
@@ -53,6 +54,7 @@ export const SingleExpenseComponent = ({ _id, amountExpense, typeExpense, catego
 	if (typeExpense === 'Medicine') { expenseTypeIcon = <GiMedicines /> }
 	if (typeExpense === 'Geodesy') { expenseTypeIcon = <GrUserWorker /> }
 	if (typeExpense === 'Recreational') { expenseTypeIcon = <FaUmbrellaBeach /> }
+	if (typeExpense === 'Education') { expenseTypeIcon = <IoSchoolSharp /> }
 
 	return (
 		<StyledSingleTransactionComponent>
