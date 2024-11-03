@@ -69,6 +69,10 @@ app.use('/api/v1/users', authUserMiddleware, routerExpressUser)
 app.use('/api/v1/admin', authUserMiddleware, routerExpressAdmin)
 app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
 app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
+/* public routes for built project */
+app.get('*', (req, res) => {
+	res.sendFile(path.resolve(__dirname, './public', 'index.html'))
+})
 /* test routes */
 app.get('/', (req, res) => {
 	res.send("test")

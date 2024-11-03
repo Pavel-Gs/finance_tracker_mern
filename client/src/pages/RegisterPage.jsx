@@ -45,11 +45,11 @@ export const RegisterPage = () => {
 				<h4>
 					Register
 				</h4>
-				<FormRowComponent typeProp='text' nameProp="firstName" labelTextProp="First Name" defaultValueProp="John" />
-				<FormRowComponent typeProp='text' nameProp='lastName' labelTextProp="Last Name" defaultValueProp="Smith" />
-				<FormRowComponent typeProp='text' nameProp="locationUser" labelTextProp="Location" defaultValueProp="Earth" />
-				<FormRowComponent typeProp='email' nameProp="emailUser" labelTextProp="Email" defaultValueProp="john@gmail.com" />
-				<FormRowComponent typeProp='password' nameProp="passwordUser" labelTextProp="Password" defaultValueProp="secret123" />
+				<FormRowComponent typeProp='text' nameProp="firstName" labelTextProp="First Name" />
+				<FormRowComponent typeProp='text' nameProp='lastName' labelTextProp="Last Name" />
+				<FormRowComponent typeProp='text' nameProp="locationUser" labelTextProp="Location" />
+				<FormRowComponent typeProp='email' nameProp="emailUser" labelTextProp="Email" />
+				<FormRowComponent typeProp='password' nameProp="passwordUser" labelTextProp="Password" />
 				<SubmitButtonComponent />
 				<p>
 					Already a member?

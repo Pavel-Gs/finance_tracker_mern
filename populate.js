@@ -13,7 +13,7 @@ import { UserModel } from './models/UserModel.js'
 
 
 // POPULATE EXPENSES
-try {
+/* try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})
 	const jsonExpenses = JSON.parse(await readFile(new URL('./utils/MOCK_DATA_EXPENSES.json', import.meta.url)))
@@ -27,11 +27,11 @@ try {
 } catch (error) {
 	console.log(error)
 	process.exit(1)
-}
+} */
 
 
 // POPULATE INCOME
-/* try {
+try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})
 	const jsonIncome = JSON.parse(await readFile(new URL('./utils/MOCK_DATA_INCOME.json', import.meta.url)))
@@ -45,4 +45,4 @@ try {
 } catch (error) {
 	console.log(error)
 	process.exit(1)
-} */
+}

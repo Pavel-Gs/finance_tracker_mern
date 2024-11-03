@@ -18,7 +18,8 @@ export const INCOME_CATEGORIES = {
 	/* returns */
 	CRA: "CRA / EFT",
 	COSTCO: "Costco",
-	ICBC: "ICBC"
+	ICBC: "ICBC",
+	OTHER: "Other returns"
 }
 
 
@@ -26,7 +27,7 @@ export const INCOME_CATEGORIES = {
 export const TYPE_TO_CATEGORIES = {
 	[INCOME_TYPES.JOBS]: ["JOBS_LENA", "JOBS_PAVEL"],
 	[INCOME_TYPES.BANKS]: ["RBC", "SIMPLII_LENA", "SIMPLII_PAVEL"],
-	[INCOME_TYPES.RETURNS]: ["CRA", "COSTCO", "ICBC"]
+	[INCOME_TYPES.RETURNS]: ["CRA", "COSTCO", "ICBC", "OTHER"]
 }
 
 

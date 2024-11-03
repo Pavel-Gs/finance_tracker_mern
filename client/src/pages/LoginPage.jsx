@@ -43,8 +43,8 @@ export const LoginPage = () => {
 				<h4>
 					Login
 				</h4>
-				<FormRowComponent typeProp='email' nameProp="emailUser" labelTextProp="Email" defaultValueProp="john@gmail.com" />
-				<FormRowComponent typeProp='password' nameProp="passwordUser" labelTextProp="Password" defaultValueProp="secret123" />
+				<FormRowComponent typeProp='email' nameProp="emailUser" labelTextProp="Email" />
+				<FormRowComponent typeProp='password' nameProp="passwordUser" labelTextProp="Password" />
 				<SubmitButtonComponent />	
 				<p>
 					Not a member yet?
