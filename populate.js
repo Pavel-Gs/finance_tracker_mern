@@ -15,7 +15,7 @@ import { UserModel } from './models/UserModel.js'
 // POPULATE EXPENSES
 /* try {
 	await mongoose.connect(process.env.MONGO_URL)
-	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})
+	const user = await UserModel.findOne({emailUser: 'pavelgen@gmail.com'})
 	const jsonExpenses = JSON.parse(await readFile(new URL('./utils/MOCK_DATA_EXPENSES.json', import.meta.url)))
 	const expenses = jsonExpenses.map((i) => {
 		return {...i, createdBy: user._id}
@@ -33,7 +33,7 @@ import { UserModel } from './models/UserModel.js'
 // POPULATE INCOME
 try {
 	await mongoose.connect(process.env.MONGO_URL)
-	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})
+	const user = await UserModel.findOne({emailUser: 'pavelgen@gmail.com'})
 	const jsonIncome = JSON.parse(await readFile(new URL('./utils/MOCK_DATA_INCOME.json', import.meta.url)))
 	const income = jsonIncome.map((i) => {
 		return {...i, createdBy: user._id}

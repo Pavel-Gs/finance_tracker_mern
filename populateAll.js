@@ -13,7 +13,7 @@ try {
 
 	/* get the user to populate the database */
 	await mongoose.connect(process.env.MONGO_URL)
-	const user = await UserModel.findOne({ emailUser: 'john@gmail.com' })
+	const user = await UserModel.findOne({ emailUser: 'pavelgen@gmail.com' })
 
 	/* populate expenses */
 	const jsonExpenses = JSON.parse(await readFile(new URL('./utils/MOCK_DATA_EXPENSES.json', import.meta.url)))

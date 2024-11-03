@@ -46,7 +46,7 @@ try {
 
 // SET FILE AND DIRECTORY FUNCTIONS (MUST BE PLACED ABOVE API ROUTES)
 const __dirname = dirname(fileURLToPath(import.meta.url))
-app.use(express.static(path.resolve(__dirname, './public')))
+app.use(express.static(path.resolve(__dirname, './client/dist')))
 
 
 // CONFIGURE CLOUDINARY
@@ -71,7 +71,7 @@ app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
 app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 /* public routes for built project */
 app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, './public', 'index.html'))
+	res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'))
 })
 /* test routes */
 app.get('/', (req, res) => {
