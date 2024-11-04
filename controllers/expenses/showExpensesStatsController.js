@@ -26,7 +26,7 @@ export const showExpensesStatsController = async (req, res) => {
 	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
 
 
-	/* count by type (count total amount of expense entries) */
+	/* count by type (count total amount of expense entries) ---------------------------------------------------------------------------------- */
 	/* mongoose pipeline */
 	let countExpensesTypes = await ExpensesModel.aggregate([
 		/* stage 1: match by condition */
@@ -54,7 +54,7 @@ export const showExpensesStatsController = async (req, res) => {
 	}, {});
 
 
-	/* group by date - year (count total sum of current annual expenses) */
+	/* group by date - year (count total sum of current annual expenses) ---------------------------------------------------------------------- */
 	/* mongoose pipeline */
 	let currentAnnualExpenses = await ExpensesModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
@@ -98,7 +98,7 @@ export const showExpensesStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* group by date - month (count total sum of the current month's expenses) */
+	/* group by date - month (count total sum of the current month's expenses) ---------------------------------------------------------------- */
 	/* mongoose pipeline */
 	let currentMonthlyExpenses = await ExpensesModel.aggregate([
 		/* stage 1: match by condition and filter by current year and month */

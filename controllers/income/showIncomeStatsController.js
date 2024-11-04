@@ -26,7 +26,7 @@ export const showIncomeStatsController = async (req, res) => {
 	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
 
 
-	/* count by type (count total amount of income entries) */
+	/* count by type (count total amount of income entries) ----------------------------------------------------------------------------------- */
 	/* mongoose pipeline */
 	let countIncomeTypes = await IncomeModel.aggregate([
 		/* stage 1: match by condition */
@@ -54,7 +54,7 @@ export const showIncomeStatsController = async (req, res) => {
 	}, {})
 
 
-	/* group by date - year (count total sum of current annual income) */
+	/* group by date - year (count total sum of current annual income) ------------------------------------------------------------------------ */
 	/* mongoose pipeline */
 	let currentAnnualIncome = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
@@ -98,7 +98,7 @@ export const showIncomeStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* group by date - month (count total sum of the current month's income) */
+	/* group by date - month (count total sum of the current month's income) ------------------------------------------------------------------ */
 	/* mongoose pipeline */
 	let currentMonthlyIncome = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by current year and month */
