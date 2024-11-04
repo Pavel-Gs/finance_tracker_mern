@@ -5,20 +5,40 @@ import dayjs from 'dayjs'
 
 
 // BAR CHART JSX COMPONENT
-export const BarChartComponent = ({data}) => {
+export const BarChartComponent = ({ data }) => {
 
 	/* function to format the date to short month format */
-	const formatMonth = (date) => dayjs(date).format('MMM')
-	
+	/* const formatMonth = (date) => dayjs(date).format('MMM') */
+
 	return (
 		<ResponsiveContainer width='100%' height={300}>
-			<BarChart data={data} margin={{top: 20}}>
+			<BarChart data={data} margin={{ top: 20 }}>
 				<CartesianGrid strokeDasharray='3 3' />
-				<XAxis dataKey='date' tickFormatter={formatMonth} />
+				<XAxis dataKey='year' />
 				<YAxis allowDecimals={false} />
-				<Tooltip formatter={(value) => [`${value.toLocaleString()}`, "Amount"]} />
+				<Tooltip />
 				<Bar dataKey='totalAmount' fill='#2cb1bc' barSize={50} />
 			</BarChart>
 		</ResponsiveContainer>
 	)
 }
+
+
+// BAR CHART JSX COMPONENT
+//export const BarChartComponent = ({ data }) => {
+//
+//	/* function to format the date to short month format */
+//	const formatMonth = (date) => dayjs(date).format('MMM')
+//
+//	return (
+//		<ResponsiveContainer width='100%' height={300}>
+//			<BarChart data={data} margin={{ top: 20 }}>
+//				<CartesianGrid strokeDasharray='3 3' />
+//				<XAxis dataKey='date' tickFormatter={formatMonth} />
+//				<YAxis allowDecimals={false} />
+//				<Tooltip formatter={(value) => [`${value.toLocaleString()}`, "Amount"]} />
+//				<Bar dataKey='totalAmount' fill='#2cb1bc' barSize={50} />
+//			</BarChart>
+//		</ResponsiveContainer>
+//	)
+//}

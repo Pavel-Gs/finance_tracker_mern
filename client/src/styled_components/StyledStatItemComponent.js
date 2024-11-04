@@ -15,14 +15,17 @@ export const StyledStatItemComponent = styled.article`
 		justify-content: space-between;
 		.count {
 			display: block;
-			font-size: 50px;
+			font-size: 1.5rem;
 			margin-left: 0.5rem;
+			@media (max-width: 1488px) {
+				font-size: 1rem;
+			}
 		}
 		.title {
 			margin: 0;
 			text-transform: capitalize;
 			letter-spacing: var(--letter-spacing);
-			text-align: center;
+			text-align: right;
 			margin: 0.5rem;
 			font-size: 1.25rem;
 			.entries {

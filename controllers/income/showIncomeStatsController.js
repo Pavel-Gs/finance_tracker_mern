@@ -38,62 +38,100 @@ export const showIncomeStatsController = async (req, res) => {
 			$group: {
 				_id: '$typeIncome',
 				count: { $sum: 1 },
+				totalAmount: { $sum: '$amountIncome' } /* calculate the sum of amountExpense for each type */
 			}
 		},
 		/* stage 3: sort by count in descending order */
 		{
 			$sort: {
-				count: -1
+				totalAmount: -1
 			}
 		}
 	])
 	/* convert the results to an object */
-	const countedIncomeTypes = countIncomeTypes.reduce((acc, { _id: title, count }) => {
-		acc[title] = count || 0;
-		return acc;
+	const countedIncomeTypes = countIncomeTypes.reduce((acc, { _id: title, count, totalAmount }) => {
+		acc[title] = {
+            count: count || 0,
+            totalAmount: totalAmount || 0
+        }
+		return acc
 	}, {})
 
 
 	/* (count the sum of the current year' income and group by month) ------------------------------------------------------------ (for charts) */
 	/* mongoose pipeline */
-	let currentAnnualIncomeArray = await IncomeModel.aggregate([
-		/* stage 1: match by condition and filter by current year */
+	//let currentAnnualIncomeArray = await IncomeModel.aggregate([
+	///* stage 1: match by condition and filter by current year */
+	//	{
+	//		$match: {
+	//			...matchCondition,
+	//			$expr: {
+	//				$eq: [{ $year: "$dateIncome" }, currentYear]
+	//			}
+	//		}
+	//	},
+	//	/* stage 2: group by date and get the sum */
+	//	{
+	//		$group: {
+	//			_id: {
+	//				year: { $year: '$dateIncome' },
+	//				month: { $month: '$dateIncome' },
+	//			},
+	//			totalAmount: { $sum: "$amountIncome" }
+	//		}
+	//	},
+	//	/* stage 3: sort by date */
+	//	{
+	//		$sort: {
+	//			'_id.year': -1,
+	//			'_id.month': -1
+	//		}
+	//	},
+	//	/* stage 4: limit the returned range (may not be necessary, if filtering by current year) */
+	//	{
+	//		$limit: 12
+	//	}
+	//])
+	///* return the results as an object */
+	//currentAnnualIncomeArray = currentAnnualIncomeArray.map((i) => {
+	//	const { _id: { year, month }, totalAmount } = i
+	//	const date = day().month(month - 1).year(year).format('MMMM YYYY') /* "month - 1" is to compensate for january indexing as zero */
+	//	return {
+	//		date, totalAmount
+	//	}
+	//}).reverse() /* reverse the map's return, so the latest dates displayed last */
+
+
+	/* (count the sum of the current year' income and group by month) ------------------------------------------------------------ (for charts) */
+	/* mongoose pipeline */
+	let overallAnnualIncomeArray = await IncomeModel.aggregate([
+		/* stage 1: match by condition and filter by year */
 		{
 			$match: {
-				...matchCondition,
-				$expr: {
-					$eq: [{ $year: "$dateIncome" }, currentYear]
-				}
+				...matchCondition
 			}
 		},
-		/* stage 2: group by date and get the sum */
+		/* stage 2: group by year and get the sum */
 		{
 			$group: {
 				_id: {
-					year: { $year: '$dateIncome' },
-					month: { $month: '$dateIncome' },
+					year: { $year: '$dateIncome' }
 				},
 				totalAmount: { $sum: "$amountIncome" }
 			}
 		},
-		/* stage 3: sort by date */
+		/* stage 3: sort by year */
 		{
 			$sort: {
-				'_id.year': -1,
-				'_id.month': -1
+				'_id.year': -1
 			}
-		},
-		/* stage 4: limit the returned range (may not be necessary, if filtering by current year) */
-		{
-			$limit: 12
 		}
 	])
 	/* return the results as an object */
-	currentAnnualIncomeArray = currentAnnualIncomeArray.map((i) => {
-		const { _id: { year, month }, totalAmount } = i
-		const date = day().month(month - 1).year(year).format('MMMM YYYY') /* "month - 1" is to compensate for january indexing as zero */
+	overallAnnualIncomeArray = overallAnnualIncomeArray.map((i) => {
+		const { _id: { year }, totalAmount } = i
 		return {
-			date, totalAmount
+			year, totalAmount
 		}
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
@@ -151,5 +189,5 @@ export const showIncomeStatsController = async (req, res) => {
 	currentAnnualIncomeSum = currentAnnualIncomeSum[0]?.totalAmount || 0
 
 
-	res.status(StatusCodes.OK).json({ countedIncomeTypes, currentAnnualIncomeArray, currentAnnualIncomeSum, currentMonthlyIncomeSum })
+	res.status(StatusCodes.OK).json({ countedIncomeTypes, overallAnnualIncomeArray, currentAnnualIncomeSum, currentMonthlyIncomeSum })
 }

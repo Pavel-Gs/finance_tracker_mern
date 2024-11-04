@@ -16,42 +16,42 @@ import { StyledStatsContainer } from '../../styled_components/StyledStatsContain
 
 // EXPENSES STATS CONTAINER JSX COMPONENT
 export const ExpensesStatsContainer = ({ countedExpensesTypesProp }) => {
+	
+    /* mapping object for icons */
+    const expenseTypeIcons = {
+        'Alcohol & nicotine': <FaWineBottle />,
+        'Food': <IoFastFood />,
+        'Monthly': <FaRepeat />,
+        'Commute': <FaBusAlt />,
+        'Home': <GiHomeGarage />,
+        'Medicine': <GiMedicines />,
+        'Geodesy': <GrUserWorker />,
+        'Recreational': <FaUmbrellaBeach />,
+        default: <FaMinus /> /* default icon if no match is found */
+    }
 
-	// Mapping object for icons
-	const expenseTypeIcons = {
-		'Alcohol & nicotine': <FaWineBottle />,
-		'Food': <IoFastFood />,
-		'Monthly': <FaRepeat />,
-		'Commute': <FaBusAlt />,
-		'Home': <GiHomeGarage />,
-		'Medicine': <GiMedicines />,
-		'Geodesy': <GrUserWorker />,
-		'Recreational': <FaUmbrellaBeach />,
-		default: <FaMinus /> // Default icon if no match is found
-	}
+    /* create statsList dynamically from countedExpensesTypesProp */
+    const typesList = Object.entries(countedExpensesTypesProp).map(([key, value], index) => ({
+        titleProp: key || "N/A",
+        countProp: value.count || 0,
+        totalAmountProp: value.totalAmount || 0,
+        iconProp: expenseTypeIcons[key] || expenseTypeIcons.default
+    }))
 
-	// Create statsList dynamically from defaultStatsProp
-	const typesList = Object.entries(countedExpensesTypesProp).map(([key, value], index) => ({
-		titleProp: key || "N/A",
-		countProp: value || 0,
-		iconProp: expenseTypeIcons[key] || expenseTypeIcons.default
-	}))
-
-	// Calculate total count to determine if all counts are zero
-	const totalExpensesEntriesCount = Object.values(countedExpensesTypesProp).reduce((acc, count) => acc + count, 0)
-
-	return (
-		<>
-			<h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
-				{totalExpensesEntriesCount === 0 ? "No expense data" : "Total entries count"}
-			</h4>
-			<StyledStatsContainer>
-				{typesList.map((i) => {
-					return (
-						<StatItemComponent key={i.titleProp} {...i} />
-					)
-				})}
-			</StyledStatsContainer>
-		</>
-	)
+    /* calculate total count to determine if all counts are zero */
+    const totalExpensesEntriesCount = Object.values(countedExpensesTypesProp).reduce((acc, { count }) => acc + count, 0);
+    return (
+        <>
+            <h4 className='form-title' style={{ marginBottom: '1.5rem', textTransform: 'none' }}>
+                {totalExpensesEntriesCount === 0 ? "No expense data" : "Total entries count"}
+            </h4>
+            <StyledStatsContainer>
+                {typesList.map((i) => {
+                    return (
+                        <StatItemComponent key={i.titleProp} {...i} />
+                    )
+                })}
+            </StyledStatsContainer>
+        </>
+    )
 }

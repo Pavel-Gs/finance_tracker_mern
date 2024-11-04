@@ -12,7 +12,7 @@ import { StyledStatsContainer } from '../../styled_components/StyledStatsContain
 // INCOME STATS CONTAINER JSX COMPONENT
 export const IncomeStatsContainer = ({ countedIncomeTypesProp }) => {
 
-	// Mapping object for icons
+	/* mapping object for icons */
 	const incomeTypeIcons = {
 		'Jobs': <BsBriefcaseFill />,
 		'Banks': <BsBank2 />,
@@ -20,15 +20,16 @@ export const IncomeStatsContainer = ({ countedIncomeTypesProp }) => {
 		default: <FaPlus /> // Default icon if no match is found
 	}
 
-	// Create statsList dynamically from defaultStatsProp
+	/* create statsList dynamically from defaultStatsProp */
 	const typesList = Object.entries(countedIncomeTypesProp).map(([key, value], index) => ({
 		titleProp: key || "N/A",
-		countProp: value || 0,
+		countProp: value.count || 0,
+		totalAmountProp: value.totalAmount || 0,
 		iconProp: incomeTypeIcons[key] || incomeTypeIcons.default
 	}))
 
-	// Calculate total count to determine if all counts are zero
-	const totalIncomeEntriesCount = Object.values(countedIncomeTypesProp).reduce((acc, count) => acc + count, 0)
+	/* calculate total count to determine if all counts are zero */
+	const totalIncomeEntriesCount = Object.values(countedIncomeTypesProp).reduce((acc, { count }) => acc + count, 0)
 
 	return (
 		<>
