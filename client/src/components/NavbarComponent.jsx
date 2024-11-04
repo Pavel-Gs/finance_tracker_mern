@@ -11,17 +11,20 @@ import { StyledNavbarComponent } from '../styled_components/StyledNavbarComponen
 
 
 // NAVBAR JSX COMPONENT
-/* props are coming from DashboardLayout.jsx, from the loader data */
 export const NavbarComponent = () => {
 
 	/* use global context data */
-	const { toggleSidebar, currentMonthlyExpenses, currentMonthlyIncome } = useDashboardContext()
+	const { toggleSidebar, currentMonthlyExpensesSum, currentAnnualExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum } = useDashboardContext()
 
 	// Format with a thousand separator
-	const formattedCurrentMonthlyExpenses = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyExpenses)
-	const formattedCurrentMonthlyIncome = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyIncome)
-	const currentMonthlySavings = currentMonthlyIncome - currentMonthlyExpenses
+	const formattedCurrentMonthlyExpensesSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyExpensesSum)
+	const formattedCurrentMonthlyIncomeSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlyIncomeSum)
+	const currentMonthlySavings = currentMonthlyIncomeSum - currentMonthlyExpensesSum
 	const formattedCurrentMonthlySavings = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentMonthlySavings)
+	const formattedCurrentAnnualExpensesSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentAnnualExpensesSum)
+	const formattedCurrentAnnualIncomeSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentAnnualIncomeSum)
+	const currentAnnualSavings = currentAnnualIncomeSum - currentAnnualExpensesSum
+	const formattedCurrentAnnualSavings = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentAnnualSavings)
 
 	return (
 		<StyledNavbarComponent>
@@ -34,16 +37,16 @@ export const NavbarComponent = () => {
 						<LogoComponent />
 						<div className='dashboard-stats-current'>
 							<h6>Current month:</h6>
-							<p>+ {formattedCurrentMonthlyIncome}</p>
-							<p>- {formattedCurrentMonthlyExpenses}</p>
+							<p>+ {formattedCurrentMonthlyIncomeSum}</p>
+							<p>- {formattedCurrentMonthlyExpensesSum}</p>
 							<p>= {formattedCurrentMonthlySavings}</p>
 						</div>
-						{/* <div className='dashboard-stats'>
+						<div className='dashboard-stats'>
 							<h6>Current year:</h6>
-							<p>+ {formattedCurrentMonthlyIncome}</p>
-							<p>- {formattedCurrentMonthlyExpenses}</p>
-							<p>= {formattedCurrentMonthlySavings}</p>
-						</div> */}
+							<p>+ {formattedCurrentAnnualIncomeSum}</p>
+							<p>- {formattedCurrentAnnualExpensesSum}</p>
+							<p>= {formattedCurrentAnnualSavings}</p>
+						</div>
 						{/* <div className='dashboard-stats'>
 							<h6>All time:</h6>
 							<p>+ {formattedCurrentMonthlyIncome}</p>

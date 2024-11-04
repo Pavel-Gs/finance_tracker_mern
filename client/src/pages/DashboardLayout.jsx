@@ -21,11 +21,15 @@ import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayou
 export const loaderDashboard = async () => {
 	try {
 		const { data } = await customFetch.get('/users/current-user') /* fetch the current user data */
-		const fetchCurrentMonthlyExpenses = await customFetch.get('/expenses/stats') /* fetch the current monthly expenses */
-		const currentMonthlyExpenses = fetchCurrentMonthlyExpenses.data.currentMonthlyExpenses
-		const fetchCurrentMonthlyIncome = await customFetch.get('/income/stats') /* fetch the current monthly income */
-		const currentMonthlyIncome = fetchCurrentMonthlyIncome.data.currentMonthlyIncome
-		return { data, currentMonthlyExpenses, currentMonthlyIncome } /* must return something; this return will be available in the component, where that loader is used */
+		const fetchCurrentMonthlyExpensesSum = await customFetch.get('/expenses/stats') /* fetch the current monthly expenses */
+		const currentMonthlyExpensesSum = fetchCurrentMonthlyExpensesSum.data.currentMonthlyExpensesSum
+		const fetchCurrentAnnualExpensesSum = await customFetch.get('/expenses/stats') /* fetch the current annual expenses */
+		const currentAnnualExpensesSum = fetchCurrentAnnualExpensesSum.data.currentAnnualExpensesSum
+		const fetchCurrentMonthlyIncomeSum = await customFetch.get('/income/stats') /* fetch the current monthly income */
+		const currentMonthlyIncomeSum = fetchCurrentMonthlyIncomeSum.data.currentMonthlyIncomeSum
+		const fetchCurrentAnnualIncomeSum = await customFetch.get('/income/stats') /* fetch the current annual income */
+		const currentAnnualIncomeSum = fetchCurrentAnnualIncomeSum.data.currentAnnualIncomeSum
+		return { data, currentMonthlyExpensesSum, currentAnnualExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum } /* must return something; this return will be available in the component, where that loader is used */
 	} catch (error) {
 		return redirect('/')
 	}
@@ -57,7 +61,7 @@ export const DashboardLayout = () => {
 	}
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
-	const { data: currentUserObj, currentMonthlyExpenses, currentMonthlyIncome } = useLoaderData() /* destructure the data from the loader data */
+	const { data: currentUserObj, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum } = useLoaderData() /* destructure the data from the loader data */
 	const currentUser = currentUserObj.currentUserObj /* get the currentUser object from another object, since the loader returns multiple items (in an object) */
 
 	/* invoke useNavigate hook */
@@ -72,7 +76,7 @@ export const DashboardLayout = () => {
 
 	/* wrap the return with the global context */
 	return (
-		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser, currentMonthlyExpenses, currentMonthlyIncome }}>
+		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum }}>
 			<StyledDashboardLayout>
 				<main className="dashboard">
 					<SmallSidebarComponent />

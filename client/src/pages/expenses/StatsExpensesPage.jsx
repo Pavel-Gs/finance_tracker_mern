@@ -22,12 +22,12 @@ export const loaderStatsExpenses = async () => {
 // STATS EXPENSES PAGE JSX COMPONENT
 export const StatsExpensesPage = () => {
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderStatsExpenses" function (also, refer to App.jsx, "stats-expenses" path) */
-	const { countedExpensesTypes, currentAnnualExpenses } = useLoaderData()
+	const { countedExpensesTypes, currentAnnualExpensesArray } = useLoaderData()
 	return (
 		<>
 			<ExpensesStatsContainer countedExpensesTypesProp={countedExpensesTypes} />
 			{
-				currentAnnualExpenses?.length > 1 && <ExpensesChartsContainer currentAnnualExpensesProp={currentAnnualExpenses} />
+				currentAnnualExpensesArray?.length > 1 && <ExpensesChartsContainer currentAnnualExpensesArrayProp={currentAnnualExpensesArray} />
 			}
 		</>
 	)

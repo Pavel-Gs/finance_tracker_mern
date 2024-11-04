@@ -6,13 +6,13 @@ import { StyledBarChartComponent } from '../../styled_components/StyledBarChartC
 
 // EXPENSES CHARTS JSX COMPONENT
 /* props are coming from StatsExpensesPage.jsx */
-export const ExpensesChartsContainer = ({ currentAnnualExpensesProp }) => {
+export const ExpensesChartsContainer = ({ currentAnnualExpensesArrayProp }) => {
 	return (
 		<StyledBarChartComponent>
 			<h4 style={{textAlign: 'left', textTransform: 'none'}}>
 				Current annual expenses
 			</h4>
-			<BarChartComponent data={currentAnnualExpensesProp} />
+			<BarChartComponent data={currentAnnualExpensesArrayProp} />
 		</StyledBarChartComponent>
 	)
 }
