@@ -19,20 +19,19 @@ import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayou
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "dashboard" path */
 export const loaderDashboard = async () => {
-	try {
-		const { data } = await customFetch.get('/users/current-user') /* fetch the current user data */
-		const fetchCurrentMonthlyExpensesSum = await customFetch.get('/expenses/stats') /* fetch the current monthly expenses */
-		const currentMonthlyExpensesSum = fetchCurrentMonthlyExpensesSum.data.currentMonthlyExpensesSum
-		const fetchCurrentAnnualExpensesSum = await customFetch.get('/expenses/stats') /* fetch the current annual expenses */
-		const currentAnnualExpensesSum = fetchCurrentAnnualExpensesSum.data.currentAnnualExpensesSum
-		const fetchCurrentMonthlyIncomeSum = await customFetch.get('/income/stats') /* fetch the current monthly income */
-		const currentMonthlyIncomeSum = fetchCurrentMonthlyIncomeSum.data.currentMonthlyIncomeSum
-		const fetchCurrentAnnualIncomeSum = await customFetch.get('/income/stats') /* fetch the current annual income */
-		const currentAnnualIncomeSum = fetchCurrentAnnualIncomeSum.data.currentAnnualIncomeSum
-		return { data, currentMonthlyExpensesSum, currentAnnualExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum } /* must return something; this return will be available in the component, where that loader is used */
-	} catch (error) {
-		return redirect('/')
-	}
+    try {
+        const [userResponse, expensesResponse, incomeResponse] = await Promise.all([
+            customFetch.get('/users/current-user'), /* fetch the current user data */
+            customFetch.get('/expenses/stats'), /* fetch the expenses stats */
+            customFetch.get('/income/stats') /* fetch the income stats */
+        ])
+        const currentUser = userResponse.data.currentUserObj
+        const { currentMonthlyExpensesSum, currentAnnualExpensesSum } = expensesResponse.data
+        const { currentMonthlyIncomeSum, currentAnnualIncomeSum } = incomeResponse.data
+        return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum } /* return the combined data */
+    } catch (error) {
+        return redirect('/')
+    }
 }
 
 
@@ -61,8 +60,7 @@ export const DashboardLayout = () => {
 	}
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
-	const { data: currentUserObj, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum } = useLoaderData() /* destructure the data from the loader data */
-	const currentUser = currentUserObj.currentUserObj /* get the currentUser object from another object, since the loader returns multiple items (in an object) */
+	const { currentUser, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum } = useLoaderData() /* destructure the data from the loader data */
 
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
