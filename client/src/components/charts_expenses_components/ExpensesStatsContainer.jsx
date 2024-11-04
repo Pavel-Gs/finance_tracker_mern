@@ -8,6 +8,7 @@ import { GiHomeGarage } from "react-icons/gi"
 import { GiMedicines } from "react-icons/gi"
 import { GrUserWorker } from "react-icons/gr"
 import { FaUmbrellaBeach } from "react-icons/fa6"
+import { IoSchoolSharp } from "react-icons/io5"
 // IMPORT JSX COMPONENTS
 import { StatItemComponent } from '../StatItemComponent.jsx'
 // IMPORT STYLED COMPONENTS
@@ -27,6 +28,7 @@ export const ExpensesStatsContainer = ({ countedExpensesTypesProp }) => {
         'Medicine': <GiMedicines />,
         'Geodesy': <GrUserWorker />,
         'Recreational': <FaUmbrellaBeach />,
+		'Education': <IoSchoolSharp />,
         default: <FaMinus /> /* default icon if no match is found */
     }
 
