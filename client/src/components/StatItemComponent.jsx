@@ -12,7 +12,12 @@ export const StatItemComponent = ({ countProp, titleProp, iconProp }) => {
 					{countProp}
 				</span>
 				<h5 className='title'>
-					{titleProp}
+					<p>
+						{titleProp}
+					</p>
+					<p className='entries'>
+						entries: {countProp}
+					</p>
 				</h5>
 				<span className='icon'>
 					{iconProp}

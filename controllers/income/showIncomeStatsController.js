@@ -26,7 +26,7 @@ export const showIncomeStatsController = async (req, res) => {
 	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
 
 
-	/* count by type (count total amount of income entries) ----------------------------------------------------------------------------------- */
+	/* (count total amount of income entries) ------------------------------------------------------------------------------------- (for stats) */
 	/* mongoose pipeline */
 	let countIncomeTypes = await IncomeModel.aggregate([
 		/* stage 1: match by condition */
@@ -54,7 +54,7 @@ export const showIncomeStatsController = async (req, res) => {
 	}, {})
 
 
-	/* group by date - year (count the sum of current annual income by month) ----------------------------------------------------------------- */
+	/* (count the sum of the current year' income and group by month) ------------------------------------------------------------ (for charts) */
 	/* mongoose pipeline */
 	let currentAnnualIncomeArray = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
@@ -66,7 +66,7 @@ export const showIncomeStatsController = async (req, res) => {
 				}
 			}
 		},
-		/* stage 2: group by date */
+		/* stage 2: group by date and get the sum */
 		{
 			$group: {
 				_id: {
@@ -98,33 +98,7 @@ export const showIncomeStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* group by year (count total sum of the current year' income) ---------------------------------------------------------------------------- */
-	/* mongoose pipeline */
-	let currentAnnualIncomeSum = await IncomeModel.aggregate([
-		/* stage 1: match by condition and filter by current year */
-		{
-			$match: {
-				...matchCondition,
-				$expr: {
-					$and: [
-						{ $eq: [{ $year: "$dateIncome" }, currentYear] }
-					]
-				}
-			}
-		},
-		/* stage 2: group by date */
-		{
-			$group: {
-				_id: null,
-				totalAmount: { $sum: "$amountIncome" }
-			}
-		}
-	])
-	/* return the results */
-	currentAnnualIncomeSum = currentAnnualIncomeSum[0]?.totalAmount || 0
-
-
-	/* group by date - month (count total sum of the current month's income) ------------------------------------------------------------------ */
+	/* (count the sum of the current month's income) ----------------------------------------------------------------------------- (for navbar) */
 	/* mongoose pipeline */
 	let currentMonthlyIncomeSum = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by current year and month */
@@ -139,7 +113,7 @@ export const showIncomeStatsController = async (req, res) => {
 				}
 			}
 		},
-		/* stage 2: group by date */
+		/* stage 2: calculate the sum */
 		{
 			$group: {
 				_id: null,
@@ -149,6 +123,32 @@ export const showIncomeStatsController = async (req, res) => {
 	])
 	/* return the results */
 	currentMonthlyIncomeSum = currentMonthlyIncomeSum[0]?.totalAmount || 0
+
+
+	/* (count the sum of the current year' income) --------------------------------------------------------------------------------(for navbar) */
+	/* mongoose pipeline */
+	let currentAnnualIncomeSum = await IncomeModel.aggregate([
+		/* stage 1: match by condition and filter by current year */
+		{
+			$match: {
+				...matchCondition,
+				$expr: {
+					$and: [
+						{ $eq: [{ $year: "$dateIncome" }, currentYear] }
+					]
+				}
+			}
+		},
+		/* stage 2: calculate the sum */
+		{
+			$group: {
+				_id: null,
+				totalAmount: { $sum: "$amountIncome" }
+			}
+		}
+	])
+	/* return the results */
+	currentAnnualIncomeSum = currentAnnualIncomeSum[0]?.totalAmount || 0
 
 
 	res.status(StatusCodes.OK).json({ countedIncomeTypes, currentAnnualIncomeArray, currentAnnualIncomeSum, currentMonthlyIncomeSum })

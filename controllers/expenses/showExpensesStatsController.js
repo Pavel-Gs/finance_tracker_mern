@@ -26,7 +26,7 @@ export const showExpensesStatsController = async (req, res) => {
 	const currentMonth = day().month() + 1 /* dayjs months are 0-indexed */
 
 
-	/* count by type (count total amount of expense entries) ---------------------------------------------------------------------------------- */
+	/* (count total amount of expense entries) ------------------------------------------------------------------------------------- (for stats) */
 	/* mongoose pipeline */
 	let countExpensesTypes = await ExpensesModel.aggregate([
 		/* stage 1: match by condition */
@@ -37,7 +37,7 @@ export const showExpensesStatsController = async (req, res) => {
 		{
 			$group: {
 				_id: '$typeExpense',
-				count: { $sum: 1 },
+				count: { $sum: 1 },		
 			}
 		},
 		/* stage 3: sort by count in descending order */
@@ -49,12 +49,12 @@ export const showExpensesStatsController = async (req, res) => {
 	])
 	/* convert the results to an object */
 	const countedExpensesTypes = countExpensesTypes.reduce((acc, { _id: title, count }) => {
-		acc[title] = count || 0;
-		return acc;
+		acc[title] = count || 0
+		return acc
 	}, {});
 
 
-	/* group by date - year (count the sum of current annual expenses by month) --------------------------------------------------------------- */
+	/* (count the sum of the current year' expenses and group by month) ---------------------------------------------------------- (for charts) */
 	/* mongoose pipeline */
 	let currentAnnualExpensesArray = await ExpensesModel.aggregate([
 		/* stage 1: match by condition and filter by current year */
@@ -66,7 +66,7 @@ export const showExpensesStatsController = async (req, res) => {
 				}
 			}
 		},
-		/* stage 2: group by date */
+		/* stage 2: group by date and get the sum */
 		{
 			$group: {
 				_id: {
@@ -98,33 +98,7 @@ export const showExpensesStatsController = async (req, res) => {
 	}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* group by year (count total sum of the current year' expenses) -------------------------------------------------------------------------- */
-	/* mongoose pipeline */
-	let currentAnnualExpensesSum = await ExpensesModel.aggregate([
-		/* stage 1: match by condition and filter by current year */
-		{
-			$match: {
-				...matchCondition,
-				$expr: {
-					$and: [
-						{ $eq: [{ $year: "$dateExpense" }, currentYear] }
-					]
-				}
-			}
-		},
-		/* stage 2: group by date */
-		{
-			$group: {
-				_id: null,
-				totalAmount: { $sum: "$amountExpense" }
-			}
-		}
-	])
-	/* return the results */
-	currentAnnualExpensesSum = currentAnnualExpensesSum[0]?.totalAmount || 0
-	
-
-	/* group by date - month (count total sum of the current month's expenses) ---------------------------------------------------------------- */
+	/* (count the sum of the current month's expenses) ---------------------------------------------------------------------------- (for navbar) */
 	/* mongoose pipeline */
 	let currentMonthlyExpensesSum = await ExpensesModel.aggregate([
 		/* stage 1: match by condition and filter by current year and month */
@@ -139,7 +113,7 @@ export const showExpensesStatsController = async (req, res) => {
 				}
 			}
 		},
-		/* stage 2: group by date */
+		/* stage 2: calculate the sum */
 		{
 			$group: {
 				_id: null,
@@ -150,6 +124,32 @@ export const showExpensesStatsController = async (req, res) => {
 	/* return the results */
 	currentMonthlyExpensesSum = currentMonthlyExpensesSum[0]?.totalAmount || 0
 
+
+	/* (count the sum of the current year' expenses) ------------------------------------------------------------------------------ (for navbar) */
+	/* mongoose pipeline */
+	let currentAnnualExpensesSum = await ExpensesModel.aggregate([
+		/* stage 1: match by condition and filter by current year */
+		{
+			$match: {
+				...matchCondition,
+				$expr: {
+					$and: [
+						{ $eq: [{ $year: "$dateExpense" }, currentYear] }
+					]
+				}
+			}
+		},
+		/* stage 2: calculate the sum */
+		{
+			$group: {
+				_id: null,
+				totalAmount: { $sum: "$amountExpense" }
+			}
+		}
+	])
+	/* return the results */
+	currentAnnualExpensesSum = currentAnnualExpensesSum[0]?.totalAmount || 0
+	
 
 	res.status(StatusCodes.OK).json({ countedExpensesTypes, currentAnnualExpensesArray, currentAnnualExpensesSum, currentMonthlyExpensesSum })
 }

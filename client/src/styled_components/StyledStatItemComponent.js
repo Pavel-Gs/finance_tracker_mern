@@ -13,31 +13,39 @@ export const StyledStatItemComponent = styled.article`
 		display: flex;
 		align-items: top;
 		justify-content: space-between;
-	}
-	.count {
-		display: block;
-		font-size: 50px;
-		margin-left: 0.5rem;
-	}
-	.title {
-		margin: 0;
-		text-transform: capitalize;
-		letter-spacing: var(--letter-spacing);
-		text-align: left;
-		margin: 0.5rem;
-		font-size: 1.25rem;
-	}
-	.icon {
-		width: 70px;
-		height: 60px;
-		background: var(--grey-300);
-		border-radius: 0 var(--border-radius) 0 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		svg {
-			font-size: 2rem;
-			color: var(--white);
+		.count {
+			display: block;
+			font-size: 50px;
+			margin-left: 0.5rem;
+		}
+		.title {
+			margin: 0;
+			text-transform: capitalize;
+			letter-spacing: var(--letter-spacing);
+			text-align: center;
+			margin: 0.5rem;
+			font-size: 1.25rem;
+			.entries {
+				font-size: 1rem;
+				color: var(--grey-300);
+				margin-top: 0.25rem;
+			}
+		}
+		.icon {
+			width: 70px;
+			height: 60px;
+			background: var(--grey-300);
+			border-radius: 0 var(--border-radius) 0 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			svg {
+				font-size: 2rem;
+				color: var(--white);
+			}
+			@media (max-width: 1488px) {
+				height: 80px;
+			}
 		}
 	}
 `
