@@ -102,7 +102,7 @@ export const showIncomeStatsController = async (req, res) => {
 	//}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* (count the sum of the current year' income and group by month) ------------------------------------------------------------ (for charts) */
+	/* (count overall income sum and group by year) -------------------------------------------------------------------------------- (for charts) */
 	/* mongoose pipeline */
 	let overallAnnualIncomeArray = await IncomeModel.aggregate([
 		/* stage 1: match by condition and filter by year */
@@ -189,5 +189,26 @@ export const showIncomeStatsController = async (req, res) => {
 	currentAnnualIncomeSum = currentAnnualIncomeSum[0]?.totalAmount || 0
 
 
-	res.status(StatusCodes.OK).json({ countedIncomeTypes, overallAnnualIncomeArray, currentAnnualIncomeSum, currentMonthlyIncomeSum })
+	/* (count overall income sum ) ----------------------------------------------------------------------------------------------- (for navbar) */
+    /* mongoose pipeline */
+    let overallIncomeSum = await IncomeModel.aggregate([
+        /* stage 1: match by condition */
+        {
+            $match: {
+                ...matchCondition
+            }
+        },
+        /* stage 2: calculate the sum */
+        {
+            $group: {
+                _id: null,
+                totalAmount: { $sum: "$amountIncome" }
+            }
+        }
+    ])
+    /* return the results */
+    overallIncomeSum = overallIncomeSum[0]?.totalAmount || 0
+
+
+	res.status(StatusCodes.OK).json({ countedIncomeTypes, overallAnnualIncomeArray, currentAnnualIncomeSum, currentMonthlyIncomeSum, overallIncomeSum })
 }

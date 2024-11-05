@@ -26,9 +26,9 @@ export const loaderDashboard = async () => {
             customFetch.get('/income/stats') /* fetch the income stats */
         ])
         const currentUser = userResponse.data.currentUserObj
-        const { currentMonthlyExpensesSum, currentAnnualExpensesSum } = expensesResponse.data
-        const { currentMonthlyIncomeSum, currentAnnualIncomeSum } = incomeResponse.data
-        return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum } /* return the combined data */
+        const { currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum } = expensesResponse.data
+        const { currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = incomeResponse.data
+        return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } /* return the combined data */
     } catch (error) {
         return redirect('/')
     }
@@ -60,7 +60,7 @@ export const DashboardLayout = () => {
 	}
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
-	const { currentUser, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum } = useLoaderData() /* destructure the data from the loader data */
+	const { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = useLoaderData() /* destructure the data from the loader data */
 
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
@@ -74,7 +74,7 @@ export const DashboardLayout = () => {
 
 	/* wrap the return with the global context */
 	return (
-		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser, currentMonthlyExpensesSum, currentMonthlyIncomeSum, currentAnnualExpensesSum, currentAnnualIncomeSum }}>
+		<DashboardContext.Provider value={{ currentUser, showSidebar, isDarkTheme, toggleDarkTheme, toggleSidebar, logoutUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum }}>
 			<StyledDashboardLayout>
 				<main className="dashboard">
 					<SmallSidebarComponent />

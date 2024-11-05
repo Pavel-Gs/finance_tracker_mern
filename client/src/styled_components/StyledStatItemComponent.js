@@ -46,7 +46,7 @@ export const StyledStatItemComponent = styled.article`
 				font-size: 2rem;
 				color: var(--white);
 			}
-			@media (max-width: 1488px) {
+			@media (max-width: 1610px) {
 				height: 80px;
 			}
 		}

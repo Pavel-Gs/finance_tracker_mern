@@ -100,7 +100,7 @@ export const showExpensesStatsController = async (req, res) => {
     //}).reverse() /* reverse the map's return, so the latest dates displayed last */
 
 
-	/* (count the sum of the current year's expenses and group by month) ---------------------------------------------------------- (for charts) */
+	/* (count overall expenses sum and group by year) ------------------------------------------------------------------------------ (for charts) */
     /* mongoose pipeline */
     let overallAnnualExpensesArray = await ExpensesModel.aggregate([
         /* stage 1: match by condition and filter by current year */
@@ -184,6 +184,27 @@ export const showExpensesStatsController = async (req, res) => {
     /* return the results */
     currentAnnualExpensesSum = currentAnnualExpensesSum[0]?.totalAmount || 0
 
+
+	/* (count overall expenses sum ) ----------------------------------------------------------------------------------------------- (for navbar) */
+    /* mongoose pipeline */
+    let overallExpensesSum = await ExpensesModel.aggregate([
+        /* stage 1: match by condition */
+        {
+            $match: {
+                ...matchCondition
+            }
+        },
+        /* stage 2: calculate the sum */
+        {
+            $group: {
+                _id: null,
+                totalAmount: { $sum: "$amountExpense" }
+            }
+        }
+    ])
+    /* return the results */
+    overallExpensesSum = overallExpensesSum[0]?.totalAmount || 0
+
 	
-    res.status(StatusCodes.OK).json({ countedExpensesTypes, overallAnnualExpensesArray, currentAnnualExpensesSum, currentMonthlyExpensesSum })
+    res.status(StatusCodes.OK).json({ countedExpensesTypes, overallAnnualExpensesArray, currentAnnualExpensesSum, currentMonthlyExpensesSum, overallExpensesSum })
 };
