@@ -25,7 +25,7 @@ export const StyledStatItemComponent = styled.article`
 			margin: 0;
 			text-transform: capitalize;
 			letter-spacing: var(--letter-spacing);
-			text-align: right;
+			text-align: center;
 			margin: 0.5rem;
 			font-size: 1.25rem;
 			.entries {
