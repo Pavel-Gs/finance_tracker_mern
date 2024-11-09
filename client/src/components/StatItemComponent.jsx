@@ -25,5 +25,5 @@ export const StatItemComponent = ({ countProp, titleProp, iconProp, totalAmountP
                 </span>
             </header>
         </StyledStatItemComponent>
-    );
-};
+    )
+}

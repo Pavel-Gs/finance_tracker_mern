@@ -1,19 +1,21 @@
-// IMPORT NPM PACKAGE (HANDLE FILE UPLOADS)
+// IMPORT NPM PACKAGES (HANDLE FILE UPLOADS)
 import multer from 'multer'
+import DataParser from 'datauri/parser.js'
+import path from 'path'
 
 
 // MULTER MIDDLEWARE FUNCTION
 /* using disk storage */
-const storageFunc = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, 'public/uploads') /* specify the destination folder */
-	},
-	filename: (req, file, cb) => {
-		const fileName = file.originalname
-		cb(null, fileName) /* specify the file name */
-	}
-})
+const storageFunc = multer.memoryStorage()
 
+/* invoke parser */
+const parser = new DataParser()
+
+/* helper function */
+export const formatImage = (file) => {
+	const fileExtension = path.extname(file.originalname).toString()
+	return parser.format(fileExtension, file.buffer).content
+}
 
 /* handle uploads */
 export const uploadMiddleware = multer({

@@ -4,8 +4,8 @@ import { StatusCodes } from 'http-status-codes'
 import { UserModel } from '../../models/UserModel.js'
 // IMPORT CLOUDINARY PACKAGE (FOR IMAGE UPLOAD)
 import cloudinary from 'cloudinary'
-// IMPORT FILE SYSTEM MODULE (PROMISES OPTION)
-import {promises as fs} from 'fs'
+// IMPORT HELPER FUNCTION FROM MULTER MIDDLEWARE
+import { formatImage } from '../../middleware/multerMiddleware.js'
 
 
 // GET CURRENT USER CONTROLLER
@@ -25,8 +25,8 @@ export const updateUserController = async (req, res) => {
 
 	/* manage image uploads */
 	if (req.file) {
-		const response = await cloudinary.v2.uploader.upload(req.file.path)
-		await fs.unlink(req.file.path) /* delete the file from the folder */
+		const file = formatImage(req.file)
+		const response = await cloudinary.v2.uploader.upload(file)
 		newUser.avatar = response.secure_url
 		newUser.avatarPublicId = response.public_id
 	}
