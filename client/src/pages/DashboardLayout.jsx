@@ -1,7 +1,7 @@
 // IMPORT REACT FUNCTIONS
 import { createContext, useContext, useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Outlet, redirect, useNavigate, useLoaderData } from 'react-router-dom'
+import { Outlet, redirect, useNavigate, useNavigation, useLoaderData } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -10,6 +10,7 @@ import { customFetch } from '../utils/customFetch.js'
 import { SmallSidebarComponent } from '../components/SmallSidebarComponent.jsx'
 import { BigSidebarComponent } from '../components/BigSidebarComponent.jsx'
 import { NavbarComponent } from '../components/NavbarComponent.jsx'
+import { LoadingComponent } from '../components/LoadingComponent.jsx'
 // IMPORT JSX FUNCTIONS
 import { checkDefaultThemeFunction } from '../utils/checkDefaultThemeFunction.jsx'
 // IMPORT STYLED COMPONENTS
@@ -19,19 +20,19 @@ import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayou
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "dashboard" path */
 export const loaderDashboard = async () => {
-    try {
-        const [userResponse, expensesResponse, incomeResponse] = await Promise.all([
-            customFetch.get('/users/current-user'), /* fetch the current user data */
-            customFetch.get('/expenses/stats'), /* fetch the expenses stats */
-            customFetch.get('/income/stats') /* fetch the income stats */
-        ])
-        const currentUser = userResponse.data.currentUserObj
-        const { currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum } = expensesResponse.data
-        const { currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = incomeResponse.data
-        return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } /* return the combined data */
-    } catch (error) {
-        return redirect('/')
-    }
+	try {
+		const [userResponse, expensesResponse, incomeResponse] = await Promise.all([
+			customFetch.get('/users/current-user'), /* fetch the current user data */
+			customFetch.get('/expenses/stats'), /* fetch the expenses stats */
+			customFetch.get('/income/stats') /* fetch the income stats */
+		])
+		const currentUser = userResponse.data.currentUserObj
+		const { currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum } = expensesResponse.data
+		const { currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = incomeResponse.data
+		return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } /* return the combined data */
+	} catch (error) {
+		return redirect('/')
+	}
 }
 
 
@@ -65,6 +66,10 @@ export const DashboardLayout = () => {
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
 
+	/* loading spinner logic */
+	const navigation = useNavigation()
+	const isPageLoading = navigation.state === 'loading'
+
 	/* logout user logic */
 	const logoutUser = async () => {
 		navigate('/')
@@ -83,6 +88,7 @@ export const DashboardLayout = () => {
 						<NavbarComponent />
 						<div className="dashboard-page">
 							{/* render all children elements for the route using outlet */}
+							{/* {isPageLoading ? <LoadingComponent /> : <Outlet context={{ currentUser }} />} */} {/* display loading spinner if the data is loading */}
 							<Outlet context={{ currentUser }} /> {/* passing in an object, which will be available in all of the outlet (similar to context provider) */}
 						</div>
 					</div>

@@ -8,7 +8,7 @@ import { IncomeModel } from './models/IncomeModel.js'
 import { UserModel } from './models/UserModel.js'
 
 
-// POPULATE EXPENSES AND INCOME
+// POPULATE EXPENSES AND INCOME (AND DELETE ALL EXISTING ENTRIES)
 try {
 
 	/* get the user to populate the database */
@@ -41,7 +41,7 @@ try {
 }
 
 
-// POPULATE EXPENSES
+// POPULATE EXPENSES (AND DELETE ALL EXISTING ENTRIES)
 /* try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})
@@ -59,7 +59,7 @@ try {
 } */
 
 
-// POPULATE INCOME
+// POPULATE INCOME (AND DELETE ALL EXISTING ENTRIES)
 /* try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'john@gmail.com'})

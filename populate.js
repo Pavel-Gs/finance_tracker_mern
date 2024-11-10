@@ -12,7 +12,7 @@ import { UserModel } from './models/UserModel.js'
 
 
 
-// POPULATE EXPENSES
+// POPULATE EXPENSES (AND DELETE ALL EXISTING ENTRIES)
 /* try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'pavelgen@gmail.com'})
@@ -30,7 +30,7 @@ import { UserModel } from './models/UserModel.js'
 } */
 
 
-// POPULATE INCOME
+// POPULATE INCOME (AND DELETE ALL EXISTING ENTRIES)
 try {
 	await mongoose.connect(process.env.MONGO_URL)
 	const user = await UserModel.findOne({emailUser: 'pavelgen@gmail.com'})
@@ -38,7 +38,7 @@ try {
 	const income = jsonIncome.map((i) => {
 		return {...i, createdBy: user._id}
 	})
-	await IncomeModel.deleteMany({createdBy: user._id})
+	/* await IncomeModel.deleteMany({createdBy: user._id}) */
 	await IncomeModel.create(income)
 	console.log('Income populated')
 	process.exit(0)
