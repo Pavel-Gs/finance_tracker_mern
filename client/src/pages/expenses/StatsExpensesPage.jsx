@@ -10,12 +10,8 @@ import { ExpensesStatsContainer } from '../../components/charts_expenses_compone
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "stats-expenses" (dashboard) path */
 export const loaderStatsExpenses = async () => {
-	try {
-		const response = await customFetch.get('/expenses/stats')
-		return response.data
-	} catch (error) {
-		return error
-	}
+	const response = await customFetch.get('/expenses/stats')
+	return response.data
 }
 
 

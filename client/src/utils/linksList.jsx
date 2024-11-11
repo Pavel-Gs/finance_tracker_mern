@@ -12,13 +12,13 @@ import { MdAdminPanelSettings } from 'react-icons/md'
 export const linksList = [
 	/* expenses links list */
 	{
-		linkText: "add expense",
+		linkText: "Add new expense",
 		linkPath: '.', /* a dot here allows to navigate to a parent route (all links are relative); alternative approach is to use "/dashboard" route */
 		linkIcon: <AiTwotoneMinusSquare />,
 		id: crypto.randomUUID()
 	},
 	{
-		linkText: "all expenses",
+		linkText: "Search all expenses",
 		linkPath: 'all-expenses',
 		linkIcon: <AiTwotoneMinusCircle />,
 		id: crypto.randomUUID()
@@ -37,13 +37,13 @@ export const linksList = [
 	
 	/* income links list */
 	{
-		linkText: "add income",
+		linkText: "Add new income",
 		linkPath: 'add-income',
 		linkIcon: <AiTwotonePlusSquare />,
 		id: crypto.randomUUID()
 	},
 	{
-		linkText: "all income",
+		linkText: "Search all income",
 		linkPath: 'all-income',
 		linkIcon: <AiTwotonePlusCircle />,
 		id: crypto.randomUUID()

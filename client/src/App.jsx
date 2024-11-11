@@ -2,6 +2,9 @@
 import { createRoot } from 'react-dom/client'
 // IMPORT ROUTER FUNCTIONS AND COMPONENTS
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// IMPORT REACT QUERY COMPONENTS
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 // IMPORT TOASTIFY COMPONENTS
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
@@ -22,6 +25,7 @@ import { AllExpensesPage } from './pages/expenses/AllExpensesPage.jsx'
 import { AllIncomePage } from './pages/income/AllIncomePage.jsx'
 import { StatsExpensesPage } from './pages/expenses/StatsExpensesPage.jsx'
 import { StatsIncomePage } from './pages/income/StatsIncomePage.jsx'
+import { ErrorElement } from './components/ErrorElement.jsx'
 // IMPORT JSX FUNCTIONS
 import { checkDefaultThemeFunction } from './utils/checkDefaultThemeFunction.jsx'
 // IMPORT ACTIONS AND LOADERS
@@ -48,6 +52,16 @@ import './index.css'
 
 // MANAGE DARK THEME
 checkDefaultThemeFunction()
+
+
+// SETUP REACT QUERY
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 60 * 5 /* how often to refetch the data (in milliseconds) */
+		}
+	}
+})
 
 
 // SET BROWSER ROUTING
@@ -101,7 +115,8 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'stats-expenses',
 							element: <StatsExpensesPage />,
-							loader: loaderStatsExpenses
+							loader: loaderStatsExpenses,
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'add-income',
@@ -127,7 +142,8 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'stats-income',
 							element: <StatsIncomePage />,
-							loader: loaderStatsIncome
+							loader: loaderStatsIncome,
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'profile',
@@ -149,11 +165,18 @@ const browserRoutes = createBrowserRouter(
 
 // RENDER COMPONENTS
 createRoot(document.getElementById('root')).render(
-	<>
+
+	/* wrap the entire app in query client */
+	<QueryClientProvider client={queryClient}>
+
 		{/* use browser routing */}
 		<RouterProvider router={browserRoutes} />
 
 		{/* use react-toastify */}
 		<ToastContainer position='bottom-left' />
-	</>
+
+		{/* use react query devtools (will be removed in production by default) */}
+		<ReactQueryDevtools initialIsOpen={false} />
+
+	</QueryClientProvider>
 )

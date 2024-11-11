@@ -10,12 +10,8 @@ import { IncomeStatsContainer } from '../../components/charts_income_components/
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "stats-income" (dashboard) path */
 export const loaderStatsIncome = async () => {
-	try {
-		const response = await customFetch.get('/income/stats')
-		return response.data
-	} catch (error) {
-		return error
-	}
+	const response = await customFetch.get('/income/stats')
+	return response.data
 }
 
 
