@@ -95,7 +95,7 @@ const browserRoutes = createBrowserRouter(
 							index: true,
 							element: <AddExpensePage />,
 							action: actionAddExpense,
-							loader: loaderAllExpenses /* CLIENT-side filtering (for larger data sets, write new back-end controller); using the same loader as for allExpenses, but with the returned filtered data for today's expenses (entries) only */
+							loader: loaderAllExpenses /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allExpenses, but with the returned filtered data for today's expenses only */
 						},
 						{
 							path: 'edit-expense/:id',
@@ -115,14 +115,14 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'stats-expenses',
 							element: <StatsExpensesPage />,
-							loader: loaderStatsExpenses,
+							loader: loaderStatsExpenses(queryClient),
 							errorElement: <ErrorElement />
 						},
 						{
 							path: 'add-income',
 							element: <AddIncomePage />,
 							action: actionAddIncome,
-							loader: loaderAllIncome /* CLIENT-side filtering (for larger data sets, write new back-end controller); using the same loader as for allIncome, but with the returned filtered data for today's income (entries) only */
+							loader: loaderAllIncome /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allIncome, but with the returned filtered data for today's income only */
 						},
 						{
 							path: 'edit-income/:id',
@@ -142,7 +142,7 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'stats-income',
 							element: <StatsIncomePage />,
-							loader: loaderStatsIncome,
+							loader: loaderStatsIncome(queryClient),
 							errorElement: <ErrorElement />
 						},
 						{
