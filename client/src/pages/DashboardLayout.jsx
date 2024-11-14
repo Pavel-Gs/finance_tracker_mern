@@ -1,7 +1,9 @@
 // IMPORT REACT FUNCTIONS
 import { createContext, useContext, useState } from 'react'
 // IMPORT ROUTER COMPONENTS
-import { Outlet, redirect, useNavigate, useNavigation, useLoaderData } from 'react-router-dom'
+import { Outlet, redirect, useNavigate, useNavigation } from 'react-router-dom'
+// IMPORT REACT QUERY COMPONENTS
+import { useQuery } from '@tanstack/react-query'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -17,10 +19,10 @@ import { checkDefaultThemeFunction } from '../utils/checkDefaultThemeFunction.js
 import { StyledDashboardLayout } from '../styled_components/StyledDashboardLayout.js'
 
 
-// CREATE A LOADER
-/* for prefetching the data; used in App.jsx "dashboard" path */
-export const loaderDashboard = async () => {
-	try {
+// CREATE QUERY FUNCTION
+const dashboardQuery = {
+	queryKey: ["dashboardQuery"], /* the name of the query (use the same name when invalidating) */
+	queryFn: async () => {
 		const [userResponse, expensesResponse, incomeResponse] = await Promise.all([
 			customFetch.get('/users/current-user'), /* fetch the current user data */
 			customFetch.get('/expenses/stats'), /* fetch the expenses stats */
@@ -30,6 +32,16 @@ export const loaderDashboard = async () => {
 		const { currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum } = expensesResponse.data
 		const { currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = incomeResponse.data
 		return { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } /* return the combined data */
+	}
+}
+
+
+// CREATE A LOADER
+/* for prefetching the data; used in App.jsx "dashboard" path */
+/* incorporated queryClient into the loader (a function that returns another function) */
+export const loaderDashboard = (queryClient) => async () => {
+	try {
+		return await queryClient.ensureQueryData(dashboardQuery)
 	} catch (error) {
 		return redirect('/')
 	}
@@ -43,7 +55,7 @@ export const useDashboardContext = () => useContext(DashboardContext)
 
 
 // DASHBOARD LAYOUT JSX COMPONENT
-export const DashboardLayout = () => {
+export const DashboardLayout = (queryClient) => {
 
 	/* dark theme logic */
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultThemeFunction())
@@ -60,8 +72,8 @@ export const DashboardLayout = () => {
 		setShowSidebar(!showSidebar)
 	}
 
-	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderDashboard" function (also, refer to App.jsx, "dashboard" path) */
-	const { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = useLoaderData() /* destructure the data from the loader data */
+	/* get the data from react query, instead of the loader */
+	const { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = useQuery(dashboardQuery).data /* react query returns an object named "data" */
 
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
@@ -74,6 +86,7 @@ export const DashboardLayout = () => {
 	const logoutUser = async () => {
 		navigate('/')
 		await customFetch.get('/auth/logout')
+		queryClient.invalidateQueries() /* invalidate all queries */
 		toast.success("Logged out")
 	}
 

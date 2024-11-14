@@ -9,7 +9,7 @@ import { IncomeStatsContainer } from '../../components/charts_income_components/
 
 // CREATE QUERY FUNCTION
 const statsIncomeQuery = {
-	queryKey: ['statsIncomeQuery'], /* the name of the query (use the same name when invalidating) */
+	queryKey: ["statsIncomeQuery"], /* the name of the query (use the same name when invalidating) */
 	queryFn: async () => {
 		const response = await customFetch.get('/income/stats') /* where to get the data from */
 		return response.data /* axios returns an object which contains "data" */

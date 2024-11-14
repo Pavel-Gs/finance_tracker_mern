@@ -9,7 +9,7 @@ import { ExpensesStatsContainer } from '../../components/charts_expenses_compone
 
 // CREATE QUERY FUNCTION
 const statsExpensesQuery = {
-	queryKey: ['statsExpensesQuery'], /* the name of the query (use the same name when invalidating) */
+	queryKey: ["statsExpensesQuery"], /* the name of the query (use the same name when invalidating) */
 	queryFn: async () => {
 		const response = await customFetch.get('/expenses/stats') /* where to get the data from */
 		return response.data /* axios returns an object which contains "data" */
@@ -19,7 +19,7 @@ const statsExpensesQuery = {
 
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "stats-expenses" (dashboard) path */
-/* incorporated queryClient into the loader */
+/* incorporated queryClient into the loader (a function that returns another function) */
 export const loaderStatsExpenses = (queryClient) =>  async () => {
 	const data = await queryClient.ensureQueryData(statsExpensesQuery)
 	return data /* also could return null instead (the data is coming from the query, not from the loader) */

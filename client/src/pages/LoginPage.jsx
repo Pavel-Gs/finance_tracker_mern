@@ -14,7 +14,8 @@ import { StyledRegisterAndLoginPage } from '../styled_components/StyledRegisterA
 
 // LOGIN ACTION FUNCTION
 /* used in App.jsx "login" route action */
-export const actionLogin = async({request}) => {
+/* incorporated queryClient into the loader (a function that returns another function) */
+export const actionLogin = (queryClient) => async({request}) => {
 
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -23,6 +24,7 @@ export const actionLogin = async({request}) => {
 	/* post new data using login form inputs */
 	try {
 		await customFetch.post('/auth/login', loginData)
+		queryClient.invalidateQueries() /* invalidate all queries */
 		toast.success("Login successful")
 		return redirect('/dashboard')
 	} catch (error) {

@@ -84,12 +84,12 @@ const browserRoutes = createBrowserRouter(
 				{
 					path: 'login',
 					element: <LoginPage />,
-					action: actionLogin
+					action: actionLogin(queryClient)
 				},
 				{
 					path: 'dashboard',
-					element: <DashboardLayout />,
-					loader: loaderDashboard,
+					element: <DashboardLayout queryClient={queryClient} />,
+					loader: loaderDashboard(queryClient),
 					children: [
 						{
 							index: true,
@@ -148,7 +148,7 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'profile',
 							element: <ProfilePage />,
-							action: actionUpdateUser
+							action: actionUpdateUser(queryClient)
 						},
 						{
 							path: 'admin',

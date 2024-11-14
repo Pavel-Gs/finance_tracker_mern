@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Form, useOutletContext } from 'react-router-dom'
+import { Form, useOutletContext, redirect } from 'react-router-dom'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -12,7 +12,7 @@ import { StyledDashboardFormPage } from '../styled_components/StyledDashboardFor
 
 
 // UPDATE USER ACTION FUNCTION
-export const actionUpdateUser = async({request}) => {
+export const actionUpdateUser = (queryClient) => async({request}) => {
 
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -25,11 +25,13 @@ export const actionUpdateUser = async({request}) => {
 	/* patch the existing data using profile form inputs */
 	try {
 		await customFetch.patch('/users/update-user', inputData)
+		queryClient.invalidateQueries(["dashboardQuery"]) /* invalidate only dashboard query */
 		toast.success('Profile updated')
+		return redirect('/dashboard')
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
+		return null
 	}
-	return null
 }
 
 
