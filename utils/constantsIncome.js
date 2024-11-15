@@ -9,12 +9,12 @@ export const INCOME_TYPES = {
 // INCOME CATEGORIES
 export const INCOME_CATEGORIES = {
 	/* jobs */
-	JOBS_LENA: "Jobs (Lena)",
-	JOBS_PAVEL: "Jobs (Pavel)",
+	JOBS_L: "Jobs (L)",
+	JOBS_P: "Jobs (P)",
 	/* banks */
 	RBC: "RBC",
-	SIMPLII_LENA: "Simplii (Lena)",
-	SIMPLII_PAVEL: "Simplii (Pavel)",
+	SIMPLII_L: "Simplii (L)",
+	SIMPLII_P: "Simplii (P)",
 	/* returns */
 	CRA: "CRA / EFT",
 	COSTCO: "Costco",
@@ -25,8 +25,8 @@ export const INCOME_CATEGORIES = {
 
 // MAPPING TYPES TO CATEGORIES
 export const TYPE_TO_CATEGORIES = {
-	[INCOME_TYPES.JOBS]: ["JOBS_LENA", "JOBS_PAVEL"],
-	[INCOME_TYPES.BANKS]: ["RBC", "SIMPLII_LENA", "SIMPLII_PAVEL"],
+	[INCOME_TYPES.JOBS]: ["JOBS_L", "JOBS_P"],
+	[INCOME_TYPES.BANKS]: ["RBC", "SIMPLII_L", "SIMPLII_P"],
 	[INCOME_TYPES.RETURNS]: ["CRA", "COSTCO", "ICBC", "OTHER"]
 }
 
