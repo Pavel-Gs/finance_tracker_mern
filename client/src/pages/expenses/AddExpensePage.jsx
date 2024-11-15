@@ -56,7 +56,7 @@ export const AddExpensePage = () => {
 	}
 
 	/* date picker logic */
-	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
+	const getCurrentDate = new Date(Date.now()) // get the current date in the current time zone
 	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
 	const [selectedDate, setSelectedDate] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
