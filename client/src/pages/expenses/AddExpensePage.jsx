@@ -19,7 +19,7 @@ import { StyledDashboardFormPage } from '../../styled_components/StyledDashboard
 
 // ADD EXPENSE ACTION FUNCTION
 /* used in App.jsx dashboard's "index" route action (AddExpensePage is an index page for the dashboard) */
-export const actionAddExpense = async ({ request }) => {
+export const actionAddExpense = (queryClient) => async ({ request }) => {
 
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -28,6 +28,7 @@ export const actionAddExpense = async ({ request }) => {
 	/* post new data using expense form inputs */
 	try {
 		await customFetch.post('/expenses', expenseData)
+		queryClient.invalidateQueries(["allExpensesQuery"])
 		toast.success("Expense added") /* the default position is set in App.jsx */
 		return redirect('all-expenses') /* it must return something; redirects a user to all-expenses page after submission; note: "all-expenses", not "/all-expenses" */
 	} catch (error) {
@@ -41,7 +42,7 @@ export const actionAddExpense = async ({ request }) => {
 export const AddExpensePage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the filtered return from the "loaderAllExpenses" function (also, refer to App.jsx, "dashboard" index path (add expense)) */
-	const { todayExpenses } = useLoaderData() /* filtered expenses (passed into TodayExpensesContainerComponent.jsx) */
+	const { todayExpenses } = useLoaderData() /* filtered expenses (will be passed into TodayExpensesContainerComponent.jsx) */
 
 	/* get the user from the outlet context */
 	const { currentUser } = useOutletContext()

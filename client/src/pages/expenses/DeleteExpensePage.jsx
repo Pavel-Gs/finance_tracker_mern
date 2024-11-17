@@ -8,9 +8,10 @@ import { customFetch } from '../../utils/customFetch.js'
 
 // DELETE EXPENSE ACTION FUNCTION
 /* used in App.jsx "delete/expense:id" route action */
-export const actionDeleteExpense = async ({ params }) => {
+export const actionDeleteExpense = (queryClient) => async ({ params }) => {
 	try {
 		await customFetch.delete(`/expenses/${params.id}`)
+		queryClient.invalidateQueries(["allExpensesQuery"])
 		toast.success("Expense deleted") /* the default position is set in App.jsx */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

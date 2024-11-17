@@ -94,23 +94,25 @@ const browserRoutes = createBrowserRouter(
 						{
 							index: true,
 							element: <AddExpensePage />,
-							action: actionAddExpense,
-							loader: loaderAllExpenses /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allExpenses, but with the returned filtered data for today's expenses only */
+							action: actionAddExpense(queryClient),
+							loader: loaderAllExpenses(queryClient), /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allExpenses, but with the returned filtered data for today's expenses only */
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'edit-expense/:id',
 							element: <EditExpensePage />,
-							action: actionEditExpense,
-							loader: loaderEditExpense
+							action: actionEditExpense(queryClient),
+							loader: loaderEditExpense(queryClient)
 						},
 						{
 							path: 'delete-expense/:id',
-							action: actionDeleteExpense
+							action: actionDeleteExpense(queryClient)
 						},
 						{
 							path: 'all-expenses',
 							element: <AllExpensesPage />,
-							loader: loaderAllExpenses
+							loader: loaderAllExpenses(queryClient),
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'stats-expenses',

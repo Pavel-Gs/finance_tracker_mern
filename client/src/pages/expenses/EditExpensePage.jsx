@@ -18,7 +18,7 @@ import { StyledDashboardFormPage } from '../../styled_components/StyledDashboard
 
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "edit-expense" path */
-export const loaderEditExpense = async ({ params }) => {
+export const loaderEditExpense = (queryClient) => async ({ params }) => {
 	try {
 		const { data } = await customFetch.get(`/expenses/${params.id}`)
 		return data
@@ -31,7 +31,7 @@ export const loaderEditExpense = async ({ params }) => {
 
 // EDIT EXPENSE ACTION FUNCTION
 /* used in App.jsx "edit-expense/:id" route action */
-export const actionEditExpense = async ({ request, params }) => {
+export const actionEditExpense = (queryClient) => async ({ request, params }) => {
 
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -40,6 +40,7 @@ export const actionEditExpense = async ({ request, params }) => {
 	/* patch the existing data using expense form inputs */
 	try {
 		await customFetch.patch(`/expenses/${params.id}`, expenseData)
+		queryClient.invalidateQueries(["allExpensesQuery"])
 		toast.success("Expense edited") /* the default position is set in App.jsx */
 		return redirect('/dashboard/all-expenses') /* it must return something; redirects a user to all-expenses page after submission */
 	} catch (error) {

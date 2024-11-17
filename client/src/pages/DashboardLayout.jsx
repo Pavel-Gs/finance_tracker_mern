@@ -101,8 +101,8 @@ export const DashboardLayout = (queryClient) => {
 						<NavbarComponent />
 						<div className="dashboard-page">
 							{/* render all children elements for the route using outlet */}
-							{/* {isPageLoading ? <LoadingComponent /> : <Outlet context={{ currentUser }} />} */} {/* display loading spinner if the data is loading */}
-							<Outlet context={{ currentUser }} /> {/* passing in an object, which will be available in all of the outlet (similar to context provider) */}
+							{isPageLoading ? <LoadingComponent /> : <Outlet context={{ currentUser }} />} {/* display loading spinner if the data is loading */}
+							{/* <Outlet context={{ currentUser }} /> */} {/* passing in an object, which will be available in all of the outlet (similar to context provider) */}
 						</div>
 					</div>
 				</main>

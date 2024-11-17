@@ -12,7 +12,8 @@ import { StyledPaginationButtonsComponent } from '../../styled_components/Styled
 export const PaginationButtonsExpensesComponent = () => {
 
 	/* get the data from the global context */
-	const { data: { numOfPages, currentPage } } = useAllExpensesContext()
+	const { data } = useAllExpensesContext()
+	const { numOfPages, currentPage } = data.data /* I had to add another ".data" after the query integration */
 
 	/* construct page buttons */
 	const pages = Array.from(
