@@ -8,9 +8,10 @@ import { customFetch } from '../../utils/customFetch.js'
 
 // DELETE INCOME ACTION FUNCTION
 /* used in App.jsx "delete/income:id" route action */
-export const actionDeleteIncome = async ({ params }) => {
+export const actionDeleteIncome = (queryClient) => async ({ params }) => {
 	try {
 		await customFetch.delete(`/income/${params.id}`)
+		queryClient.invalidateQueries(["allIncomeQuery"])
 		toast.success("Income deleted") /* the default position is set in App.jsx */
 	} catch (error) {
 		toast.error(error?.response?.data?.message)

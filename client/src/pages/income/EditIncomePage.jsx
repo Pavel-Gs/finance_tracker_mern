@@ -18,7 +18,7 @@ import { StyledDashboardFormPage } from '../../styled_components/StyledDashboard
 
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "edit-income" path */
-export const loaderEditIncome = async ({ params }) => {
+export const loaderEditIncome = (queryClient) => async ({ params }) => {
 	try {
 		const { data } = await customFetch.get(`/income/${params.id}`)
 		return data
@@ -31,7 +31,7 @@ export const loaderEditIncome = async ({ params }) => {
 
 // EDIT INCOME ACTION FUNCTION
 /* used in App.jsx "edit-income/:id" route action */
-export const actionEditIncome = async ({request, params}) => {
+export const actionEditIncome = (queryClient) => async ({request, params}) => {
 	
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -40,6 +40,7 @@ export const actionEditIncome = async ({request, params}) => {
 	/* patch the existing data using income form inputs */
 	try {
 		await customFetch.patch(`/income/${params.id}`, incomeData)
+		queryClient.invalidateQueries(["allIncomeQuery"])
 		toast.success("Income edited") /* the default position is set in App.jsx */
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
 	} catch (error) {

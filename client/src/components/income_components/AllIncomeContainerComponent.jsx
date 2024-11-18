@@ -12,7 +12,7 @@ export const AllIncomeContainerComponent = () => {
 
 	/* use global context data */
 	const { data } = useAllIncomeContext()
-	const { allIncome, currentIncomeSum, incomeEntries, numOfPages } = data /* destructure income from the data */
+	const { allIncome, currentIncomeSum, incomeEntries, numOfPages } = data.data /* I had to add another ".data" after the query integration */
 	const formattedCurrentIncomeSum = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currentIncomeSum)
 
 	/* if no income found */
@@ -29,7 +29,7 @@ export const AllIncomeContainerComponent = () => {
 	return (
 		<StyledTransactionsContainer>
 			<h5 style={{ textTransform: 'none' }}>
-				Entries found: {incomeEntries}, {formattedCurrentIncomeSum}
+				Entries found: {incomeEntries}; {formattedCurrentIncomeSum}
 			</h5>
 			<div className='transactions'>
 				{allIncome.map((i) => {

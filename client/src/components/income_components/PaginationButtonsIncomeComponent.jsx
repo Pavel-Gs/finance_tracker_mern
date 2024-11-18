@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 // IMPORT CUSTOM HOOK
 import { useAllIncomeContext } from '../../pages/income/AllIncomePage.jsx'
 // IMPORT REACT ICONS
@@ -12,7 +12,8 @@ import { StyledPaginationButtonsComponent } from '../../styled_components/Styled
 export const PaginationButtonsIncomeComponent = () => {
 
 	/* get the data from the global context */
-	const { data: { numOfPages, currentPage } } = useAllIncomeContext()
+	const { data } = useAllIncomeContext()
+	const { numOfPages, currentPage } = data.data /* I had to add another ".data" after the query integration */
 
 	/* construct page buttons */
 	const pages = Array.from(

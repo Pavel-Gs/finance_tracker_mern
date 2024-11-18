@@ -123,23 +123,26 @@ const browserRoutes = createBrowserRouter(
 						{
 							path: 'add-income',
 							element: <AddIncomePage />,
-							action: actionAddIncome,
-							loader: loaderAllIncome /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allIncome, but with the returned filtered data for today's income only */
+							action: actionAddIncome(queryClient),
+							loader: loaderAllIncome(queryClient), /* CLIENT-side filtering (for larger data sets, write new back-end controller); currently using the same loader as for allIncome, but with the returned filtered data for today's income only */
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'edit-income/:id',
 							element: <EditIncomePage />,
-							action: actionEditIncome,
-							loader: loaderEditIncome
+							action: actionEditIncome(queryClient),
+							loader: loaderEditIncome(queryClient),
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'delete-income/:id',
-							action: actionDeleteIncome
+							action: actionDeleteIncome(queryClient)
 						},
 						{
 							path: 'all-income',
 							element: <AllIncomePage />,
-							loader: loaderAllIncome
+							loader: loaderAllIncome(queryClient),
+							errorElement: <ErrorElement />
 						},
 						{
 							path: 'stats-income',

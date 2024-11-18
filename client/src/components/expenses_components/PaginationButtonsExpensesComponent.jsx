@@ -1,5 +1,5 @@
 // IMPORT ROUTER COMPONENTS
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 // IMPORT CUSTOM HOOK
 import { useAllExpensesContext } from '../../pages/expenses/AllExpensesPage.jsx'
 // IMPORT REACT ICONS

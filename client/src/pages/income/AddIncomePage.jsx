@@ -19,7 +19,7 @@ import { StyledDashboardFormPage } from '../../styled_components/StyledDashboard
 
 // ADD INCOME ACTION FUNCTION
 /* used in App.jsx "add-income" route action */
-export const actionAddIncome = async ({ request }) => {
+export const actionAddIncome = (queryClient) => async ({ request }) => {
 
 	/* "formData()" function is coming from JavaScript API */
 	const inputData = await request.formData()
@@ -28,6 +28,7 @@ export const actionAddIncome = async ({ request }) => {
 	/* post new data using income form inputs */
 	try {
 		await customFetch.post('/income', incomeData)
+		queryClient.invalidateQueries(["allIncomeQuery"])
 		toast.success("Income added") /* the default position is set in App.jsx */
 		return redirect('/dashboard/all-income') /* it must return something; redirects a user to all-income page after submission */
 	} catch (error) {
@@ -56,8 +57,8 @@ export const AddIncomePage = () => {
 	}
 
 	/* date picker logic */
-	const getCurrentDate = new Date(Date.now()) // get the current date, in the current time zone
-	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') // YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC
+	const getCurrentDate = new Date(Date.now()) /* get the current date, in the current time zone */
+	const formattedDate = getCurrentDate.toLocaleDateString('en-CA') /* YYYY-MM-DD format for Canada; avoid using ".toISOString()" - it will change the zone to UTC */
 	const [selectedDate, setSelectedDate] = useState(formattedDate) /* state for the date's picker, defaults to today's date */
 	const handleDateSelectionChange = (e) => {
 		setSelectedDate(e.target.value)

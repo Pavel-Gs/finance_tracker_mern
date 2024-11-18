@@ -1,5 +1,5 @@
 // IMPORT REACT HOOKS
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // IMPORT ROUTER COMPONENTS
 import { Form, useSubmit } from 'react-router-dom'
 // IMPORT CUSTOM HOOK
@@ -24,8 +24,14 @@ export const SearchExpensesContainerComponent = () => {
 	const submit = useSubmit()
 
 	/* logic to render categories according to selected type */
-	const [selectedType, setSelectedType] = useState('') /* state to track the type selection */
-	const [categoryList, setCategoryList] = useState([]) /* state for category list based on type */
+	const [selectedType, setSelectedType] = useState(typeExpense || "") /* state to track the type selection */
+	const [categoryList, setCategoryList] = useState(TYPE_TO_CATEGORIES[typeExpense] || []) /* state for category list based on type */
+
+	useEffect(() => {
+		setSelectedType(typeExpense || "")
+		setCategoryList(TYPE_TO_CATEGORIES[typeExpense] || [])
+	}, [typeExpense]) /* handle updates correctly when typeExpense changes; add a useEffect to ensure that changes in typeExpense from context are reflected in the state. This is especially helpful if React Query causes asynchronous updates */
+	
 	const handleTypeSelectionChange = (e) => {
 		const selectedValue = e.target.value
 		setSelectedType(selectedValue) /* update selected type; and dropdown select logic (prevents the category selection before the type is selected) */
@@ -71,6 +77,8 @@ export const SearchExpensesContainerComponent = () => {
 		}
 	}
 
+	if (!searchValues) return <p>Loading search form...</p>
+
 	return (
 		<StyledDashboardFormPage>
 
@@ -80,12 +88,12 @@ export const SearchExpensesContainerComponent = () => {
 					Search form
 				</h5>
 				<div className='form-center'>
-					<FormRowComponent typeProp='search' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={commentsExpense} onChangeProp={debounce((form) => {submit(form)})} />
+					<FormRowComponent typeProp='search' nameProp='commentsExpense' labelTextProp="Comments" defaultValueProp={commentsExpense} onChangeProp={debounce((form) => { submit(form) })} />
 					<FormRowSelectComponent nameProp='typeExpense' labelTextProp="Type" listProp={["all", ...Object.values(EXPENSES_TYPES)]} defaultValueProp={typeExpense} onChangeProp={handleTypeSelectionChange} />
-					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={["all", ...categoryList.map(i => EXPENSES_CATEGORIES[i])]} defaultValueProp={categoryExpense} disabledProp={selectedType === ""} onChangeProp={(e) => {submit(e.currentTarget.form)}} /> {/* only disable if type is not selected */}
+					<FormRowSelectComponent nameProp='categoryExpense' labelTextProp="Category" listProp={["all", ...categoryList.map(i => EXPENSES_CATEGORIES[i])]} defaultValueProp={categoryExpense} disabledProp={!selectedType && categoryList.length === 0} onChangeProp={(e) => { submit(e.currentTarget.form) }} /> {/* only disable if type is not selected or there are no categories */}
 					<FormRowComponent typeProp='date' nameProp='startDate' labelTextProp="Start date range" defaultValueProp={startDate} onChangeProp={handleDateSelectionChange} />
 					<FormRowComponent typeProp='date' nameProp='endDate' labelTextProp="End date range" defaultValueProp={endDate} onChangeProp={handleDateSelectionChange} />
-					<FormRowSelectComponent nameProp='sort' listProp={Object.values(SORT_EXPENSES_BY)} defaultValueProp={sort} onChangeProp={(e) => {submit(e.currentTarget.form)}} />
+					<FormRowSelectComponent nameProp='sort' listProp={Object.values(SORT_EXPENSES_BY)} defaultValueProp={sort} onChangeProp={(e) => { submit(e.currentTarget.form) }} />
 				</div>
 				{error && <p className='error'>{error}</p>} {/* display error message if any */}
 			</Form>
