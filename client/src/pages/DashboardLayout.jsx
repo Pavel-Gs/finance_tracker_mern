@@ -1,5 +1,5 @@
 // IMPORT REACT FUNCTIONS
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 // IMPORT ROUTER COMPONENTS
 import { Outlet, redirect, useNavigate, useNavigation } from 'react-router-dom'
 // IMPORT REACT QUERY COMPONENTS
@@ -55,7 +55,7 @@ export const useDashboardContext = () => useContext(DashboardContext)
 
 
 // DASHBOARD LAYOUT JSX COMPONENT
-export const DashboardLayout = (queryClient) => {
+export const DashboardLayout = ({queryClient}) => {
 
 	/* dark theme logic */
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultThemeFunction())
@@ -72,9 +72,6 @@ export const DashboardLayout = (queryClient) => {
 		setShowSidebar(!showSidebar)
 	}
 
-	/* get the data from react query, instead of the loader */
-	const { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = useQuery(dashboardQuery).data /* react query returns an object named "data" */
-
 	/* invoke useNavigate hook */
 	const navigate = useNavigate()
 
@@ -89,6 +86,22 @@ export const DashboardLayout = (queryClient) => {
 		queryClient.invalidateQueries() /* invalidate all queries */
 		toast.success("Logged out")
 	}
+
+	/* auth interceptor logic */
+	const [isAuthError, setIsAuthError] = useState(false)
+	customFetch.interceptors.response.use((response) => {return response}, (error)=>{
+		if (error?.response?.status === 401) {
+			setIsAuthError(true)
+		}
+		return Promise.reject(error)
+	})
+	useEffect(() => {
+		if (!isAuthError) return
+		logoutUser()
+	}, [isAuthError])
+
+	/* get the data from react query, instead of the loader */
+	const { currentUser, currentMonthlyExpensesSum, currentAnnualExpensesSum, overallExpensesSum, currentMonthlyIncomeSum, currentAnnualIncomeSum, overallIncomeSum } = useQuery(dashboardQuery).data /* react query returns an object named "data" */
 
 	/* wrap the return with the global context */
 	return (

@@ -2,6 +2,8 @@
 import { useState } from 'react'
 // IMPORT ROUTER COMPONENTS
 import { Form, redirect, useLoaderData } from 'react-router-dom'
+// IMPORT REACT QUERY COMPONENTS
+import { useQuery } from '@tanstack/react-query'
 // IMPORT TOASTIFY FUNCTION
 import { toast } from 'react-toastify'
 // IMPORT CUSTOM INSTANCE ROUTE FUNCTION
@@ -16,12 +18,24 @@ import { SubmitButtonComponent } from '../../components/SubmitButtonComponent.js
 import { StyledDashboardFormPage } from '../../styled_components/StyledDashboardFormPage.js'
 
 
+// SET UP A QUERY
+const singleIncomeQuery = (id) => {
+	return {
+		queryKey: ["singleIncomeQuery", id],
+		queryFn: async () => {
+			const { data } = await customFetch.get(`/income/${id}`)
+			return data
+		}
+	}
+}
+
+
 // CREATE A LOADER
 /* for prefetching the data; used in App.jsx "edit-income" path */
 export const loaderEditIncome = (queryClient) => async ({ params }) => {
 	try {
-		const { data } = await customFetch.get(`/income/${params.id}`)
-		return data
+		await queryClient.ensureQueryData(singleIncomeQuery(params.id))
+		return params.id
 	} catch (error) {
 		toast.error(error?.response?.data?.message)
 		return redirect('/dashboard/all-income')
@@ -54,7 +68,8 @@ export const actionEditIncome = (queryClient) => async ({request, params}) => {
 export const EditIncomePage = () => {
 
 	/* use the data from the loader; "useLoaderData" hook is using the return from the "loaderEditIncome" function (also, refer to App.jsx, "edit-income" path) */
-	const { singleIncome } = useLoaderData()
+	const id = useLoaderData()
+	const {data: {singleIncome}} = useQuery(singleIncomeQuery(id))
 
 	/* logic to render categories according to selected type */
 	const [selectedType, setSelectedType] = useState(singleIncome?.typeIncome || '') /* state to track the type selection (pre-select the type when editing) */

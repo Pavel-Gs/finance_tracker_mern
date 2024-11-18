@@ -21,6 +21,9 @@ import { authUserMiddleware } from './middleware/authUserMiddleware.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import path from 'path'
+// IMPORT SECURITY PACKAGES
+import helmet from 'helmet'
+import mongoSanitize from 'express-mongo-sanitize'
 // IMPORT CLOUDINARY PACKAGE (FOR IMAGE UPLOAD)
 import cloudinary from 'cloudinary'
 
@@ -60,6 +63,8 @@ cloudinary.config({
 // SETUP MIDDLEWARE
 app.use(cookieParser())
 app.use(express.json())
+app.use(helmet())
+app.use(mongoSanitize())
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan('dev')) /* provides additional logs in the terminal */
 }
@@ -72,13 +77,6 @@ app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 /* public routes for built project */
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'))
-})
-/* test routes */
-app.get('/', (req, res) => {
-	res.send("test")
-})
-app.get('/api/v1/test', (req, res) => {
-	res.json({message: "Test route"})
 })
 
 
