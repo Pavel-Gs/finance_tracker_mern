@@ -26,8 +26,8 @@ export const INCOME_CATEGORIES = {
 // MAPPING TYPES TO CATEGORIES
 export const TYPE_TO_CATEGORIES = {
 	[INCOME_TYPES.JOBS]: ["JOBS_L", "JOBS_P"],
-	[INCOME_TYPES.BANKS]: ["Bank 1", "Bank 2 (L)", "Bank 2 (P)"],
-	[INCOME_TYPES.RETURNS]: ["Taxes", "Membership", "Insurance", "Other"]
+	[INCOME_TYPES.BANKS]: ["BANK_1", "BANK_2_L", "BANK_2_P"],
+	[INCOME_TYPES.RETURNS]: ["TAXES", "MEMBERSHIP", "INSURANCE", "OTHER"]
 }
 
 
