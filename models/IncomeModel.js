@@ -17,7 +17,7 @@ const IncomeSchema = new mongoose.Schema(
 		categoryIncome: {
 			type: String,
 			enum: Object.values(INCOME_CATEGORIES),
-			default: INCOME_CATEGORIES.JOBS_LENA
+			default: INCOME_CATEGORIES.JOBS_L
 		},
 		commentsIncome: {
 			type: String,

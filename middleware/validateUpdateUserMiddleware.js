@@ -8,7 +8,7 @@ import { UserModel } from '../models/UserModel.js'
 import { BadRequestError } from '../errors/customErrors.js'
 
 
-// VALIDATE REGISTER MIDDLEWARE
+// VALIDATE UPDATE USER MIDDLEWARE
 export const validateUpdateUserInput = withValidationErrors(
 	[
 		body('firstName')
