@@ -1,8 +1,22 @@
-# React + Vite
+# FINANCE ORGANIZER
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack MERN app. Organize and view your finances, add new expense and income entries and analyze the trends via graphs.
+(Inspired by John Smilga's "Jobify"; Allow 30+ sec. to load due to free tier limitations).
 
-Currently, two official plugins are available:
+[Published site |==>](https://finance-tracker-vlqa.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Technologies used
+### `React`
+With VITE builder; consists of client side and server side; React-router used for routing.
+
+### `Styled components`
+Using React Styled Components in addition to the global css.
+
+
+## Integrations
+### `Cloudinary`
+Used for image uploads.
+
+### `Recharts`
+Used for graphs.
