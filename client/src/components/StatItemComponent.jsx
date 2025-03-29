@@ -10,7 +10,7 @@ export const StatItemComponent = ({ countProp, titleProp, iconProp, totalAmountP
         <StyledStatItemComponent>
             <header>
                 <span className='count'>
-                    {formattedTotalAmountProp}
+                    {formattedTotalAmountProp === "$NaN" ? "": formattedTotalAmountProp} {/* admin page does not use this prop */}
                 </span>
                 <h5 className='title'>
                     <p>
