@@ -4,7 +4,6 @@ This is a full-stack MERN app. Organize and view your finances, add new expense 
 (Inspired by John Smilga's "Jobify")
 
 - Allow 30+ sec. to load due to free tier limitations
-- Use any email to register and login (there will be no confirmation mail in your inbox)
 
 [Published site |==>](https://finance-tracker-vlqa.onrender.com/)
 
