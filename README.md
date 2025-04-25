@@ -5,7 +5,7 @@ This is a full-stack MERN app. Organize and view your finances, add new expense 
 
 - Allow 30+ sec. to load due to free tier limitations
 
-[Published site |==>](https://finance-tracker-vlqa.onrender.com/)
+[Published site |==>](https://finance-tracker-1naw.onrender.com)
 
 
 ## Technologies used
