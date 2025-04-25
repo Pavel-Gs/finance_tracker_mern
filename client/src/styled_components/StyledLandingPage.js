@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 // CSS FOR THE LANDING PAGE
 export const StyledLandingPage = styled.main`
-	background: linear-gradient(135deg, #f0f4ff, #e5f5f3);
+	background: linear-gradient(135deg, #28b1bed8, #e1e7e6);
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -60,7 +60,7 @@ export const StyledLandingPage = styled.main`
 
 	.btn.secondary {
 		border: 2px solid #28b2be;
-		color: #28b2be;
+		color: #e5f5f3;
 		background: transparent;
 	}
 
