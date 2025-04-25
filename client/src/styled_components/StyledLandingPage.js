@@ -3,51 +3,74 @@ import styled from 'styled-components'
 
 
 // CSS FOR THE LANDING PAGE
-export const StyledLandingPage = styled.section`
-	nav {
-		width: var(--fluid-width);
-		max-width: var(--max-width);
-		margin: 0 auto;
-		height: var(--nav-height);
+export const StyledLandingPage = styled.main`
+	background: linear-gradient(135deg, #f0f4ff, #e5f5f3);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	//font-family: 'Inter', sans-serif;
+
+	.overlay {
+		width: 100%;
+		max-width: 800px;
+		padding: 2rem;
+	}
+
+	.nav {
 		display: flex;
-		align-items: center;
+		justify-content: center;
+		margin-bottom: 2rem;
 	}
-	.page {
-		min-height: calc(100vh - var(--nav-height));
-		display: grid;
-		align-items: center;
-		margin-top: -3rem;
-	}
-	h1 {
+
+	.hero h1 {
+		font-size: 3rem;
 		font-weight: 700;
-		span {
-			color: var(--primary-500);
-		}
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
+		color: #1b1f3b;
 	}
-	p {
-		line-height: 2;
-		color: var(--text-secondary-color);
-		margin-bottom: 1.5rem;
-		max-width: 35em;
+
+	.hero p {
+		font-size: 1.25rem;
+		color: #3b3f5c;
+		margin-bottom: 2rem;
 	}
-	.register-link {
-		margin-right: 1rem;
+
+	.cta-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
 	}
-	.main-img {
-		display: none;
-	}
+
 	.btn {
-		padding: 0.75rem 1rem;
+		padding: 0.75rem 1.75rem;
+		font-size: 1rem;
+		border-radius: 30px;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.3s ease;
 	}
-	@media (min-width: 992px) {
-		.page {
-			grid-template-columns: 1fr 400px;
-			column-gap: 3rem;
-		}
-		.main-img {
-			display: block;
-		}
+
+	.btn.primary {
+		background-color: #28b2be;
+		color: white;
+	}
+
+	.btn.secondary {
+		border: 2px solid #28b2be;
+		color: #28b2be;
+		background: transparent;
+	}
+
+	.btn:hover {
+		transform: scale(1.05);
+	}
+
+	footer {
+		margin-top: 3rem;
+		font-size: 0.875rem;
+		color: #777;
 	}
 `
-
