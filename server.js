@@ -75,14 +75,15 @@ app.use('/api/v1/admin', authUserMiddleware, routerExpressAdmin)
 app.use('/api/v1/expenses', authUserMiddleware, routerExpressExpenses)
 app.use('/api/v1/income', authUserMiddleware, routerExpressIncome)
 /* public routes for built project */
-app.get('*', (req, res) => {
+// Serve index.html only if the route doesn't start with /api
+app.get(/^\/(?!api).*/, (req, res) => {
 	res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'))
 })
 
 
 // ERROR MIDDLEWARE
-/* not found */
-app.use('*', (req, res) => {
+// 404 only for API routes
+app.use('/api', (req, res) => {
 	res.status(404).json({ message: "not found" })
 })
 /* error handler (may have to place it at the very bottom of the code) */
